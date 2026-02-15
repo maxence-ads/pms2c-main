@@ -23,15 +23,14 @@
   <meta property="og:description"
     content="Arrêtez de perdre vos moyens en compétition. Méthode concrète pour sportifs ambitieux." />
   <meta name="theme-color" content="#0b0d12" />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
       /* ... autres variables ... */
-
-      /* Typography Updated (H2 Plus gros sur mobile) */
-      --h1: clamp(36px, 6vw, 56px);
-      --h2: clamp(30px, 5vw, 42px);
-      /* MODIFIÉ : 24px -> 30px min */
 
       /* Palette */
       --bg: #0b0d12;
@@ -256,49 +255,11 @@
       color: var(--text-main);
     }
 
-    /* --- HEADER --- */
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      height: var(--header-h);
-      background: rgba(11, 13, 18, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--panel-border);
-      display: flex;
-      align-items: center;
-    }
-
-    /* MODIFICATION : Header masqué sur mobile pour laisser toute la place au contenu */
+    /* Header masqué sur mobile pour laisser toute la place au contenu */
     @media (max-width: 900px) {
       .header {
         display: none;
       }
-    }
-
-    .header-inner {
-      justify-content: space-between;
-      width: 100%;
-    }
-
-    .logo {
-      font-weight: 800;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    /* AJOUT ICI : Désactive le "sticky" sur mobile pour libérer l'écran */
-    @media (max-width: 900px) {
-      .header {
-        position: relative;
-      }
-    }
-
-    .header-inner {
-      justify-content: space-between;
-      width: 100%;
     }
 
     /* --- HERO --- */
@@ -672,11 +633,7 @@
       transform: scale(0.95);
     }
 
-    @media (min-width: 769px) {
-      .sticky-bar {
-        display: none;
-      }
-    }
+
 
     @media (min-width: 769px) {
       .sticky-bar {
@@ -3348,7 +3305,8 @@
       </p>
       <div style="font-size: 0.8rem; opacity: 0.6">
         &copy; <span id="year"></span> Tous droits réservés. <br />
-        <a href="#">Mentions Légales</a> · <a href="#">Confidentialité</a>
+        <a href="https://www.pms2c.com/mentions-legales" target="_blank" rel="noopener">Mentions Légales</a> · <a
+          href="https://www.pms2c.com/mentions-legales" target="_blank" rel="noopener">Confidentialité</a>
       </div>
     </div>
   </footer>
