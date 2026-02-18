@@ -1406,8 +1406,7 @@
           <h3 style="font-size: 1.35rem; margin-bottom: 15px; color: white;">Pour ceux qui refusent de sous-performer
           </h3>
           <p style="margin-bottom: 25px; line-height:1.6; color: var(--text-muted);">
-            Vous avez investi des années dans votre sport. Il est temps que votre mental devienne votre meilleur allié
-            plutôt que votre plus grand adversaire.
+            Le fossé entre votre potentiel et vos résultats en compétition n'est pas technique. Il est mental.
           </p>
 
           <ul style="display:grid; gap:12px;">
@@ -1433,7 +1432,7 @@
                 <circle cx="12" cy="12" r="10"></circle>
               </svg>
               <span style="font-size:0.95rem; color:#e2e8f0;">Vous voulez des <b>protocoles de terrain</b> actionnables
-                dès votre prochain match.</span>
+                dès votre prochaine compétition.</span>
             </li>
           </ul>
         </div>
@@ -1452,11 +1451,11 @@
               adapté</span>
           </div>
 
-          <h3 style="font-size: 1.35rem; margin-bottom: 15px; color: #94a3b8;">Si vous privilégiez le hasard à la
-            stratégie</h3>
+          <h3 style="font-size: 1.35rem; margin-bottom: 15px; color: #94a3b8;">Si vous pensez que le mental, c'est du
+            bonus</h3>
           <p style="margin-bottom: 25px; color: #64748b; line-height: 1.6;">
-            La performance régulière est la conséquence d'un état d'esprit structuré. Si vous préférez compter sur la
-            chance, ce n'est pas pour vous.
+            Ce programme est fait pour ceux qui veulent passer un cap, pas pour ceux qui espèrent que leurs blocages
+            disparaissent avec le temps.
           </p>
 
           <ul style="display:grid; gap:12px;">
@@ -1488,212 +1487,6 @@
       </div>
 
     </div>
-  </section>
-
-  <!-- METHODE TIMELINE (Harmonie Desktop Affinée + Apparition Mobile) -->
-  <section id="methode" style="background: var(--bg); position: relative; overflow: hidden; padding: 80px 0;">
-
-    <!-- Background FX -->
-    <div
-      style="position: absolute; top: 0; right: 0; width: 500px; height: 500px; background: radial-gradient(circle, rgba(85, 211, 155, 0.05) 0%, transparent 70%); pointer-events: none;">
-    </div>
-
-    <style>
-      .method-card,
-      .timeline-dot {
-        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      }
-
-      /* --- DESKTOP HOVER (Interaction) --- */
-      @media (min-width: 901px) {
-        .timeline-item:hover .method-card {
-          transform: translateY(-8px);
-        }
-
-        /* Step 1 (Vert) */
-        .timeline-item-1:hover .method-card {
-          border-color: rgba(85, 211, 155, 0.8) !important;
-        }
-
-        .timeline-item-1:hover .timeline-dot {
-          transform: scale(1.4);
-          background: var(--accent) !important;
-        }
-
-        /* Step 2 (Blanc) */
-        .timeline-item-2:hover .method-card {
-          border-color: rgba(255, 255, 255, 0.6) !important;
-        }
-
-        .timeline-item-2:hover .timeline-dot {
-          transform: scale(1.4);
-          background: #fff !important;
-        }
-
-        /* Step 3 (Rouge) */
-        .timeline-item-3:hover .method-card {
-          border-color: rgba(255, 77, 90, 0.8) !important;
-        }
-
-        .timeline-item-3:hover .timeline-dot {
-          transform: scale(1.4);
-          background: var(--brand) !important;
-        }
-      }
-
-      /* --- MOBILE SEMI-HOVER (Permanent & Renforcé) --- */
-      @media (max-width: 900px) {
-
-        /* Step 1 (Vert) - Bordure plus visible (0.5) */
-        .timeline-item-1 .method-card {
-          border-color: rgba(85, 211, 155, 0.5) !important;
-        }
-
-        .timeline-item-1 .timeline-dot {
-          transform: scale(1.2);
-          background: var(--accent);
-        }
-
-        /* Step 2 (Blanc) - Bordure plus visible (0.3) */
-        .timeline-item-2 .method-card {
-          border-color: rgba(255, 255, 255, 0.3) !important;
-        }
-
-        .timeline-item-2 .timeline-dot {
-          transform: scale(1.2);
-          background: #fff;
-        }
-
-        /* Step 3 (Rouge) - Bordure plus visible (0.5) */
-        .timeline-item-3 .method-card {
-          border-color: rgba(255, 77, 90, 0.5) !important;
-        }
-
-        .timeline-item-3 .timeline-dot {
-          transform: scale(1.2);
-          background: var(--brand);
-        }
-      }
-
-      /* --- ANIMATION D'APPARITION (Scroll Reveal) --- */
-      .reveal-on-scroll {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-      }
-
-      .reveal-on-scroll.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    </style>
-
-    <div class="wrap">
-      <div class="section-title text-center" style="margin-bottom: 70px;">
-        <h2 style="margin-bottom: 15px;">Concrètement, comment ça se passe ?</h2>
-        <p style="margin: 0 auto; max-width: 650px; color: var(--text-muted); font-size: 1.05rem;">
-          Pas de grands discours psychologiques : juste un plan d'action précis pour libérer votre jeu, match après
-          match.
-        </p>
-      </div>
-
-      <div class="timeline-container" style="max-width: 800px; margin: 0 auto; position: relative; padding-left: 30px;">
-        <!-- Ligne verticale -->
-        <div
-          style="position: absolute; left: 0; top: 20px; bottom: 20px; width: 2px; background: linear-gradient(to bottom, var(--accent) 0%, var(--brand) 100%); opacity: 0.3;">
-        </div>
-
-        <!-- STEP 1 (Vert - Bordure atténuée à 0.1 pour Desktop) -->
-        <div class="timeline-item timeline-item-1 reveal-on-scroll" style="position: relative; margin-bottom: 60px;">
-          <div class="timeline-dot"
-            style="position: absolute; left: -39px; top: 0; width: 20px; height: 20px; background: var(--bg); border: 2px solid var(--accent); border-radius: 50%; z-index: 2;">
-          </div>
-          <div class="method-card"
-            style="background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(85, 211, 155, 0.1); border-radius: 16px; padding: 25px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-              <span style="font-size: 3rem; font-weight: 900; color: rgba(255,255,255,0.05); line-height: 1;">01</span>
-              <span
-                style="font-size: 0.75rem; font-weight: 700; color: var(--accent); background: rgba(85, 211, 155, 0.1); padding: 4px 10px; border-radius: 99px;">CLARIFICATION</span>
-            </div>
-            <h3 style="font-size: 1.25rem; margin-bottom: 10px; color: white;">Comprendre ce qui se joue</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem;">Ensemble, on analyse vos derniers matchs pour
-              identifier précisément ce qui déclenche votre stress ou votre perte de confiance.</p>
-          </div>
-        </div>
-
-        <!-- STEP 2 (Blanc - Bordure atténuée à 0.08 pour Desktop) -->
-        <div class="timeline-item timeline-item-2 reveal-on-scroll" style="position: relative; margin-bottom: 60px;">
-          <div class="timeline-dot"
-            style="position: absolute; left: -39px; top: 0; width: 20px; height: 20px; background: var(--bg); border: 2px solid rgba(255,255,255,0.5); border-radius: 50%; z-index: 2;">
-          </div>
-          <div class="method-card"
-            style="background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 25px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-              <span style="font-size: 3rem; font-weight: 900; color: rgba(255,255,255,0.05); line-height: 1;">02</span>
-              <span
-                style="font-size: 0.75rem; font-weight: 700; color: #cbd5e1; background: rgba(255,255,255,0.05); padding: 4px 10px; border-radius: 99px;">SOLUTIONS</span>
-            </div>
-            <h3 style="font-size: 1.25rem; margin-bottom: 10px; color: white;">Apprendre à gérer la pression</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem;">Je vous transmets des techniques simples
-              (respiration, dialogue interne) pour ne plus subir vos émotions et vous reconcentrer en quelques secondes.
-            </p>
-          </div>
-        </div>
-
-        <!-- STEP 3 (Rouge - Bordure atténuée à 0.1 pour Desktop) -->
-        <div class="timeline-item timeline-item-3 reveal-on-scroll" style="position: relative;">
-          <div class="timeline-dot"
-            style="position: absolute; left: -39px; top: 0; width: 20px; height: 20px; background: var(--bg); border: 2px solid var(--brand); border-radius: 50%; z-index: 2;">
-          </div>
-          <div class="method-card"
-            style="background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(255, 77, 90, 0.1); border-radius: 16px; padding: 25px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-              <span style="font-size: 3rem; font-weight: 900; color: rgba(255,255,255,0.05); line-height: 1;">03</span>
-              <span
-                style="font-size: 0.75rem; font-weight: 700; color: var(--brand); background: rgba(255, 77, 90, 0.1); padding: 4px 10px; border-radius: 99px;">TERRAIN</span>
-            </div>
-            <h3 style="font-size: 1.25rem; margin-bottom: 10px; color: white;">Construire votre routine de match</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem;">On met en place une routine d'avant-match
-              personnalisée pour que vous rentriez sur le terrain en confiance et prêt à performer, à chaque fois.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bottom Note & CTA Clean -->
-      <div style="margin-top: 50px; text-align: center;">
-        <a href="#contact" class="btn btn-primary"
-          style="margin-top: 15px; border-radius: 99px; font-size: 0.95rem; padding: 12px 30px; box-shadow: 0 8px 25px -5px var(--brand-glow);">
-          Réserver mon Bilan Mental Offert
-        </a>
-      </div>
-
-    </div>
-
-    <!-- Script d'apparition au scroll -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const observerOptions = {
-          root: null,
-          rootMargin: "0px",
-          threshold: 0.15 // Déclenche quand 15% de l'élément est visible
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              observer.unobserve(entry.target); // On arrête d'observer une fois affiché
-            }
-          });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal-on-scroll').forEach((element, index) => {
-          // Petit délai en cascade si on veut (optionnel, ici géré par le scroll naturel)
-          element.style.transitionDelay = (index * 0.1) + "s";
-          observer.observe(element);
-        });
-      });
-    </script>
   </section>
 
   <!-- RESULTATS / PILIERS (Design "Spotlight" + Icônes Flottantes) -->
@@ -1941,6 +1734,215 @@
 
       </div>
     </div>
+  </section>
+
+  <!-- METHODE TIMELINE (Harmonie Desktop Affinée + Apparition Mobile) -->
+  <section id="methode" style="background: var(--bg); position: relative; overflow: hidden; padding: 80px 0;">
+
+    <!-- Background FX -->
+    <div
+      style="position: absolute; top: 0; right: 0; width: 500px; height: 500px; background: radial-gradient(circle, rgba(85, 211, 155, 0.05) 0%, transparent 70%); pointer-events: none;">
+    </div>
+
+    <style>
+      .method-card,
+      .timeline-dot {
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      /* --- DESKTOP HOVER (Interaction) --- */
+      @media (min-width: 901px) {
+        .timeline-item:hover .method-card {
+          transform: translateY(-8px);
+        }
+
+        /* Step 1 (Vert) */
+        .timeline-item-1:hover .method-card {
+          border-color: rgba(85, 211, 155, 0.8) !important;
+        }
+
+        .timeline-item-1:hover .timeline-dot {
+          transform: scale(1.4);
+          background: var(--accent) !important;
+        }
+
+        /* Step 2 (Blanc) */
+        .timeline-item-2:hover .method-card {
+          border-color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        .timeline-item-2:hover .timeline-dot {
+          transform: scale(1.4);
+          background: #fff !important;
+        }
+
+        /* Step 3 (Rouge) */
+        .timeline-item-3:hover .method-card {
+          border-color: rgba(255, 77, 90, 0.8) !important;
+        }
+
+        .timeline-item-3:hover .timeline-dot {
+          transform: scale(1.4);
+          background: var(--brand) !important;
+        }
+      }
+
+      /* --- MOBILE SEMI-HOVER (Permanent & Renforcé) --- */
+      @media (max-width: 900px) {
+
+        /* Step 1 (Vert) - Bordure plus visible (0.5) */
+        .timeline-item-1 .method-card {
+          border-color: rgba(85, 211, 155, 0.5) !important;
+        }
+
+        .timeline-item-1 .timeline-dot {
+          transform: scale(1.2);
+          background: var(--accent);
+        }
+
+        /* Step 2 (Blanc) - Bordure plus visible (0.3) */
+        .timeline-item-2 .method-card {
+          border-color: rgba(255, 255, 255, 0.3) !important;
+        }
+
+        .timeline-item-2 .timeline-dot {
+          transform: scale(1.2);
+          background: #fff;
+        }
+
+        /* Step 3 (Rouge) - Bordure plus visible (0.5) */
+        .timeline-item-3 .method-card {
+          border-color: rgba(255, 77, 90, 0.5) !important;
+        }
+
+        .timeline-item-3 .timeline-dot {
+          transform: scale(1.2);
+          background: var(--brand);
+        }
+      }
+
+      /* --- ANIMATION D'APPARITION (Scroll Reveal) --- */
+      .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      .reveal-on-scroll.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+
+    <div class="wrap">
+      <div class="section-title text-center" style="margin-bottom: 70px;">
+        <h2 style="margin-bottom: 15px;">Concrètement, comment ça se passe ?</h2>
+        <p style="margin: 0 auto; max-width: 650px; color: var(--text-muted); font-size: 1.05rem;">
+          Pas de grands discours psychologiques : juste un plan d'action précis pour libérer votre jeu, match après
+          match.
+        </p>
+      </div>
+
+      <div class="timeline-container" style="max-width: 800px; margin: 0 auto; position: relative; padding-left: 30px;">
+        <!-- Ligne verticale -->
+        <div
+          style="position: absolute; left: 0; top: 20px; bottom: 20px; width: 2px; background: linear-gradient(to bottom, var(--accent) 0%, var(--brand) 100%); opacity: 0.3;">
+        </div>
+
+        <!-- STEP 1 (Vert - Bordure atténuée à 0.1 pour Desktop) -->
+        <div class="timeline-item timeline-item-1 reveal-on-scroll" style="position: relative; margin-bottom: 60px;">
+          <div class="timeline-dot"
+            style="position: absolute; left: -39px; top: 0; width: 20px; height: 20px; background: var(--bg); border: 2px solid var(--accent); border-radius: 50%; z-index: 2;">
+          </div>
+          <div class="method-card"
+            style="background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(85, 211, 155, 0.1); border-radius: 16px; padding: 25px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+              <span style="font-size: 3rem; font-weight: 900; color: rgba(255,255,255,0.05); line-height: 1;">01</span>
+              <span
+                style="font-size: 0.75rem; font-weight: 700; color: var(--accent); background: rgba(85, 211, 155, 0.1); padding: 4px 10px; border-radius: 99px;">CLARIFICATION</span>
+            </div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 10px; color: white;">Identifier ce qui vous freine</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Ensemble, on analyse vos dernières performances
+              pour
+              identifier précisément ce qui déclenche votre stress ou votre perte de confiance.</p>
+          </div>
+        </div>
+
+        <!-- STEP 2 (Blanc - Bordure atténuée à 0.08 pour Desktop) -->
+        <div class="timeline-item timeline-item-2 reveal-on-scroll" style="position: relative; margin-bottom: 60px;">
+          <div class="timeline-dot"
+            style="position: absolute; left: -39px; top: 0; width: 20px; height: 20px; background: var(--bg); border: 2px solid rgba(255,255,255,0.5); border-radius: 50%; z-index: 2;">
+          </div>
+          <div class="method-card"
+            style="background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 25px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+              <span style="font-size: 3rem; font-weight: 900; color: rgba(255,255,255,0.05); line-height: 1;">02</span>
+              <span
+                style="font-size: 0.75rem; font-weight: 700; color: #cbd5e1; background: rgba(255,255,255,0.05); padding: 4px 10px; border-radius: 99px;">SOLUTIONS</span>
+            </div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 10px; color: white;">Maîtriser votre état interne</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Vous développez la capacité à rester clair et
+              concentré, peu importe la pression, l'enjeu ou l'adversaire en face.
+            </p>
+          </div>
+        </div>
+
+        <!-- STEP 3 (Rouge - Bordure atténuée à 0.1 pour Desktop) -->
+        <div class="timeline-item timeline-item-3 reveal-on-scroll" style="position: relative;">
+          <div class="timeline-dot"
+            style="position: absolute; left: -39px; top: 0; width: 20px; height: 20px; background: var(--bg); border: 2px solid var(--brand); border-radius: 50%; z-index: 2;">
+          </div>
+          <div class="method-card"
+            style="background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(255, 77, 90, 0.1); border-radius: 16px; padding: 25px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+              <span style="font-size: 3rem; font-weight: 900; color: rgba(255,255,255,0.05); line-height: 1;">03</span>
+              <span
+                style="font-size: 0.75rem; font-weight: 700; color: var(--brand); background: rgba(255, 77, 90, 0.1); padding: 4px 10px; border-radius: 99px;">TRANSFORMATION</span>
+            </div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 10px; color: white;">Libérer votre vrai niveau en compétition
+            </h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Vous appliquez sur le terrain ce que vous avez
+              construit en séance. Résultat : vous retrouvez en match le niveau que vous avez à l'entraînement et vous
+              le gardez quand ça compte.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Note & CTA Clean -->
+      <div style="margin-top: 50px; text-align: center;">
+        <a href="#contact" class="btn btn-primary"
+          style="margin-top: 15px; border-radius: 99px; font-size: 0.95rem; padding: 12px 30px; box-shadow: 0 8px 25px -5px var(--brand-glow);">
+          Réserver mon Bilan Mental Offert
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Script d'apparition au scroll -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const observerOptions = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.15 // Déclenche quand 15% de l'élément est visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target); // On arrête d'observer une fois affiché
+            }
+          });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach((element, index) => {
+          // Petit délai en cascade si on veut (optionnel, ici géré par le scroll naturel)
+          element.style.transitionDelay = (index * 0.1) + "s";
+          observer.observe(element);
+        });
+      });
+    </script>
   </section>
 
   <!-- ETUDES DE CAS (Design Épuré - Sans Guillemets + Mobile Semi-Hover) -->
