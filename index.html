@@ -2628,101 +2628,22 @@
           </p>
         </div>
 
-        <!-- --- DUPLICATION (Pour effet infini) --- -->
-
-        <div class="review-card">
-          <div class="reviewer-head">
-            <div class="reviewer-avatar">LG</div>
-            <div>
-              <div style="font-weight: 700; font-size: 0.95rem; color: white">
-                Léo Grisel
-              </div>
-              <div style="font-size: 0.75rem; color: #94a3b8">
-                Champion du Monde
-              </div>
-            </div>
-            <div class="sport-tag">Snowbike</div>
-          </div>
-          <div class="stars">★★★★★</div>
-          <p class="review-text">
-            "Un excellent accompagnement. Il m'a aidé à mieux gérer mes
-            émotions et renforcer ma concentration."
-          </p>
-        </div>
-        <div class="review-card">
-          <div class="reviewer-head">
-            <div class="reviewer-avatar">JP</div>
-            <div>
-              <div style="font-weight: 700; font-size: 0.95rem; color: white">
-                Jack Piercy
-              </div>
-              <div style="font-size: 0.75rem; color: #94a3b8">
-                Pro Athlete
-              </div>
-            </div>
-            <div class="sport-tag">VTT Downhill</div>
-          </div>
-          <div class="stars">★★★★★</div>
-          <p class="review-text">
-            "Dans les moments durs comme dans les bons, Cédric était là. C'est
-            grâce à lui que je réussis ma carrière."
-          </p>
-        </div>
-        <div class="review-card">
-          <div class="reviewer-head">
-            <div class="reviewer-avatar">SR</div>
-            <div>
-              <div style="font-weight: 700; font-size: 0.95rem; color: white">
-                Selya Rakki
-              </div>
-              <div style="font-size: 0.75rem; color: #94a3b8">
-                International
-              </div>
-            </div>
-            <div class="sport-tag">Tennis</div>
-          </div>
-          <div class="stars">★★★★★</div>
-          <p class="review-text">
-            "Je travaille avec Cédric depuis plusieurs mois. C'est un super
-            coach qui m'a vraiment redonné confiance."
-          </p>
-        </div>
-        <div class="review-card">
-          <div class="reviewer-head">
-            <div class="reviewer-avatar">GL</div>
-            <div>
-              <div style="font-weight: 700; font-size: 0.95rem; color: white">
-                Gauthier Laurens
-              </div>
-              <div style="font-size: 0.75rem; color: #94a3b8">Pro</div>
-            </div>
-            <div class="sport-tag">Football</div>
-          </div>
-          <div class="stars">★★★★★</div>
-          <p class="review-text">
-            "Il m'a fait beaucoup de bien et m'a permis d'apprendre énormément
-            sur moi-même !"
-          </p>
-        </div>
-        <div class="review-card">
-          <div class="reviewer-head">
-            <div class="reviewer-avatar">NC</div>
-            <div>
-              <div style="font-weight: 700; font-size: 0.95rem; color: white">
-                Nicolas Catalano
-              </div>
-              <div style="font-size: 0.75rem; color: #94a3b8">National</div>
-            </div>
-            <div class="sport-tag">Équitation</div>
-          </div>
-          <div class="stars">★★★★★</div>
-          <p class="review-text">
-            "Une énergie positive. Il a su comprendre mes difficultés et
-            trouver les bonnes méthodes pour y faire face."
-          </p>
-        </div>
       </div>
     </div>
+
+    <!-- Script pour dupliquer les cartes et créer une boucle infinie parfaite -->
+    <script>
+      (function () {
+        const track = document.querySelector('.marquee-track');
+        if (!track) return;
+        // Clone tous les enfants du track pour doubler le contenu
+        const cards = Array.from(track.children);
+        cards.forEach(function (card) {
+          const clone = card.cloneNode(true);
+          track.appendChild(clone);
+        });
+      })();
+    </script>
   </section>
 
   <!-- A PROPOS / BIO (Optimisé Mobile Semi-Hover) -->
@@ -3412,13 +3333,15 @@
     // Année auto
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Smooth Scroll
+    // Smooth Scroll avec offset pour le header fixe
+    const headerHeight = document.querySelector('.header') ? document.querySelector('.header').offsetHeight : 0;
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener("click", function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute("href"));
         if (target) {
-          target.scrollIntoView({ behavior: "smooth" });
+          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+          window.scrollTo({ top: targetPosition, behavior: "smooth" });
         }
       });
     });
