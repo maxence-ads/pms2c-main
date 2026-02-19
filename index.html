@@ -255,10 +255,29 @@
       color: var(--text-main);
     }
 
-    /* Header masqué sur mobile pour laisser toute la place au contenu */
+    /* Micro-header mobile : logo seul, centré, compact */
     @media (max-width: 900px) {
       .header {
+        position: relative;
+        height: 50px;
+        justify-content: center;
+        background: transparent;
+        backdrop-filter: none;
+        border-bottom: none;
+      }
+
+      .header .header-inner {
+        justify-content: center;
+      }
+
+      .header .header-inner nav,
+      .header .header-inner .btn {
         display: none;
+      }
+
+      .header .header-inner a:first-child img {
+        height: 34px;
+        margin: 0;
       }
     }
 
@@ -267,6 +286,8 @@
       padding: 60px 0 80px;
       position: relative;
     }
+
+
 
     .hero-grid {
       display: grid;
@@ -602,6 +623,7 @@
       display: flex;
       flex-direction: column;
       line-height: 1.2;
+      gap: 3px;
     }
 
     .sticky-info b {
@@ -864,6 +886,70 @@
         /* Ajustement titre */
         h1 {
           font-size: 2.2rem !important;
+        }
+      }
+
+      /* --- HERO ENTRANCE ANIMATIONS --- */
+      @keyframes heroFadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(25px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes heroFadeIn {
+        from {
+          opacity: 0;
+          transform: translateX(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .hero-text-mobile-center {
+        opacity: 0;
+        animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+      }
+
+      .hero-text-mobile-center .social-proof-mobile {
+        opacity: 0;
+        animation: heroFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+      }
+
+      .hero-form-card {
+        opacity: 0;
+        animation: heroFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+      }
+
+      @media (max-width: 768px) {
+        .hero-form-card {
+          animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+        }
+      }
+
+      /* --- SCROLL REVEAL ANIMATIONS --- */
+      .mobile-reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .mobile-reveal.is-revealed {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 768px) {
+        .mobile-reveal {
+          transform: translateY(30px);
         }
       }
     </style>
@@ -1377,7 +1463,7 @@
     </style>
 
     <div class="wrap">
-      <div class="section-title text-center" style="margin-bottom: 50px;">
+      <div class="section-title text-center mobile-reveal" style="margin-bottom: 50px;">
         <h2 style="margin-bottom: 15px;">
           Le niveau est là. <span class="text-brand">Encore faut-il pouvoir l'exprimer.</span>
         </h2>
@@ -1390,7 +1476,7 @@
       <div class="grid-2" style="align-items: stretch;">
 
         <!-- CARD: OUI -->
-        <div class="card-positive">
+        <div class="card-positive mobile-reveal">
           <div class="flex" style="margin-bottom: 20px; justify-content:space-between; align-items:flex-start;">
             <div class="feature-icon text-accent"
               style="background: rgba(85, 211, 155, 0.15); margin:0; width:40px; height:40px; display:grid; place-items:center; border-radius:10px;">
@@ -1438,7 +1524,7 @@
         </div>
 
         <!-- CARD: NON -->
-        <div class="card-negative">
+        <div class="card-negative mobile-reveal">
           <div class="flex" style="margin-bottom: 20px; justify-content:space-between; align-items:flex-start;">
             <div class="feature-icon text-muted"
               style="background: rgba(255, 255, 255, 0.05); color: #64748b; margin:0; width:40px; height:40px; display:grid; place-items:center; border-radius:10px;">
@@ -1589,7 +1675,7 @@
     </style>
 
     <div class="wrap">
-      <div class="section-title text-center" style="margin-bottom: 60px;">
+      <div class="section-title text-center mobile-reveal" style="margin-bottom: 60px;">
         <h2 style="margin-bottom: 15px;">Ce que vous allez <span class="text-accent">débloquer</span>.</h2>
         <p style="margin: 0 auto; max-width: 650px; color: var(--text-muted); font-size: 1.05rem;">
           Au-delà de la technique, voici les 3 standards mentaux que nous allons installer durablement dans votre jeu.
@@ -1599,7 +1685,7 @@
       <div class="grid-3">
 
         <!-- PILIER 1 : CONFIANCE (Vert) -->
-        <div class="pillar-card pillar-confiance">
+        <div class="pillar-card pillar-confiance mobile-reveal">
           <div class="pillar-icon-box">
             <!-- Icone ANCRE -->
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -1643,7 +1729,7 @@
         </div>
 
         <!-- PILIER 2 : PRESSION (Rouge) -->
-        <div class="pillar-card pillar-pression">
+        <div class="pillar-card pillar-pression mobile-reveal">
           <div class="pillar-icon-box">
             <!-- Icone CHRONO -->
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -1690,7 +1776,7 @@
         </div>
 
         <!-- PILIER 3 : RESILIENCE (Acier) -->
-        <div class="pillar-card pillar-resilience">
+        <div class="pillar-card pillar-resilience mobile-reveal">
           <div class="pillar-icon-box">
             <!-- Icone COURBE -->
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -1835,7 +1921,7 @@
     </style>
 
     <div class="wrap">
-      <div class="section-title text-center" style="margin-bottom: 70px;">
+      <div class="section-title text-center mobile-reveal" style="margin-bottom: 70px;">
         <h2 style="margin-bottom: 15px;">Concrètement, comment ça se passe ?</h2>
         <p style="margin: 0 auto; max-width: 650px; color: var(--text-muted); font-size: 1.05rem;">
           Pas de grands discours psychologiques : juste un plan d'action précis pour libérer votre jeu, match après
@@ -2077,7 +2163,7 @@
     </style>
 
     <div class="wrap">
-      <div class="section-title text-center" style="margin-bottom: 70px;">
+      <div class="section-title text-center mobile-reveal" style="margin-bottom: 70px;">
         <h2 style="margin-bottom: 15px;">Des résultats <span class="text-brand">mesurables</span>.</h2>
         <p style="margin: 0 auto; max-width: 650px; color: var(--text-muted); font-size: 1.05rem;">
           Ils avaient le niveau technique, mais le mental freinait leur ascension. Voici les résultats obtenus une fois
@@ -2088,7 +2174,7 @@
       <div class="grid-3" style="gap: 30px;">
 
         <!-- CARD 1 : CLARENCE (Tennis) -->
-        <div class="elite-card">
+        <div class="elite-card mobile-reveal">
           <div class="card-top">
             <div class="meta-badge">TENNIS</div>
             <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: #94a3b8;">Clarence</h3>
@@ -2113,7 +2199,7 @@
         </div>
 
         <!-- CARD 2 : LORIS (VTT Downhill) -->
-        <div class="elite-card">
+        <div class="elite-card mobile-reveal">
           <div class="card-top">
             <div class="meta-badge">VTT DOWNHILL</div>
             <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: #94a3b8;">Loris</h3>
@@ -2139,7 +2225,7 @@
         </div>
 
         <!-- CARD 3 : VINCENT (Ski Freestyle) -->
-        <div class="elite-card">
+        <div class="elite-card mobile-reveal">
           <div class="card-top">
             <div class="meta-badge">SKI FREESTYLE</div>
             <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: #94a3b8;">Vincent</h3>
@@ -2802,7 +2888,7 @@
       <div class="about-layout">
 
         <!-- BLOC 1 : LE TITRE -->
-        <div class="area-title">
+        <div class="area-title mobile-reveal">
           <span
             style="font-size: 0.8rem; font-weight: 700; color: var(--brand); letter-spacing: 1px; text-transform: uppercase;">Votre
             Préparateur Mental</span>
@@ -2812,7 +2898,7 @@
         </div>
 
         <!-- BLOC 2 : LE TEXTE -->
-        <div class="area-text">
+        <div class="area-text mobile-reveal">
           <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin: 0;">
             Sportif passionné et préparateur mental certifié, j'accompagne depuis plus de 5 ans les athlètes qui
             refusent la stagnation.
@@ -2826,7 +2912,7 @@
         </div>
 
         <!-- BLOC 3 : LA PHOTO -->
-        <div class="area-photo" style="position: relative;">
+        <div class="area-photo mobile-reveal" style="position: relative;">
           <!-- Photo Cadre -->
           <div
             style="position: relative; border-radius: 24px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
@@ -2854,7 +2940,7 @@
         </div>
 
         <!-- BLOC 4 : LES PILIERS (Grid 2 colonnes) -->
-        <div class="area-piliers">
+        <div class="area-piliers mobile-reveal">
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;"> <!-- Gap réduit sur mobile -->
 
             <!-- Valeur 1 -->
@@ -3044,7 +3130,7 @@
       </p>
 
       <!-- La Boîte de Valeur -->
-      <div class="cta-card">
+      <div class="cta-card mobile-reveal">
         <div class="cta-check-list">
           <div class="cta-check-item">
             <div class="cta-check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
@@ -3316,10 +3402,10 @@
   <!-- STICKY BAR MOBILE (New Structure) -->
   <div class="sticky-bar" id="stickyCta">
     <div class="sticky-info">
-      <b>Performance Mentale</b>
-      <span>Bilan offert (15 min)</span>
+      <b>Bilan Mental de Performance</b>
+      <span>Évaluez votre potentiel</span>
     </div>
-    <a href="#contact" class="sticky-btn"> Je fonce </a>
+    <a href="#contact" class="sticky-btn"> Démarrer </a>
   </div>
 
   <script>
@@ -3338,12 +3424,13 @@
     });
 
     // Gestion intelligente de la Sticky Bar
-    // Elle disparaît quand on voit le formulaire principal pour ne pas surcharger l'écran
+    // Elle n'apparaît qu'une fois le Hero scrollé hors de vue
     const stickyBar = document.getElementById("stickyCta");
-    const mainForm = document.getElementById("contact");
+    const heroSection = document.querySelector(".hero");
 
-    if (mainForm && stickyBar) {
-      const observer = new IntersectionObserver(
+    if (heroSection && stickyBar) {
+      stickyBar.classList.add("hidden"); // Masquée par défaut
+      const heroObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -3353,11 +3440,33 @@
             }
           });
         },
-        { threshold: 0.1 }
-      ); // Se déclenche dès que 10% du formulaire est visible
+        { threshold: 0.05 }
+      );
 
-      observer.observe(mainForm);
+      heroObserver.observe(heroSection);
     }
+  </script>
+
+  <!-- Scroll Reveal Observer -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('.mobile-reveal').forEach(function (el, i) {
+        // Stagger siblings in groups of 3 for card grids
+        var siblings = el.parentElement ? el.parentElement.querySelectorAll('.mobile-reveal') : [];
+        var siblingIndex = Array.from(siblings).indexOf(el);
+        el.style.transitionDelay = (siblingIndex >= 0 ? siblingIndex : i % 3) * 0.1 + 's';
+        revealObserver.observe(el);
+      });
+    });
   </script>
 </body>
 
