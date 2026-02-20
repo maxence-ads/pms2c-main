@@ -674,6 +674,146 @@
       font-size: 0.9rem;
     }
   </style>
+
+  <!-- Structured Data JSON-LD (SEO / AEO Optimization) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://www.pms2c.com/#business",
+        "name": "PMS2C — Préparation Mentale Sportive",
+        "description": "Coaching mental pour compétiteurs : gestion du stress, confiance en soi et performance en compétition. Plus de 120 athlètes accompagnés.",
+        "url": "https://www.pms2c.com",
+        "image": "https://www.pms2c.com/assets/images/logo-pms2c-bg.png",
+        "founder": {
+          "@type": "Person",
+          "name": "Cédric Boutavin",
+          "jobTitle": "Préparateur Mental Certifié",
+          "description": "Sportif passionné et préparateur mental certifié, Cédric accompagne depuis plus de 5 ans les athlètes qui refusent la stagnation. Titulaire d'un D.U. STAPS et d'une double certification, membre de la Société Française de Psychologie du Sport.",
+          "image": "https://www.pms2c.com/assets/images/Cedric-coach-pms2c.jpeg"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Nîmes",
+          "addressCountry": "FR"
+        },
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Nîmes et ses alentours",
+            "description": "Accompagnement en présentiel"
+          },
+          {
+            "@type": "Country",
+            "name": "France",
+            "description": "Accompagnement en visio dans toute la France"
+          }
+        ],
+        "priceRange": "€€",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5",
+          "bestRating": "5",
+          "ratingCount": "50",
+          "reviewCount": "50"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Services de Préparation Mentale Sportive",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "@id": "https://www.pms2c.com/#service-bilan",
+                "name": "Bilan Mental de Performance Offert",
+                "description": "Analyse gratuite de votre profil sportif et mental. Identifiez les blocages invisibles qui sabotent vos performances en compétition, clarifiez vos objectifs et repartez avec une idée claire des prochaines étapes pour progresser. Moins de 2 minutes, 100% gratuit et confidentiel.",
+                "provider": { "@id": "https://www.pms2c.com/#business" },
+                "offers": {
+                  "@type": "Offer",
+                  "price": "0",
+                  "priceCurrency": "EUR",
+                  "availability": "https://schema.org/InStock"
+                }
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "@id": "https://www.pms2c.com/#service-coaching",
+                "name": "Coaching en Préparation Mentale Sportive",
+                "description": "Accompagnement personnalisé pour athlètes et compétiteurs visant à développer la confiance durable, la maîtrise sous pression et la résilience. Méthode en 3 étapes : clarification des freins, maîtrise de l'état interne, et libération du vrai niveau en compétition. Applicable à toutes les disciplines sportives.",
+                "provider": { "@id": "https://www.pms2c.com/#business" },
+                "serviceType": "Préparation Mentale Sportive",
+                "areaServed": "Nîmes et alentours (présentiel), France entière (visio)"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.pms2c.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Au bout de combien de temps vais-je voir des résultats ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Souvent, le simple fait de comprendre votre mécanisme de blocage crée un déclic immédiat. Ensuite, comme pour le physique, c'est la régularité qui paie : en quelques semaines, ce qui vous demandait un effort deviendra une seconde nature."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Est-ce que ça demande beaucoup de temps sur mon agenda ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Non, le but n'est pas d'en faire plus, mais de faire mieux. 90% des outils s'appliquent directement PENDANT vos entraînements actuels. Le reste (visualisation, routine) s'intègre facilement dans vos temps morts (transports, avant de dormir). C'est de l'optimisation, pas une surcharge."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quelle est la différence avec un psychologue ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "L'approche est totalement différente. On ne cherche pas à analyser votre enfance ou à « soigner » quelque chose, mais à optimiser votre performance future. C'est un entraînement technique pour votre cerveau : concret, orienté terrain et mesurable avec des objectifs sportifs précis."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Est-ce que c'est adapté à mon sport ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Oui, car on travaille sur l'athlète avant de travailler sur le sport. La méthode est 100% flexible : nous partons des exigences de votre discipline (besoin de précision, d'explosivité ou d'endurance) pour construire des routines qui collent parfaitement à votre réalité."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Je ne suis pas pro, est-ce vraiment utile pour moi ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Le stress d'une balle de match ou d'un penalty est le même, que ce soit en finale de Grand Chelem ou lors d'un championnat amateur. Si vous avez de l'ambition, que vous détestez perdre et que vous avez l'envie de progresser, vous êtes au bon endroit."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.pms2c.com/#webpage",
+        "name": "Préparation Mentale Sportive — Libérez votre potentiel",
+        "description": "Coaching mental pour compétiteurs : gérez le stress, boostez votre confiance et performez quand ça compte. Bilan offert.",
+        "url": "https://www.pms2c.com",
+        "inLanguage": "fr-FR",
+        "isPartOf": { "@id": "https://www.pms2c.com/#business" },
+        "about": { "@id": "https://www.pms2c.com/#service-coaching" },
+        "mainEntity": { "@id": "https://www.pms2c.com/#faq" }
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
