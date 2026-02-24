@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-N8B9CN6M');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Merci - Préparation Mentale Sportive</title>
+    <meta name="description" content="Votre demande est bien enregistrée. Planifiez votre échange." />
+    <meta name="theme-color" content="#0b0d12" />
+
+    <!-- Font import (Inter) same as index -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ---------------------------
+      DESIGN SYSTEM (match index.html + simplified draft)
+    ----------------------------*/
+        :root {
+            --bg: #0b0d12;
+            --panel: #13161f;
+            --panel-border: rgba(255, 255, 255, 0.08);
+            --text-main: #edf2f7;
+            --text-muted: #94a3b8;
+            --brand: #ff4d5a;
+            /* Rouge dynamique */
+            --brand-glow: rgba(255, 77, 90, 0.4);
+            --accent: #55d39b;
+            /* Vert validation */
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --max-w: 1140px;
+        }
+
+        /* --- RESET & BASE --- */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Inter", system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            background-image:
+                radial-gradient(circle at 15% 0%, rgba(255, 77, 90, 0.12), transparent 40%),
+                radial-gradient(circle at 85% 30%, rgba(85, 211, 155, 0.08), transparent 40%);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.2s;
+        }
+
+        /* --- UTILS --- */
+        .container {
+            width: 100%;
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* --- COMPONENTS --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 12px 24px;
+            border-radius: 99px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--brand), #e63e4b);
+            color: white;
+            box-shadow: 0 8px 20px -6px var(--brand-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -6px var(--brand-glow);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--panel-border);
+            color: var(--text-main);
+            font-size: 0.9rem;
+            padding: 8px 16px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 99px;
+            background: rgba(85, 211, 155, 0.1);
+            border: 1px solid rgba(85, 211, 155, 0.2);
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+
+        /* --- LAYOUT --- */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: stretch;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            body {
+                height: auto;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+        }
+
+        /* --- TEXT --- */
+        h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            line-height: 1.1;
+            margin: 0 0 20px;
+            letter-spacing: -1px;
+        }
+
+        .shine {
+            color: transparent;
+            background: linear-gradient(90deg, #fff, #cbd5e1);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .accent {
+            color: var(--brand);
+        }
+
+        .lead {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+
+        /* --- CARDS --- */
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--panel-border);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 77, 90, 0.35);
+            box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 77, 90, 0.15);
+        }
+
+        .embed-card {
+            background: #0f111a;
+            overflow: hidden;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            gap: 16px;
+        }
+
+        .li {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .icon-box {
+            width: 24px;
+            height: 24px;
+            background: rgba(85, 211, 155, 0.15);
+            color: var(--accent);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .li-content h4 {
+            margin: 0 0 4px;
+            font-size: 1rem;
+            color: var(--text-main);
+        }
+
+        .li-content p {
+            margin: 0;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* --- ANIMATIONS --- */
+        .fade-up {
+            animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8B9CN6M" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <section style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; padding-top: 60px;">
+        <div class="container">
+
+            <!-- HEADER CONTENT -->
+            <div style="max-width: 800px;" class="fade-up">
+                <div class="pill">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Réponses enregistrées
+                </div>
+
+                <h1>
+                    Merci. <span class="accent">Bloquons un créneau</span><br>
+                    pour votre retour personnalisé.
+                </h1>
+
+                <p class="lead">
+                    Pour analyser vos réponses et vous donner un plan d'action concret (orienté terrain), il me faut un
+                    court échange de 30 min.
+                </p>
+            </div>
+
+            <div class="grid">
+                <!-- LEFT: RECAP (Simplified) -->
+                <div class="card fade-up delay-1">
+                    <h3 style="margin-top: 0; font-size: 1.25rem;">Ce que nous verrons ensemble</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 30px;">
+                        Un échange structuré pour vous apporter une direction claire.
+                    </p>
+
+                    <ul class="list">
+                        <li class="li">
+                            <div class="icon-box">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <div class="li-content">
+                                <h4>Faire le point sur votre situation mentale actuelle</h4>
+                                <p>Analyser votre fonctionnement dans votre contexte sportif du moment.</p>
+                            </div>
+                        </li>
+                        <li class="li">
+                            <div class="icon-box">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <div class="li-content">
+                                <h4>Mettre en évidence les facteurs qui limitent votre performance</h4>
+                                <p>Distinguer les vrais leviers des simples symptômes.</p>
+                            </div>
+                        </li>
+                        <li class="li">
+                            <div class="icon-box">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <div class="li-content">
+                                <h4>Identifier votre priorité mentale</h4>
+                                <p>Déterminer l'axe qui mérite d'être travaillé en premier.</p>
+                            </div>
+                        </li>
+                        <li class="li">
+                            <div class="icon-box">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <div class="li-content">
+                                <h4>Clarifier la suite la plus pertinente pour vous</h4>
+                                <p>Avoir une vision claire des options possibles, selon votre situation.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- RIGHT: CALENDLY EMBED -->
+                <div class="card embed-card fade-up delay-2">
+                    <div
+                        style="padding: 15px 20px; background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--panel-border); display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-weight: 600; font-size: 0.9rem; color: var(--text-muted);">Réserver votre
+                            créneau</span>
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">30 min • Offert</span>
+                    </div>
+                    <div style="flex-grow: 1; min-height: 600px;">
+                        <!-- Calendly inline widget begin -->
+                        <div class="calendly-inline-widget"
+                            data-url="https://calendly.com/contact-pms2c-zmbl/30min?hide_landing_page_details=1&hide_event_type_details=1&background_color=13161f&text_color=edf2f7&primary_color=ff4d5a"
+                            style="min-width:320px;height:600px;"></div>
+                        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"
+                            async></script>
+                        <!-- Calendly inline widget end -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
