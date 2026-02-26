@@ -7,19 +7,21 @@ on:
 
 jobs:
   verify:
-    name: Verify GitHub Pages is Live
+    name: Verify Page is Live
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for GitHub Pages to deploy (60s)
-        run: sleep 60
-
-      - name: Check that the Athletes landing page returns HTTP 200
+      - name: Check coaching.pms2c.com is reachable (retry every 30s, max 5min)
         run: |
-          STATUS=$(curl -o /dev/null -s -w "%{http_code}" https://maxence-ads.github.io/LP-athletes/)
-          echo "HTTP Status: $STATUS"
-          if [ "$STATUS" -ne 200 ]; then
-            echo "❌ La page renvoie un code $STATUS au lieu de 200. Il y a un problème de déploiement !"
-            exit 1
-          else
-            echo "✅ La page est en ligne et répond correctement (HTTP 200)."
-          fi
+          URL="https://coaching.pms2c.com/"
+          for i in $(seq 1 10); do
+            STATUS=$(curl -o /dev/null -s -w "%{http_code}" "$URL")
+            echo "Tentative $i — HTTP Status: $STATUS"
+            if [ "$STATUS" -eq 200 ]; then
+              echo "✅ La page est en ligne et répond correctement (HTTP 200)."
+              exit 0
+            fi
+            echo "⏳ Pas encore prêt. Nouvelle tentative dans 30s..."
+            sleep 30
+          done
+          echo "❌ La page renvoie encore une erreur après 5 minutes. Vérifiez votre déploiement !"
+          exit 1
