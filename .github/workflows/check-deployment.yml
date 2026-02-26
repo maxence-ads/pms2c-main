@@ -1,0 +1,25 @@
+name: Check Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  verify:
+    name: Verify GitHub Pages is Live
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for GitHub Pages to deploy (60s)
+        run: sleep 60
+
+      - name: Check that the Athletes landing page returns HTTP 200
+        run: |
+          STATUS=$(curl -o /dev/null -s -w "%{http_code}" https://maxence-ads.github.io/LP-athletes/)
+          echo "HTTP Status: $STATUS"
+          if [ "$STATUS" -ne 200 ]; then
+            echo "❌ La page renvoie un code $STATUS au lieu de 200. Il y a un problème de déploiement !"
+            exit 1
+          else
+            echo "✅ La page est en ligne et répond correctement (HTTP 200)."
+          fi
