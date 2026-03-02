@@ -1110,6 +1110,153 @@
           transform: translateY(30px);
         }
       }
+
+      /* --- MOBILE FORM MODAL --- */
+      /* On mobile, hide the inline form card */
+      @media (max-width: 960px) {
+        .hero-form-card {
+          display: none !important;
+        }
+      }
+
+      /* Mobile CTA button in hero */
+      .hero-mobile-cta {
+        display: none;
+      }
+
+      @media (max-width: 960px) {
+        .hero-mobile-cta {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 14px;
+          margin-top: 10px;
+        }
+
+        .hero-mobile-cta .btn {
+          width: 100%;
+          max-width: 380px;
+          justify-content: center;
+          padding: 16px 24px;
+          font-size: 1.05rem;
+        }
+
+        .hero-mobile-cta .social-proof-inline {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 0.82rem;
+          color: #cbd5e1;
+        }
+
+        .hero-mobile-cta .avatars-mini {
+          display: flex;
+          align-items: center;
+        }
+
+        .hero-mobile-cta .avatars-mini div {
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          border: 2px solid rgba(19, 22, 31, 0.9);
+          background: #475569;
+          overflow: hidden;
+          margin-left: -8px;
+        }
+
+        .hero-mobile-cta .avatars-mini div:first-child {
+          margin-left: 0;
+        }
+
+        .hero-mobile-cta .avatars-mini img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      /* Modal overlay */
+      .form-modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(6px);
+        z-index: 9000;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .form-modal-overlay.is-open {
+        display: flex;
+        opacity: 1;
+      }
+
+      .form-modal-overlay.is-animating {
+        opacity: 0;
+      }
+
+      .form-modal-inner {
+        background: var(--panel);
+        border: 1px solid var(--panel-border);
+        border-top: 4px solid var(--brand);
+        border-radius: 20px;
+        width: 100%;
+        max-width: 540px;
+        max-height: 90vh;
+        overflow-y: auto;
+        transform: translateY(40px);
+        opacity: 0;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+        position: relative;
+      }
+
+      .form-modal-overlay.is-open .form-modal-inner {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .form-modal-overlay.is-animating .form-modal-inner {
+        transform: translateY(40px);
+        opacity: 0;
+      }
+
+      .form-modal-close {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        background: rgba(255, 255, 255, 0.08);
+        border: none;
+        color: var(--text-muted);
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        transition: background 0.2s, color 0.2s;
+        z-index: 10;
+        line-height: 1;
+      }
+
+      .form-modal-close:hover {
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+      }
+
+      /* Handle bar */
+      .form-modal-handle {
+        width: 40px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 2px;
+        margin: 10px auto 0;
+      }
     </style>
 
     <div class="wrap hero-grid" style="position: relative; z-index: 1">
@@ -1177,6 +1324,27 @@
             <span style="color: #e2e8f0"><b>Construisez une routine</b> fiable et durable.</span>
           </li>
         </ul>
+
+        <!-- CTA mobile (uniquement sur mobile, ouvre le formulaire en pop-up) -->
+        <div class="hero-mobile-cta">
+          <button onclick="openFormModal()" class="btn btn-primary">
+            Obtenir mon Bilan Mental Offert
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+              style="margin-left:6px">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </button>
+          <div class="social-proof-inline">
+            <div class="avatars-mini">
+              <div><img src="assets/images/athlete1.png" alt=""></div>
+              <div><img src="assets/images/athlete2.png" alt=""></div>
+              <div><img src="assets/images/athlete3.png" alt=""></div>
+              <div><img src="assets/images/athlete4.png" alt=""></div>
+              <div><img src="assets/images/athlete5.png" alt=""></div>
+            </div>
+            <span><b style="color:white">+120 athlètes</b> accompagnés</span>
+          </div>
+        </div>
 
         <!-- Social Proof Hero (5 Avatars) -->
         <div class="social-proof-mobile hidden-mobile" style="
@@ -1274,7 +1442,8 @@
       </div>
 
       <!-- FORMULAIRE MULTI-ETAPES (Droite) -->
-      <div class="hero-form-card" id="contact" style="border-top: 4px solid var(--brand)">
+      <span id="contact" style="position:absolute; top:0; visibility:hidden;"></span>
+      <div class="hero-form-card" style="border-top: 4px solid var(--brand)">
         <div class="form-header" style="
               background: linear-gradient(
                 to bottom,
@@ -1652,6 +1821,30 @@
       .card-negative h3 {
         margin-bottom: 24px !important;
       }
+
+      /* Reality Check Strip */
+      .reality-check-strip {
+        margin-top: 40px;
+        padding: 15px 25px;
+        background: rgba(85, 211, 155, 0.08);
+        border: 1px solid rgba(85, 211, 155, 0.2);
+        border-radius: 12px;
+        text-align: center;
+        font-size: 0.95rem;
+        color: #e2e8f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      @media (max-width: 768px) {
+        .reality-check-strip {
+          flex-direction: column;
+          padding: 20px;
+          gap: 15px;
+        }
+      }
     </style>
 
     <div class="wrap">
@@ -1682,8 +1875,8 @@
               </svg>
             </div>
             <span
-              style="background:rgba(85, 211, 155, 0.1); color:var(--accent); font-size:0.75rem; font-weight:700; padding:4px 10px; border-radius:99px; text-transform:uppercase; letter-spacing:0.5px;">Profil
-              Idéal</span>
+              style="background:rgba(85, 211, 155, 0.1); color:var(--accent); font-size:0.75rem; font-weight:700; padding:4px 10px; border-radius:99px; text-transform:uppercase; letter-spacing:0.5px;">Athlètes
+              concernés</span>
           </div>
 
           <h3 style="font-size: 1.35rem; margin-bottom: 15px; color: white;">Pour ceux qui refusent de sous-performer
@@ -1730,8 +1923,8 @@
               </svg>
             </div>
             <span
-              style="color: #64748b; font-size:0.75rem; font-weight:700; padding:4px 10px; border:1px solid rgba(255,255,255,0.1); border-radius:99px; text-transform:uppercase; letter-spacing:0.5px;">Pas
-              adapté</span>
+              style="color: #64748b; font-size:0.75rem; font-weight:700; padding:4px 10px; border:1px solid rgba(255,255,255,0.1); border-radius:99px; text-transform:uppercase; letter-spacing:0.5px;">Moins
+              pertinent si</span>
           </div>
 
           <h3 style="font-size: 1.35rem; margin-bottom: 15px; color: #94a3b8;">Si vous pensez que le mental, c'est du
@@ -1763,15 +1956,14 @@
       </div>
 
       <!-- Reality Check Strip -->
-      <div
-        style="margin-top: 40px; padding: 15px 25px; background: rgba(85, 211, 155, 0.08); border: 1px solid rgba(85, 211, 155, 0.2); border-radius: 12px; text-align: center; font-size: 0.95rem; color: #e2e8f0; display: flex; align-items: center; justify-content: center; gap: 12px;">
+      <div class="reality-check-strip">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
           <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z" />
           <polyline points="9 12 11 14 15 10" />
         </svg>
-        <span><b>Savoir que le problème est mental, c'est déjà 50% du chemin.</b> L'autre moitié, on la fait
-          ensemble.</span>
+        <span><b>Identifier le blocage est une première étape.</b> Mettre en place les bons leviers vous permet ensuite
+          d’exprimer pleinement votre niveau.</span>
       </div>
 
     </div>
@@ -2380,8 +2572,8 @@
       <div class="section-title text-center mobile-reveal" style="margin-bottom: 70px;">
         <h2 style="margin-bottom: 15px;">Des résultats <span class="text-brand">mesurables</span>.</h2>
         <p style="margin: 0 auto; max-width: 650px; color: var(--text-muted); font-size: 1.05rem;">
-          Ils avaient le niveau technique, mais le mental freinait leur ascension. Voici les résultats obtenus une fois
-          les verrous sautés.
+          Leur niveau technique était déjà présent. L’accompagnement mental a permis d’aligner leurs performances en
+          compétition.
         </p>
       </div>
 
@@ -2725,7 +2917,7 @@
         La <span class="text-brand">Confiance</span> se gagne sur le terrain.
       </h2>
       <p style="color: var(--text-muted); font-size: 1rem">
-        Rejoignez la communauté des athlètes qui ont décidé de passer un cap.
+        Retour d’expérience d’athlètes accompagnés.
       </p>
     </div>
 
@@ -3045,14 +3237,13 @@
         <!-- BLOC 2 : LE TEXTE -->
         <div class="area-text mobile-reveal">
           <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin: 0;">
-            Sportif et préparateur mental passionné. Depuis plus de 5 ans, j’accompagne des athlètes à retrouver en
-            compétition le niveau qu’ils ont déjà.
+            Sportif de formation et préparateur mental depuis plus de 5 ans, j’accompagne des athlètes qui veulent
+            aligner leurs performances en compétition avec leur véritable niveau.
             <br><br>
-            Basé à Nîmes et accompagnant des athlètes partout en visio, je m’appuie sur une méthodologie issue des
-            sciences du sport, confrontée aux exigences du terrain.
-            <br>
-            Mon approche repose sur un cadre clair, des outils concrets et un suivi attentif <b>pour vous aider à
-              progresser durablement.</b>
+            Basé à Nîmes et disponible en visio, j’accompagne des athlètes de différents niveaux avec une approche
+            structurée et personnalisée. Je prends le temps de comprendre votre discipline, votre contexte et ce qui se
+            passe pour vous en compétition, afin de renforcer votre stabilité et votre capacité à prendre les bonnes
+            décisions.
           </p>
         </div>
 
@@ -3550,36 +3741,293 @@
       <b>Bilan Mental de Performance</b>
       <span>Évaluez votre potentiel</span>
     </div>
-    <a href="#contact" class="sticky-btn"> Démarrer </a>
+    <a href="#contact" class="sticky-btn js-open-modal"> Démarrer </a>
+  </div>
+
+  <!-- MODAL FORMULAIRE MOBILE -->
+  <div class="form-modal-overlay" id="formModal" role="dialog" aria-modal="true" aria-label="Bilan Mental Offert">
+    <div class="form-modal-inner" id="formModalInner">
+      <div class="form-modal-handle"></div>
+      <button class="form-modal-close" onclick="closeFormModal()" aria-label="Fermer">✕</button>
+      <div class="form-header" style="
+            background: linear-gradient(
+              to bottom,
+              rgba(255, 255, 255, 0.05),
+              rgba(255, 255, 255, 0.01)
+            );
+            padding: 20px 20px 16px;
+            border-bottom: 1px solid var(--panel-border);
+          ">
+        <div style="width: 100%">
+          <div style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 4px;
+                padding-right: 36px;
+              ">
+            <span style="font-weight: 700; color: white; font-size: 1.1rem">Bilan Mental Offert</span>
+            <span style="
+                  background: var(--brand);
+                  color: white;
+                  font-size: 0.7rem;
+                  font-weight: 700;
+                  padding: 2px 8px;
+                  border-radius: 4px;
+                ">GRATUIT</span>
+          </div>
+          <!-- Barre de progression -->
+          <div class="progress-track">
+            <div class="progress-bar active" id="mpb-1"></div>
+            <div class="progress-bar" id="mpb-2"></div>
+            <div class="progress-bar" id="mpb-3"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-body"
+        style="padding: 24px; min-height: 320px; display: flex; flex-direction: column; justify-content: center;">
+        <form id="modalForm" action="#" method="POST">
+          <!-- ETAPE 1 : PROFIL ATHLÉTIQUE -->
+          <div class="form-step active" id="mstep-1">
+            <h3 style="font-size: 1.1rem; color: white; margin: 0 0 15px">Votre Profil Sportif</h3>
+            <div class="input-group">
+              <label for="m-sport">Discipline</label>
+              <input type="text" id="m-sport" name="sport" placeholder="Ex: Tennis..." required />
+            </div>
+            <div class="input-group">
+              <label for="m-niveau">Votre Statut</label>
+              <select id="m-niveau" name="niveau">
+                <option value="" disabled selected>Choisir...</option>
+                <option value="loisir">Loisir / Développement</option>
+                <option value="amateur">Compétiteur Amateur</option>
+                <option value="national">Compétiteur Confirmé (National)</option>
+                <option value="pro">Athlète Haut Niveau / Pro</option>
+                <option value="espoir">Espoir (Centre de formation)</option>
+              </select>
+            </div>
+            <button type="button" class="btn btn-primary btn-full" onclick="nextModalStep(2)" style="margin-top: 10px">
+              Suivant
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                style="margin-left: 6px">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- ETAPE 2 : PROFIL MENTAL -->
+          <div class="form-step" id="mstep-2">
+            <h3 style="font-size: 1.1rem; color: white; margin: 0 0 15px">Vos Besoins Mentaux</h3>
+            <div class="input-group">
+              <label for="m-objectif">Quel est votre objectif principal ?</label>
+              <select id="m-objectif" name="objectif">
+                <option value="" disabled selected>Ce qui compte le plus...</option>
+                <option value="pression">Mieux gérer la pression</option>
+                <option value="confiance">Gagner en confiance</option>
+                <option value="blessure">Revenir après une blessure</option>
+                <option value="motivation">Rester motivé sur la durée</option>
+                <option value="performance">Améliorer mes performances</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label for="m-experience">Avez-vous déjà travaillé votre mental ?</label>
+              <select id="m-experience" name="experience">
+                <option value="" disabled selected>Votre historique...</option>
+                <option value="non">Non, jamais</option>
+                <option value="decu">Oui, mais sans résultats durables</option>
+                <option value="initie">Oui, et je veux aller plus loin</option>
+              </select>
+            </div>
+            <div class="nav-buttons">
+              <button type="button" class="btn-back" onclick="nextModalStep(1)">Retour</button>
+              <button type="button" class="btn btn-primary" onclick="nextModalStep(3)"
+                style="flex: 1">Continuer</button>
+            </div>
+          </div>
+
+          <!-- ETAPE 3 : CONTACT -->
+          <div class="form-step" id="mstep-3">
+            <h3 style="font-size: 1.1rem; color: white; margin: 0 0 15px">Où envoyer votre bilan ?</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">
+              Indiquez vos informations pour que je puisse revenir vers vous.
+            </p>
+            <div class="input-group">
+              <label for="m-firstname">Votre Prénom</label>
+              <input type="text" id="m-firstname" name="firstname" placeholder="Ex: Thomas" required />
+            </div>
+            <div class="input-group">
+              <label for="m-email">Email</label>
+              <input type="email" id="m-email" name="email" placeholder="votre@email.com" required />
+            </div>
+            <div class="input-group">
+              <label for="m-phone">Téléphone</label>
+              <input type="tel" id="m-phone" name="phone" placeholder="06..." required
+                style="background: rgba(255, 255, 255, 0.03)" />
+            </div>
+            <div class="nav-buttons">
+              <button type="button" class="btn-back" onclick="nextModalStep(2)">Retour</button>
+              <button type="submit" class="btn btn-primary" style="flex: 1">Valider ma demande</button>
+            </div>
+            <div style="text-align: center; margin-top: 12px; font-size: 0.7rem; color: #64748b;">
+              100% Confidentiel. Réponse sous 24h.
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 
   <script>
     // Année auto
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Smooth Scroll avec offset pour le header fixe
+    // ─── MODAL FORMULAIRE MOBILE ──────────────────────────────────────────────
+    const formModal = document.getElementById("formModal");
+    const formModalInner = document.getElementById("formModalInner");
+
+    function isMobile() {
+      return window.innerWidth <= 960;
+    }
+
+    function openFormModal() {
+      formModal.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+      // Reset to step 1
+      resetModalForm();
+    }
+
+    function closeFormModal() {
+      formModal.classList.add("is-animating");
+      setTimeout(function () {
+        formModal.classList.remove("is-open", "is-animating");
+        document.body.style.overflow = "";
+      }, 350);
+    }
+
+    function resetModalForm() {
+      document.querySelectorAll("#formModal .form-step").forEach(function (el) {
+        el.classList.remove("active");
+      });
+      const step1 = document.getElementById("mstep-1");
+      if (step1) step1.classList.add("active");
+      // Reset progress bars
+      document.querySelectorAll("#formModal .progress-bar").forEach(function (el) {
+        el.classList.remove("active", "filled");
+      });
+      const pb1 = document.getElementById("mpb-1");
+      if (pb1) pb1.classList.add("active");
+    }
+
+    // Backdrop click closes modal
+    if (formModal) {
+      formModal.addEventListener("click", function (e) {
+        if (e.target === formModal) closeFormModal();
+      });
+    }
+
+    // Escape key closes modal
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && formModal && formModal.classList.contains("is-open")) {
+        closeFormModal();
+      }
+    });
+
+    // ─── MODAL STEP NAVIGATION ────────────────────────────────────────────────
+    function nextModalStep(stepNumber) {
+      if (stepNumber === 2) {
+        const sport = document.getElementById("m-sport").value;
+        const niveau = document.getElementById("m-niveau").value;
+        if (!sport || !niveau) {
+          alert("Merci de compléter votre profil sportif.");
+          return;
+        }
+      }
+      if (stepNumber === 3) {
+        const obj = document.getElementById("m-objectif").value;
+        const exp = document.getElementById("m-experience").value;
+        if (!obj || !exp) {
+          alert("Merci de préciser vos objectifs et expérience.");
+          return;
+        }
+      }
+      // Switch step
+      document.querySelectorAll("#formModal .form-step").forEach(function (el) {
+        el.classList.remove("active");
+      });
+      document.getElementById("mstep-" + stepNumber).classList.add("active");
+      // Progress bars
+      document.querySelectorAll("#formModal .progress-bar").forEach(function (el) {
+        el.classList.remove("active");
+      });
+      document.getElementById("mpb-" + stepNumber).classList.add("active");
+      if (stepNumber > 1) document.getElementById("mpb-1").classList.add("filled");
+      if (stepNumber > 2) document.getElementById("mpb-2").classList.add("filled");
+      // Scroll modal to top
+      if (formModalInner) formModalInner.scrollTop = 0;
+    }
+
+    // ─── MODAL FORM SUBMISSION ────────────────────────────────────────────────
+    const modalForm = document.getElementById("modalForm");
+    if (modalForm) {
+      modalForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const formData = {
+          discipline_sportive: document.getElementById("m-sport").value,
+          statut_niveau: document.getElementById("m-niveau").value,
+          objectif_principal: document.getElementById("m-objectif").value,
+          experience_mentale: document.getElementById("m-experience").value,
+          prenom: document.getElementById("m-firstname").value,
+          email: document.getElementById("m-email").value,
+          telephone: document.getElementById("m-phone").value
+        };
+        fetch("https://hook.eu1.make.com/owc5mpa415lrv6733rsr0ykqp2z9ha55", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData)
+        })
+          .then(function (response) {
+            if (response.ok) {
+              window.location.href = "/merci";
+            } else {
+              alert("❌ Une erreur est survenue. Veuillez réessayer.");
+            }
+          })
+          .catch(function (error) {
+            console.error("Erreur:", error);
+            alert("❌ Une erreur est survenue. Veuillez réessayer.");
+          });
+      });
+    }
+
+    // ─── INTERCEPT #contact LINKS → OPEN MODAL ON MOBILE ─────────────────────
+    // Smooth Scroll avec offset pour le header fixe (desktop)
     const headerHeight = document.querySelector('.header') ? document.querySelector('.header').offsetHeight : 0;
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
       anchor.addEventListener("click", function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute("href"));
+        var href = this.getAttribute("href");
+        // If mobile and link targets the form, open modal instead
+        if (isMobile() && (href === "#contact" || this.classList.contains("js-open-modal"))) {
+          openFormModal();
+          return;
+        }
+        var target = document.querySelector(href);
         if (target) {
-          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+          var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
           window.scrollTo({ top: targetPosition, behavior: "smooth" });
         }
       });
     });
 
-    // Gestion intelligente de la Sticky Bar
-    // Elle n'apparaît qu'une fois le Hero scrollé hors de vue
+    // ─── STICKY BAR ───────────────────────────────────────────────────────────
     const stickyBar = document.getElementById("stickyCta");
     const heroSection = document.querySelector(".hero");
 
     if (heroSection && stickyBar) {
-      stickyBar.classList.add("hidden"); // Masquée par défaut
+      stickyBar.classList.add("hidden");
       const heroObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
+        function (entries) {
+          entries.forEach(function (entry) {
             if (entry.isIntersecting) {
               stickyBar.classList.add("hidden");
             } else {
@@ -3589,7 +4037,6 @@
         },
         { threshold: 0.05 }
       );
-
       heroObserver.observe(heroSection);
     }
   </script>
