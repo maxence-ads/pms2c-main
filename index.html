@@ -1740,244 +1740,111 @@
     </div>
   </div>
 
-  <!-- POUR QUI / PROFIL (Background Transition Hero -> Timeline) -->
-  <section id="pour-qui"
-    style="position: relative; overflow: hidden; padding: 100px 0; background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, var(--bg) 100%);">
-
-    <!-- Background FX (Conservé) -->
-    <div
-      style="position: absolute; top: 20%; left: -10%; width: 300px; height: 300px; background: var(--brand); filter: blur(120px); opacity: 0.08; pointer-events: none;">
-    </div>
-
-    <style>
-      /* --- CARTE POSITIVE (Profil Idéal) --- */
-      .card-positive {
-        background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-        border: 1px solid rgba(85, 211, 155, 0.4);
-        box-shadow: 0 10px 40px -10px rgba(85, 211, 155, 0.1);
-        padding: 30px;
-        border-radius: 16px;
-        transition: transform 0.3s ease;
-      }
-
-      .card-positive:hover {
-        box-shadow: 0 15px 50px -10px rgba(85, 211, 155, 0.2);
-      }
-
-      @media (min-width: 901px) {
-        .card-positive:hover {
-          transform: translateY(-5px);
-        }
-      }
-
-      /* --- CARTE NÉGATIVE (Le Filtre) --- */
-      .card-negative {
-        background: rgba(0, 0, 0, 0.3);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        padding: 30px;
-        border-radius: 16px;
-        transition: all 0.4s ease;
-        opacity: 0.6;
-        filter: grayscale(0.5);
-      }
-
-      .card-negative h3,
-      .card-negative p,
-      .card-negative li span {
-        transition: color 0.3s ease;
-      }
-
-      /* Global Hover */
-      .card-negative:hover {
-        opacity: 1;
-        filter: grayscale(0);
-        background: rgba(255, 255, 255, 0.04);
-        border-color: rgba(255, 255, 255, 0.15);
-      }
-
-      /* Desktop Hover Transform */
-      @media (min-width: 901px) {
-        .card-negative:hover {
-          transform: translateY(-3px);
-        }
-      }
-
-      /* Mobile Semi-Hover (Lisibilité augmentée) */
-      @media (max-width: 900px) {
-        .card-negative {
-          opacity: 0.85;
-          filter: grayscale(0.2);
-          background: rgba(0, 0, 0, 0.2);
-          border-color: rgba(255, 255, 255, 0.08);
-        }
-
-        .card-negative:hover {
-          opacity: 1;
-          filter: grayscale(0);
-          background: rgba(255, 77, 90, 0.04);
-          border-color: rgba(255, 77, 90, 0.25);
-        }
-
-        /* Compensation : le sous-titre étant masqué, on ajoute la marge sous le h3 */
-        .card-positive h3,
-        .card-negative h3 {
-          margin-bottom: 25px !important;
-        }
-      }
-
-      /* Desktop : marge plus généreuse puisque sous-titres masqués partout */
-      .card-positive h3,
-      .card-negative h3 {
-        margin-bottom: 24px !important;
-      }
-
-      /* Reality Check Strip */
-      .reality-check-strip {
-        margin-top: 40px;
-        padding: 15px 25px;
-        background: rgba(85, 211, 155, 0.08);
-        border: 1px solid rgba(85, 211, 155, 0.2);
-        border-radius: 12px;
-        text-align: center;
-        font-size: 0.95rem;
-        color: #e2e8f0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-      }
-
-      @media (max-width: 768px) {
-        .reality-check-strip {
-          flex-direction: column;
-          padding: 20px;
-          gap: 15px;
-        }
-      }
-    </style>
-
-    <div class="wrap">
-      <div class="section-title text-center mobile-reveal" style="margin-bottom: 50px;">
-        <h2 style="margin-bottom: 15px;">
-          Le niveau est là. <span class="text-brand">Encore faut-il pouvoir l'exprimer.</span>
-        </h2>
-        <p style="margin: 0 auto; max-width: 650px; font-size: 1.05rem; color: var(--text-muted);">
-          <span class="hidden-mobile" style="display: block;">
-            Quand la pression monte, votre niveau ne sort pas toujours. Apprendre à gérer le mental, c'est permettre à
-            votre jeu de s'exprimer.
-          </span>
-          <span class="visible-mobile">
-            L'entraînement construit le niveau. Le mental décide si vous l'exprimez vraiment le jour J.
-          </span>
-        </p>
-      </div>
-
-      <div class="grid-2" style="align-items: stretch;">
-
-        <!-- CARD: OUI -->
-        <div class="card-positive mobile-reveal">
-          <div class="flex" style="margin-bottom: 20px; justify-content:space-between; align-items:flex-start;">
-            <div class="feature-icon text-accent"
-              style="background: rgba(85, 211, 155, 0.15); margin:0; width:40px; height:40px; display:grid; place-items:center; border-radius:10px;">
-              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                <path d="M20 6L9 17l-5-5" />
-              </svg>
-            </div>
-            <span
-              style="background:rgba(85, 211, 155, 0.1); color:var(--accent); font-size:0.75rem; font-weight:700; padding:4px 10px; border-radius:99px; text-transform:uppercase; letter-spacing:0.5px;">Athlètes
-              concernés</span>
-          </div>
-
-          <h3 style="font-size: 1.35rem; margin-bottom: 15px; color: white;">Pour ceux qui refusent de sous-performer
-          </h3>
-          <p style="display: none;">
-            Le fossé entre votre potentiel et vos résultats en compétition n'est pas technique. Il est mental.
-          </p>
-
-          <ul class="mobile-margin-fix" style="display:grid; gap:12px;">
-            <li class="flex" style="align-items:flex-start;">
-              <svg style="flex-shrink:0; margin-top:4px;" width="18" height="18" fill="none" stroke="var(--accent)"
-                stroke-width="2" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10"></circle>
-              </svg>
-              <span style="font-size:0.95rem; color:#e2e8f0;">Vous voulez <b>garder le contrôle</b> sur vos émotions
-                dans les moments critiques.</span>
-            </li>
-            <li class="flex" style="align-items:flex-start;">
-              <svg style="flex-shrink:0; margin-top:4px;" width="18" height="18" fill="none" stroke="var(--accent)"
-                stroke-width="2" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10"></circle>
-              </svg>
-              <span style="font-size:0.95rem; color:#e2e8f0;">Vous cherchez à développer une <b>confiance</b> qui ne
-                dépend plus du score.</span>
-            </li>
-            <li class="flex" style="align-items:flex-start;">
-              <svg style="flex-shrink:0; margin-top:4px;" width="18" height="18" fill="none" stroke="var(--accent)"
-                stroke-width="2" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10"></circle>
-              </svg>
-              <span style="font-size:0.95rem; color:#e2e8f0;">Vous voulez des <b>protocoles de terrain</b> actionnables
-                dès votre prochaine compétition.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- CARD: NON -->
-        <div class="card-negative mobile-reveal">
-          <div class="flex" style="margin-bottom: 20px; justify-content:space-between; align-items:flex-start;">
-            <div class="feature-icon text-muted"
-              style="background: rgba(255, 255, 255, 0.05); color: #64748b; margin:0; width:40px; height:40px; display:grid; place-items:center; border-radius:10px;">
-              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M18 6L6 18M6 6l12 12" />
-              </svg>
-            </div>
-            <span
-              style="color: #64748b; font-size:0.75rem; font-weight:700; padding:4px 10px; border:1px solid rgba(255,255,255,0.1); border-radius:99px; text-transform:uppercase; letter-spacing:0.5px;">Moins
-              pertinent si</span>
-          </div>
-
-          <h3 style="font-size: 1.35rem; margin-bottom: 15px; color: #94a3b8;">Si vous pensez que le mental, c'est du
-            bonus</h3>
-          <p style="display: none;">
-            Ce programme est fait pour ceux qui veulent passer un cap, pas pour ceux qui espèrent que leurs blocages
-            disparaissent avec le temps.
-          </p>
-
-          <ul class="mobile-margin-fix" style="display:grid; gap:12px;">
-            <li class="flex" style="align-items:flex-start;">
-              <span style="color:var(--brand); font-weight:bold; margin-right:5px;">✕</span>
-              <span style="font-size:0.95rem; color: #7d8998;">Vous espérez que vos blocages disparaissent d'eux-mêmes
-                avec le temps.</span>
-            </li>
-            <li class="flex" style="align-items:flex-start;">
-              <span style="color:var(--brand); font-weight:bold; margin-right:5px;">✕</span>
-              <span style="font-size:0.95rem; color: #7d8998;">Vous n'êtes pas prêt à <b>tester de nouvelles
-                  routines</b> pour briser vos plafonds de verre.</span>
-            </li>
-            <li class="flex" style="align-items:flex-start;">
-              <span style="color:var(--brand); font-weight:bold; margin-right:5px;">✕</span>
-              <span style="font-size:0.95rem; color: #7d8998;">Vous cherchez un conseil rapide plutôt qu'une
-                <b>transformation profonde</b> de vos résultats.</span>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-
-      <!-- Reality Check Strip -->
-      <div class="reality-check-strip">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
-          <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z" />
-          <polyline points="9 12 11 14 15 10" />
-        </svg>
-        <span><b>Identifier le blocage est une première étape.</b> Mettre en place les bons leviers vous permet ensuite
-          d’exprimer pleinement votre niveau.</span>
-      </div>
-
-    </div>
-  </section>
-
+  <!-- SECTION PROBLÈME — Identification -->
+  <section style="padding: 80px 0 90px; position: relative; overflow: hidden; background: linear-gradient(180deg, rgba(11, 13, 18, 0.4) 0%, rgba(11, 13, 18, 0.8) 100%);">
+
+    <!-- Premium subtle red glow -->
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(255, 77, 90, 0.05) 0%, transparent 65%); pointer-events: none;"></div>
+
+    <style>
+      .problem-line {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .problem-line.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .problem-dash {
+        color: var(--brand);
+        font-weight: 800;
+        margin-right: 10px;
+        font-size: 1.2rem;
+      }
+
+      .problem-text {
+        font-size: clamp(1rem, 1.3vw, 1.15rem);
+        color: #cbd5e1;
+        line-height: 1.7;
+      }
+
+      .problem-text b {
+        color: white;
+      }
+
+      .problem-text span.muted-part {
+        color: #64748b;
+      }
+    </style>
+
+    <div class="wrap" style="position: relative; z-index: 1;">
+      <div class="section-title text-center mobile-reveal" style="margin-bottom: 50px;">
+        <h2 style="margin-bottom: 15px;">Vous connaissez <span class="text-brand">ce moment</span> ?</h2>
+      </div>
+
+      <div style="max-width: 680px; margin: 0 auto; display: grid; gap: 24px;">
+
+        <div class="problem-line" style="display: flex; align-items: flex-start;">
+          <span class="problem-dash">—</span>
+          <p class="problem-text" style="margin: 0;">
+            À l’entraînement, tout passe sans effort. <b>Puis le jour J, vous forcez sur des choses qui d’habitude viennent toutes seules.</b>
+          </p>
+        </div>
+
+        <div class="problem-line" style="display: flex; align-items: flex-start;">
+          <span class="problem-dash">—</span>
+          <p class="problem-text" style="margin: 0;">
+            Vous arrivez prêt. <b>Puis dès que l’enjeu monte, le doute s’installe et vous commencez à vous brider.</b>
+          </p>
+        </div>
+
+        <div class="problem-line" style="display: flex; align-items: flex-start;">
+          <span class="problem-dash">—</span>
+          <p class="problem-text" style="margin: 0;">
+            Vous voulez bien faire, alors vous contrôlez davantage… <b>et tout devient plus compliqué.</b>
+          </p>
+        </div>
+
+        <div class="problem-line" style="display: flex; align-items: flex-start;">
+          <span class="problem-dash">—</span>
+          <p class="problem-text" style="margin: 0;">
+            Vous savez que vous pouvez faire mieux. <b>Mais sous pression, vous n’arrivez plus à montrer votre vrai niveau.</b>
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Kicker line -->
+      <p class="problem-line" style="text-align: center; margin-top: 40px; font-size: 0.95rem; color: #94a3b8; font-style: italic;">
+        Le vrai frein n’est pas technique. <span style="color: var(--brand); font-weight: 600; font-style: normal;">Il est mental.</span>
+      </p>
+    </div>
+
+    <!-- Scroll reveal for problem lines -->
+    <script>
+      (function () {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.problem-line').forEach((el, i) => {
+          el.style.transitionDelay = (i * 0.15) + 's';
+          observer.observe(el);
+        });
+      })();
+    </script>
+  </section>
+
+
+
   <!-- RESULTATS / PILIERS (Design "Spotlight" + Icônes Flottantes) -->
   <section id="resultats" style="padding: 100px 0; background: var(--bg); position: relative;">
 
@@ -2442,6 +2309,245 @@
     </script>
   </section>
 
+
+  <!-- POUR QUI / PROFIL (Background Transition Hero -> Timeline) -->
+  <section id="pour-qui"
+    style="position: relative; overflow: hidden; padding: 100px 0; background: var(--bg);">
+
+    <!-- Background FX (Conservé) -->
+    <div
+      style="position: absolute; top: 20%; left: -10%; width: 300px; height: 300px; background: var(--brand); filter: blur(120px); opacity: 0.08; pointer-events: none;">
+    </div>
+
+    <style>
+      /* --- CARTE POSITIVE (Profil Idéal) --- */
+      .card-positive {
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+        border: 1px solid rgba(85, 211, 155, 0.4);
+        box-shadow: 0 10px 40px -10px rgba(85, 211, 155, 0.1);
+        padding: 30px;
+        border-radius: 16px;
+        transition: transform 0.3s ease;
+      }
+
+      .card-positive:hover {
+        box-shadow: 0 15px 50px -10px rgba(85, 211, 155, 0.2);
+      }
+
+      @media (min-width: 901px) {
+        .card-positive:hover {
+          transform: translateY(-5px);
+        }
+      }
+
+      /* --- CARTE NÉGATIVE (Le Filtre) --- */
+      .card-negative {
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 30px;
+        border-radius: 16px;
+        transition: all 0.4s ease;
+        opacity: 0.6;
+        filter: grayscale(0.5);
+      }
+
+      .card-negative h3,
+      .card-negative p,
+      .card-negative li span {
+        transition: color 0.3s ease;
+      }
+
+      /* Global Hover */
+      .card-negative:hover {
+        opacity: 1;
+        filter: grayscale(0);
+        background: rgba(255, 255, 255, 0.04);
+        border-color: rgba(255, 255, 255, 0.15);
+      }
+
+      /* Desktop Hover Transform */
+      @media (min-width: 901px) {
+        .card-negative:hover {
+          transform: translateY(-3px);
+        }
+      }
+
+      /* Mobile Semi-Hover (Lisibilité augmentée) */
+      @media (max-width: 900px) {
+        .card-negative {
+          opacity: 0.85;
+          filter: grayscale(0.2);
+          background: rgba(0, 0, 0, 0.2);
+          border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .card-negative:hover {
+          opacity: 1;
+          filter: grayscale(0);
+          background: rgba(255, 77, 90, 0.04);
+          border-color: rgba(255, 77, 90, 0.25);
+        }
+
+        /* Compensation : le sous-titre étant masqué, on ajoute la marge sous le h3 */
+        .card-positive h3,
+        .card-negative h3 {
+          margin-bottom: 25px !important;
+        }
+      }
+
+      /* Desktop : marge plus généreuse puisque sous-titres masqués partout */
+      .card-positive h3,
+      .card-negative h3 {
+        margin-bottom: 24px !important;
+      }
+
+      /* Reality Check Strip */
+      .reality-check-strip {
+        margin-top: 40px;
+        padding: 15px 25px;
+        background: rgba(85, 211, 155, 0.08);
+        border: 1px solid rgba(85, 211, 155, 0.2);
+        border-radius: 12px;
+        text-align: center;
+        font-size: 0.95rem;
+        color: #e2e8f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      @media (max-width: 768px) {
+        .reality-check-strip {
+          flex-direction: column;
+          padding: 20px;
+          gap: 15px;
+        }
+      }
+    </style>
+
+    <div class="wrap">
+      <div class="section-title text-center mobile-reveal" style="margin-bottom: 50px;">
+        <h2 style="margin-bottom: 15px;">
+          Le niveau est là. <span class="text-brand">Encore faut-il pouvoir l'exprimer.</span>
+        </h2>
+        <p style="margin: 0 auto; max-width: 650px; font-size: 1.05rem; color: var(--text-muted);">
+          <span class="hidden-mobile" style="display: block;">
+            Quand la pression monte, votre niveau ne sort pas toujours. Apprendre à gérer le mental, c'est permettre à
+            votre jeu de s'exprimer.
+          </span>
+          <span class="visible-mobile">
+            L'entraînement construit le niveau. Le mental décide si vous l'exprimez vraiment le jour J.
+          </span>
+        </p>
+      </div>
+
+      <div class="grid-2" style="align-items: stretch;">
+
+        <!-- CARD: OUI -->
+        <div class="card-positive mobile-reveal">
+          <div class="flex" style="margin-bottom: 20px; justify-content:space-between; align-items:flex-start;">
+            <div class="feature-icon text-accent"
+              style="background: rgba(85, 211, 155, 0.15); margin:0; width:40px; height:40px; display:grid; place-items:center; border-radius:10px;">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+            </div>
+            <span
+              style="background:rgba(85, 211, 155, 0.1); color:var(--accent); font-size:0.75rem; font-weight:700; padding:4px 10px; border-radius:99px; text-transform:uppercase; letter-spacing:0.5px;">Athlètes
+              concernés</span>
+          </div>
+
+          <h3 style="font-size: 1.35rem; margin-bottom: 15px; color: white;">Pour ceux qui refusent de sous-performer
+          </h3>
+          <p style="display: none;">
+            Le fossé entre votre potentiel et vos résultats en compétition n'est pas technique. Il est mental.
+          </p>
+
+          <ul class="mobile-margin-fix" style="display:grid; gap:12px;">
+            <li class="flex" style="align-items:flex-start;">
+              <svg style="flex-shrink:0; margin-top:4px;" width="18" height="18" fill="none" stroke="var(--accent)"
+                stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"></circle>
+              </svg>
+              <span style="font-size:0.95rem; color:#e2e8f0;">Vous voulez <b>garder le contrôle</b> sur vos émotions
+                dans les moments critiques.</span>
+            </li>
+            <li class="flex" style="align-items:flex-start;">
+              <svg style="flex-shrink:0; margin-top:4px;" width="18" height="18" fill="none" stroke="var(--accent)"
+                stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"></circle>
+              </svg>
+              <span style="font-size:0.95rem; color:#e2e8f0;">Vous cherchez à développer une <b>confiance</b> qui ne
+                dépend plus du score.</span>
+            </li>
+            <li class="flex" style="align-items:flex-start;">
+              <svg style="flex-shrink:0; margin-top:4px;" width="18" height="18" fill="none" stroke="var(--accent)"
+                stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"></circle>
+              </svg>
+              <span style="font-size:0.95rem; color:#e2e8f0;">Vous voulez des <b>protocoles de terrain</b> actionnables
+                dès votre prochaine compétition.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- CARD: NON -->
+        <div class="card-negative mobile-reveal">
+          <div class="flex" style="margin-bottom: 20px; justify-content:space-between; align-items:flex-start;">
+            <div class="feature-icon text-muted"
+              style="background: rgba(255, 255, 255, 0.05); color: #64748b; margin:0; width:40px; height:40px; display:grid; place-items:center; border-radius:10px;">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M18 6L6 18M6 6l12 12" />
+              </svg>
+            </div>
+            <span
+              style="color: #64748b; font-size:0.75rem; font-weight:700; padding:4px 10px; border:1px solid rgba(255,255,255,0.1); border-radius:99px; text-transform:uppercase; letter-spacing:0.5px;">Moins
+              pertinent si</span>
+          </div>
+
+          <h3 style="font-size: 1.35rem; margin-bottom: 15px; color: #94a3b8;">Si vous pensez que le mental, c'est du
+            bonus</h3>
+          <p style="display: none;">
+            Ce programme est fait pour ceux qui veulent passer un cap, pas pour ceux qui espèrent que leurs blocages
+            disparaissent avec le temps.
+          </p>
+
+          <ul class="mobile-margin-fix" style="display:grid; gap:12px;">
+            <li class="flex" style="align-items:flex-start;">
+              <span style="color:var(--brand); font-weight:bold; margin-right:5px;">✕</span>
+              <span style="font-size:0.95rem; color: #7d8998;">Vous espérez que vos blocages disparaissent d'eux-mêmes
+                avec le temps.</span>
+            </li>
+            <li class="flex" style="align-items:flex-start;">
+              <span style="color:var(--brand); font-weight:bold; margin-right:5px;">✕</span>
+              <span style="font-size:0.95rem; color: #7d8998;">Vous n'êtes pas prêt à <b>tester de nouvelles
+                  routines</b> pour briser vos plafonds de verre.</span>
+            </li>
+            <li class="flex" style="align-items:flex-start;">
+              <span style="color:var(--brand); font-weight:bold; margin-right:5px;">✕</span>
+              <span style="font-size:0.95rem; color: #7d8998;">Vous cherchez un conseil rapide plutôt qu'une
+                <b>transformation profonde</b> de vos résultats.</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Reality Check Strip -->
+      <div class="reality-check-strip">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
+          <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2z" />
+          <polyline points="9 12 11 14 15 10" />
+        </svg>
+        <span><b>Identifier le blocage est une première étape.</b> Mettre en place les bons leviers vous permet ensuite
+          d’exprimer pleinement votre niveau.</span>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ETUDES DE CAS (Design Épuré - Sans Guillemets + Mobile Semi-Hover) -->
   <section id="preuves" style="padding: 100px 0; background: var(--bg); position: relative; overflow: hidden;">
 
