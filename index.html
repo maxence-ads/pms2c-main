@@ -2677,7 +2677,7 @@
           </div>
           <div class="card-top">
             <div class="meta-badge">VTT DOWNHILL</div>
-            <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: #94a3b8;">Loris</h3>
+            <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: #94a3b8;">Loris Vergier</h3>
             <p style="font-size: 0.95rem; color: #64748b; margin: 0; line-height: 1.6;">
               "La pression extérieure devenait trop présente et perturbait ma capacité à agir avec fluidité."
             </p>
@@ -2706,7 +2706,7 @@
           </div>
           <div class="card-top">
             <div class="meta-badge">SKI FREESTYLE</div>
-            <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: #94a3b8;">Vincent</h3>
+            <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: #94a3b8;">Vincent Maharavo</h3>
             <p style="font-size: 0.95rem; color: #64748b; margin: 0; line-height: 1.6;">
               "Après ma blessure, la peur de me réengager freinait ma confiance dans mes nouveaux tricks."
             </p>
@@ -2859,6 +2859,10 @@
       .reviewer-avatar {
         width: 44px;
         height: 44px;
+        min-width: 44px;
+        min-height: 44px;
+        aspect-ratio: 1;
+        flex-shrink: 0;
         border-radius: 50%;
         object-fit: cover;
         background: #1e293b;
@@ -2868,6 +2872,7 @@
         font-weight: 700;
         color: #cbd5e1;
         font-size: 0.85rem;
+        overflow: hidden;
       }
 
       .stars {
@@ -2923,6 +2928,8 @@
         .reviewer-avatar {
           width: 38px;
           height: 38px;
+          min-width: 38px;
+          min-height: 38px;
           font-size: 0.8rem;
         }
 
@@ -3000,7 +3007,7 @@
 
         <div class="review-card">
           <div class="reviewer-head">
-            <div class="reviewer-avatar">LG</div>
+            <div class="reviewer-avatar" style="padding:0; overflow:hidden;"><img src="assets/images/athlete1.png" alt="Léo Grisel" style="width:100%;height:100%;object-fit:cover;"></div>
             <div>
               <div style="font-weight: 700; font-size: 0.95rem; color: white">
                 Léo Grisel
@@ -3020,7 +3027,7 @@
 
         <div class="review-card">
           <div class="reviewer-head">
-            <div class="reviewer-avatar">JP</div>
+            <div class="reviewer-avatar" style="padding:0; overflow:hidden;"><img src="assets/images/athlete2.png" alt="Jack Piercy" style="width:100%;height:100%;object-fit:cover;"></div>
             <div>
               <div style="font-weight: 700; font-size: 0.95rem; color: white">
                 Jack Piercy
@@ -3029,7 +3036,10 @@
                 Pro Athlete
               </div>
             </div>
-            <div class="sport-tag">VTT Downhill</div>
+            <div class="sport-tag">
+              <span class="hidden-mobile" style="display:inline;">VTT Downhill</span>
+              <span class="visible-mobile" style="display:none;">VTT DH</span>
+            </div>
           </div>
           <div class="stars">★★★★★</div>
           <p class="review-text">
@@ -3040,10 +3050,10 @@
 
         <div class="review-card">
           <div class="reviewer-head">
-            <div class="reviewer-avatar">SR</div>
+            <div class="reviewer-avatar" style="padding:0; overflow:hidden;"><img src="assets/images/athlete4.png" alt="Selya Rakki" style="width:100%;height:100%;object-fit:cover;"></div>
             <div>
               <div style="font-weight: 700; font-size: 0.95rem; color: white">
-                Selya Rakki
+                Selya
               </div>
               <div style="font-size: 0.75rem; color: #94a3b8">
                 International
@@ -3060,10 +3070,10 @@
 
         <div class="review-card">
           <div class="reviewer-head">
-            <div class="reviewer-avatar">GL</div>
+            <div class="reviewer-avatar" style="padding:0; overflow:hidden;"><img src="assets/images/athlete3.png" alt="Gauthier Laurens" style="width:100%;height:100%;object-fit:cover;"></div>
             <div>
               <div style="font-weight: 700; font-size: 0.95rem; color: white">
-                Gauthier Laurens
+                Gauthier
               </div>
               <div style="font-size: 0.75rem; color: #94a3b8">Pro</div>
             </div>
@@ -3078,10 +3088,10 @@
 
         <div class="review-card">
           <div class="reviewer-head">
-            <div class="reviewer-avatar">NC</div>
+            <div class="reviewer-avatar" style="padding:0; overflow:hidden;"><img src="assets/images/photo_nicolas.png" alt="Nicolas Catalano" style="width:100%;height:100%;object-fit:cover;"></div>
             <div>
               <div style="font-weight: 700; font-size: 0.95rem; color: white">
-                Nicolas Catalano
+                Nicolas
               </div>
               <div style="font-size: 0.75rem; color: #94a3b8">National</div>
             </div>
@@ -3096,10 +3106,10 @@
 
         <div class="review-card">
           <div class="reviewer-head">
-            <div class="reviewer-avatar">CG</div>
+            <div class="reviewer-avatar" style="padding:0; overflow:hidden;"><img src="assets/images/athlete5.png" alt="Chloé Gascuel" style="width:100%;height:100%;object-fit:cover;"></div>
             <div>
               <div style="font-weight: 700; font-size: 0.95rem; color: white">
-                Chloé Gascuel
+                Chloé
               </div>
               <div style="font-size: 0.75rem; color: #94a3b8">National</div>
             </div>
