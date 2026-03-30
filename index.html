@@ -922,7 +922,35 @@
   </div>
 
   <!-- HERO SECTION (Multi-Step Form - 5 Avatars & Images Ready) -->
-  <section class="hero" style="padding: 60px 0 80px; position: relative; overflow: hidden">
+  <section class="hero hero-background-image" style="padding: 60px 0 80px; position: relative; overflow: hidden;">
+    
+    <!-- CSS spécifique pour intégrer l'image en fond (Mobile et Desktop) -->
+    <style>
+      .hero-background-image {
+        /* Mobile: L'image verticale s'ajuste bien */
+        background-image: 
+          /* 1. L'overlay sombre en fondu vers le bas */
+          linear-gradient(to bottom, rgba(11, 13, 18, 0.45) 0%, rgba(11, 13, 18, 0.85) 75%, rgba(11, 13, 18, 1) 100%),
+          /* 2. Ton image actuelle (nommée hero-athlete-mobile.jpeg) */
+          url('assets/images/hero-athlete-mobile.jpeg');
+        background-size: cover;
+        background-position: center top; /* On cale sur le haut pour la neige/ciel/lumières */
+        background-repeat: no-repeat;
+      }
+
+      /* Desktop: Avec la nouvelle image panoramique générée par IA ! */
+      @media (min-width: 960px) {
+        .hero-background-image {
+          background-image: 
+            /* Overlay identique */
+            linear-gradient(to bottom, rgba(11, 13, 18, 0.5) 0%, rgba(11, 13, 18, 0.9) 80%, rgba(11, 13, 18, 1) 100%),
+            /* Image Desktop élargie */
+            url('assets/images/hero-athlete-desktop.jpeg'); 
+          background-position: center top; /* On garde l'alignement en haut pour voir les lumières et le ciel */
+        }
+      }
+    </style>
+
     <!-- Background FX -->
     <div style="
           position: absolute;
@@ -1337,7 +1365,7 @@
               margin: 0 auto 35px;
               line-height: 1.6;
             ">
-          Le stress et les doutes ne doivent plus dicter vos résultats. Préparateur mental certifié, je vous aide à reprendre le contrôle pour performer à 100% le jour J.
+          Le stress et les doutes ne doivent plus dicter vos résultats. Reprenez le contrôle de votre mental pour libérer 100% de votre potentiel le jour J.
         </p>
         <p class="hero-p-mobile" style="
               font-size: 1.15rem;
