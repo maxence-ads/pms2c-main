@@ -3900,20 +3900,19 @@
   <!-- FOOTER MULTI-COLONNES -->
   <footer style="background: #0a0c11; border-top: 1px solid rgba(255,255,255,0.06); padding: 60px 0 0;">
     <div class="wrap">
-      <div style="display:grid; grid-template-columns: 2fr 1fr; gap:40px; margin-bottom:50px;">
+      <div class="footer-top" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:40px; margin-bottom:50px;">
 
-        <!-- Col 1: Logo + description + réseaux -->
+        <!-- Col 1: Logo + description -->
         <div>
-          <img src="assets/images/logo-pms2c-bg.png" alt="PMS2C" style="height:38px; width:auto; margin-bottom:16px; display:block;">
-          <p style="font-size:0.9rem; color:#64748b; line-height:1.7; max-width:260px; margin:0 0 20px;">
+          <img src="assets/images/logo-pms2c-bg.png" alt="PMS2C" style="height:38px; width:auto; margin-bottom:12px; display:block;">
+          <p style="font-size:0.9rem; color:#64748b; line-height:1.7; max-width:260px; margin:0; text-align:left;">
             Préparation mentale pour sportifs ambitieux.
           </p>
         </div>
 
         <!-- Col 2: Navigation -->
         <div>
-          <p style="font-weight:600; color:white; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em; margin:0 0 16px;">Navigation</p>
-          <ul style="display:flex; flex-direction:column; gap:10px;">
+          <ul class="footer-nav" style="display:flex; gap:24px; margin:0; padding:0; list-style:none; flex-wrap:wrap;">
             <li><a href="#methode" style="color:#64748b; font-size:0.9rem; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#64748b'">Méthode</a></li>
             <li><a href="#preuves" style="color:#64748b; font-size:0.9rem; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#64748b'">Résultats</a></li>
             <li><a href="#temoignages" style="color:#64748b; font-size:0.9rem; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#64748b'">Avis</a></li>
@@ -3921,8 +3920,6 @@
             <li><a href="#faq" style="color:#64748b; font-size:0.9rem; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#64748b'">FAQ</a></li>
           </ul>
         </div>
-
-
       </div>
 
       <!-- Footer bottom -->
@@ -3938,42 +3935,29 @@
     <!-- Footer responsive -->
     <style>
       @media (max-width: 900px) {
-        footer > .wrap > div:first-child {
-          grid-template-columns: 1fr 1fr !important;
-          gap: 40px !important;
-        }
-        footer > .wrap > div:first-child > div:first-child {
-          grid-column: 1 / -1;
+        .footer-top {
+          flex-direction: column !important;
+          align-items: flex-start !important;
         }
       }
       @media (max-width: 600px) {
         footer { padding: 40px 0 0 !important; }
-        footer > .wrap > div:first-child {
-          grid-template-columns: 1fr !important;
-          gap: 40px !important;
+        .footer-top {
+          align-items: center !important;
+          text-align: center !important;
           margin-bottom: 30px !important;
         }
-        /* Centrer tout le footer sur mobile */
-        footer > .wrap > div:first-child > div {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
+        .footer-top img {
+          margin-left: auto !important;
+          margin-right: auto !important;
         }
-        /* Réduire la largeur max pour forcer le centrage des paragraphes */
-        footer p { margin-left: auto !important; margin-right: auto !important; text-align: center !important; }
-        
-        /* Centrer les listes et conteneurs Flex inline */
-        footer ul { align-items: center !important; }
-        footer [style*="display:flex"] { justify-content: center !important; }
-        
-        /* Rendre les icônes de contact et réseaux centrés */
-        footer ul li { justify-content: center !important; }
-        
-        /* Clics plus faciles sur les liens mobile */
-        footer ul li a { display: inline-block; padding: 6px 0; }
-        
-        /* Zone légale tout en bas */
+        .footer-top p {
+          text-align: center !important;
+        }
+        .footer-nav {
+          justify-content: center !important;
+          gap: 16px !important;
+        }
         .footer-bottom {
           flex-direction: column !important;
           gap: 20px !important;
