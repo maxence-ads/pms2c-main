@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devis PMS2C - {{client_nom}}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;0,900;1,400;1,900&family=Oswald:wght@500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0c10;
+            --surface: #16181d;
+            --surface-alt: #1a1d24;
+            --border: #262933;
+            --accent: #f83b4b;
+            --accent-glow: rgba(248, 59, 75, 0.25);
+            --success: #27c86a;
+            --text-main: #ffffff;
+            --text-muted: #9ba1b0;
+            --font-display: 'Oswald', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            background-image: radial-gradient(circle at 0% 20%, rgba(248, 59, 75, 0.08) 0%, transparent 40%);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        p {
+            margin: 0;
+        }
+
+        /* Container étroit = marges visuelles naturelles */
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding-top: 12px;
+        }
+
+        .text-accent {
+            color: var(--accent);
+        }
+
+        .text-muted {
+            color: var(--text-muted);
+        }
+
+        .text-white {
+            color: var(--text-main);
+        }
+
+        .font-bold {
+            font-weight: 700;
+        }
+
+        .font-black {
+            font-weight: 900;
+        }
+
+        .text-sm {
+            font-size: 0.85rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 3px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: block;
+            width: 5px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 4px;
+            box-shadow: 0 0 10px var(--accent-glow);
+            flex-shrink: 0;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 18px;
+            font-size: 0.82rem;
+            margin-left: 15px;
+        }
+
+        .pricing-section .section-title,
+        .protocol-section .section-title {
+            margin-bottom: 18px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 22px;
+            position: relative;
+        }
+
+        /* HEADER */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            font-size: 0.8rem;
+        }
+
+        .badge-devis {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            margin-bottom: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .meta-dates {
+            text-align: right;
+        }
+
+        .meta-dates .text-sm {
+            font-size: 0.75rem;
+        }
+
+        /* ADDRESSES */
+        .address-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .address-col {
+            border: 1px solid var(--border);
+            padding: 10px 14px;
+            border-radius: 10px;
+        }
+
+        .address-col p {
+            margin-bottom: 2px;
+            font-size: 0.78rem;
+        }
+
+        .address-col .font-black {
+            font-size: 0.9rem;
+        }
+
+        /* DELIVERABLES */
+        .deliverables-section {
+            margin-bottom: 22px;
+        }
+
+        .deliverables-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 4px 20px;
+        }
+
+        .deliverable-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 11px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .deliverable-item:last-child {
+            border-bottom: none;
+        }
+
+        .deliverable-icon {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            color: var(--success);
+            background: rgba(39, 200, 106, 0.1);
+            padding: 3px;
+            border-radius: 6px;
+            border: 1px solid rgba(39, 200, 106, 0.2);
+            margin-top: 1px;
+        }
+
+        .deliverable-content {
+            flex-grow: 1;
+        }
+
+        .deliverable-feature {
+            font-family: var(--font-display);
+            font-size: 0.92rem;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            color: var(--text-main);
+            margin: 0 0 4px 0;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .deliverable-badge {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.6rem;
+            color: var(--accent);
+            background: rgba(248, 59, 75, 0.1);
+            padding: 2px 7px;
+            border-radius: 5px;
+            text-transform: none;
+            letter-spacing: 0;
+            font-weight: 700;
+            border: 1px solid rgba(248, 59, 75, 0.2);
+        }
+
+        .deliverable-benefit {
+            color: var(--text-muted);
+            font-size: 0.76rem;
+            margin: 0;
+            line-height: 1.35;
+        }
+
+        /* PROCESS — 2x2 GRID */
+        .protocol-section {
+            margin-bottom: 0;
+        }
+
+        .process-wrapper {
+            background: linear-gradient(145deg, var(--surface), var(--surface-alt));
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 22px;
+        }
+
+        .protocol-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px 12px;
+        }
+
+        .protocol-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .step-num {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-main);
+            background: var(--bg);
+            border: 2px solid var(--accent);
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+            box-shadow: 0 0 12px var(--accent-glow), inset 0 0 8px rgba(248, 59, 75, 0.15);
+        }
+
+        .step-content {
+            padding-top: 2px;
+        }
+
+        .step-content h4 {
+            font-family: var(--font-display);
+            font-size: 0.78rem;
+            margin-bottom: 6px;
+            /* Ajusté à 6px */
+            color: var(--text-main);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            line-height: 1.2;
+        }
+
+        .step-content p {
+            color: var(--text-muted);
+            font-size: 0.68rem;
+            line-height: 1.3;
+            margin: 0;
+        }
+
+        /* PRICING */
+        .pricing-section {
+            margin-bottom: 30px;
+            padding-top: 40px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 0;
+        }
+
+        .price-card {
+            text-align: center;
+            padding: 30px 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            background: linear-gradient(145deg, var(--surface), var(--surface-alt));
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .price-card.highlight {
+            border: 1px solid #e2e8f0;
+            background: linear-gradient(160deg, var(--surface-alt) 0%, var(--surface) 100%);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.03);
+        }
+
+        .checkbox-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-box {
+            width: 22px;
+            height: 22px;
+            background-color: #E2E8F0;
+            /* Gris très clair */
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .price-card.highlight .checkbox-box {
+            border-color: rgba(226, 232, 240, 0.5);
+        }
+
+        .price-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, var(--accent), #ff5e6b);
+            color: white;
+            padding: 4px 16px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            border-radius: 50px;
+            box-shadow: 0 4px 10px rgba(248, 59, 75, 0.3);
+            text-transform: uppercase;
+        }
+
+        .price-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+            color: var(--text-muted);
+        }
+
+        .price-card.highlight .price-title {
+            color: #e2e8f0;
+            font-weight: 700;
+        }
+
+        .price-amount-wrapper {
+            margin: 5px 0 25px 0;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .price-amount {
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            line-height: 1;
+        }
+
+        .price-original {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            text-decoration-color: var(--text-muted);
+            margin-bottom: 4px;
+            opacity: 0.6;
+        }
+
+        .price-unit {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            margin-left: 4px;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .price-footer {
+            margin-top: auto;
+            min-height: 28px;
+        }
+
+        .price-discount {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 6px 14px;
+            display: inline-block;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        .price-total {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 50px;
+            padding: 6px 14px;
+            display: inline-block;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* PAYMENT INFO */
+        .payment-info {
+            margin-top: 36px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .payment-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 24px 24px;
+        }
+
+        .payment-block-title {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .payment-block p {
+            font-size: 0.78rem;
+            margin-bottom: 3px;
+            color: var(--text-muted);
+        }
+
+        .payment-block strong {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .payment-label {
+            display: inline-block;
+            width: 42px;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        /* LEGAL */
+        .legal-mentions {
+            font-size: 0.58rem;
+            color: #555555;
+            text-align: justify;
+            margin-top: 40px;
+            padding: 18px 0 0 0;
+            border-top: 1px solid var(--border);
+            line-height: 1.45;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .legal-mentions strong {
+            color: #666666;
+            font-weight: 600;
+        }
+
+        /* FOOTER */
+        .footer {
+            display: flex;
+            justify-content: flex-end;
+            padding-top: 32px;
+        }
+
+        .signature-block {
+            background-color: var(--surface);
+            padding: 22px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .signature-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .signature-box {
+            background-color: #ffffff;
+            border: 2px solid #e0e0e0;
+            height: 120px;
+            border-radius: 10px;
+            color: #888888;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 12px 16px;
+            position: relative;
+        }
+
+        .signature-date {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            font-size: 0.70rem;
+            color: #555;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 480px) {
+
+            .address-grid,
+            .pricing-grid,
+            .protocol-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .meta-dates {
+                text-align: left;
+            }
+        }
+
+        /* ===== PRINT ===== */
+        @media print {
+            body {
+                background-color: var(--bg) !important;
+                background-image: radial-gradient(circle at 0% 20%, rgba(248, 59, 75, 0.08) 0%, transparent 40%) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                padding: 0;
+                margin: 0;
+            }
+
+            /* Page 2 */
+            /* Page 2 starts at pricing */
+            .pricing-section {
+                page-break-before: always !important;
+                break-before: page !important;
+            }
+
+            /* Anti-coupure */
+            .deliverable-item,
+            .protocol-step,
+            .price-card,
+            .signature-block {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+
+            h2,
+            .section-title {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="logo-container" style="display: flex; align-items: center; gap: 10px;">
+                <img src="data:image/png;base64,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"
+                    alt="PMS2C" style="height: 56px; width: auto;">
+            </div>
+            <div class="meta-dates">
+                <div class="badge-devis"><span style="color:var(--accent)">•</span> DEVIS N° {{numero_devis}}</div>
+                <p class="text-muted text-sm font-bold">Émis le : {{date_emission}}</p>
+                <p class="text-muted text-sm font-bold">Valide jusqu'au : {{date_validite}}</p>
+            </div>
+        </header>
+
+        <!-- ADRESSES -->
+        <div class="address-grid">
+            <div class="card address-col">
+                <p class="text-muted text-sm font-bold" style="text-transform:uppercase">Prestataire</p>
+                <p class="font-black text-white">Cédric BOUTAVIN EI</p>
+                <p class="text-muted">contact@pms2c.com • +33 6 95 62 09 99</p>
+                <p class="text-muted">23 Rue de la condamine, 30620 BERNIS</p>
+            </div>
+            <div class="card address-col" style="border-top: 3px solid var(--accent)">
+                <p class="text-accent text-sm font-bold" style="text-transform:uppercase">Facturé à</p>
+                <p class="font-black text-white">{{client_nom}}</p>
+                <p class="text-muted">{{client_adresse}}, {{client_ville}}</p>
+                <p class="text-muted">{{client_email}}</p>
+            </div>
+        </div>
+
+        <!-- LIVRABLES -->
+        <section class="deliverables-section">
+            <h2 class="section-title">Formule Elite</h2>
+            <p class="section-subtitle">Détail des livrables inclus dans ton accompagnement</p>
+            <div class="deliverables-card">
+                <div class="deliverable-item">
+                    <svg class="deliverable-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <div class="deliverable-content">
+                        <h4 class="deliverable-feature">Coaching Individuel Elite <span class="deliverable-badge">16
+                                séances sur 4 mois</span></h4>
+                        <p class="deliverable-benefit">Un accompagnement conçu pour installer des repères robustes,
+                            mieux absorber la pression et performer avec davantage de contrôle.</p>
+                    </div>
+                </div>
+                <div class="deliverable-item">
+                    <svg class="deliverable-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <div class="deliverable-content">
+                        <h4 class="deliverable-feature">Programme mental personnalisé <span
+                                class="deliverable-badge">100% sur-mesure</span></h4>
+                        <p class="deliverable-benefit">Des outils, routines et ajustements construits autour de ton
+                            profil, de ta discipline et de tes objectifs.</p>
+                    </div>
+                </div>
+                <div class="deliverable-item">
+                    <svg class="deliverable-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <div class="deliverable-content">
+                        <h4 class="deliverable-feature">Suivi prioritaire & Contact direct <span
+                                class="deliverable-badge">Priorité 7j/7</span></h4>
+                        <p class="deliverable-benefit">Un accès privilégié pour ajuster le travail en temps réel et
+                            mieux gérer les périodes à fort enjeu.</p>
+                    </div>
+                </div>
+                <div class="deliverable-item">
+                    <svg class="deliverable-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <div class="deliverable-content">
+                        <h4 class="deliverable-feature">OUTILS & RESSOURCES <span class="deliverable-badge">Accès
+                                illimité</span></h4>
+                        <p class="deliverable-benefit">Des supports pratiques pour ancrer les repères travaillés en
+                            séance, maintenir la dynamique et progresser en dehors des rendez-vous.</p>
+                    </div>
+                </div>
+                <div class="deliverable-item">
+                    <svg class="deliverable-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <div class="deliverable-content">
+                        <h4 class="deliverable-feature">Coordination avec ton staff <span
+                                class="deliverable-badge">Approche intégrée</span></h4>
+                        <p class="deliverable-benefit">Un lien direct avec ton environnement sportif pour aligner le
+                            travail mental avec le reste de ta préparation.</p>
+                    </div>
+                </div>
+                <div class="deliverable-item">
+                    <svg class="deliverable-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <div class="deliverable-content">
+                        <h4 class="deliverable-feature">Le Collectif Athlètes PMS2C <span
+                                class="deliverable-badge">Réseau privé</span></h4>
+                        <p class="deliverable-benefit">Un environnement stimulant pour évoluer entouré de sportifs
+                            engagés dans une logique de progression.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESSUS — 2x2 GRID -->
+        <section class="protocol-section">
+            <h2 class="section-title">Le Processus</h2>
+            <div class="process-wrapper">
+                <div class="protocol-grid">
+                    <div class="protocol-step">
+                        <div class="step-num">01</div>
+                        <div class="step-content">
+                            <h4>Diagnostic & Clarté</h4>
+                            <p>Identifier précisément ce qui freine ta performance et fixer les axes prioritaires.</p>
+                        </div>
+                    </div>
+                    <div class="protocol-step">
+                        <div class="step-num">02</div>
+                        <div class="step-content">
+                            <h4>Maîtrise & Lucidité</h4>
+                            <p>Apprendre à mieux canaliser la pression pour rester clair et efficace quand l’enjeu
+                                monte.</p>
+                        </div>
+                    </div>
+                    <div class="protocol-step">
+                        <div class="step-num">03</div>
+                        <div class="step-content">
+                            <h4>Repères & Exécution</h4>
+                            <p>Ancrer des repères solides pour mieux performer en entraînement comme en compétition.</p>
+                        </div>
+                    </div>
+                    <div class="protocol-step">
+                        <div class="step-num">04</div>
+                        <div class="step-content">
+                            <h4>Autonomie & Stabilité</h4>
+                            <p>Repartir avec des outils durables pour rester solide et continuer à progresser dans le
+                                temps.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ENGAGEMENT -->
+        <section class="pricing-section">
+            <h2 class="section-title">Engagement</h2>
+            <div class="pricing-grid">
+                <div class="card price-card">
+                    <div class="checkbox-container">
+                        <div class="checkbox-box"></div>
+                    </div>
+                    <p class="price-title">Paiement comptant</p>
+                    <div class="price-amount-wrapper">
+                        <span class="price-original">1 596 €</span>
+                        <p class="price-amount">1 519 €</p>
+                    </div>
+                    <div class="price-footer">
+                        <span class="price-discount">Remise immédiate -5%</span>
+                    </div>
+                </div>
+
+                <div class="card price-card">
+                    <div class="checkbox-container">
+                        <div class="checkbox-box"></div>
+                    </div>
+                    <p class="price-title">Engagement 2 fois</p>
+                    <div class="price-amount-wrapper">
+                        <p class="price-amount">798 €</p>
+                    </div>
+                    <div class="price-footer" style="text-align: center;">
+                        <span class="price-unit">/ mois</span>
+                    </div>
+                </div>
+
+                <div class="card price-card highlight">
+                    <div class="price-badge">RECOMMANDÉ</div>
+                    <div class="checkbox-container">
+                        <div class="checkbox-box"></div>
+                    </div>
+                    <p class="price-title">Engagement 4 fois</p>
+                    <div class="price-amount-wrapper">
+                        <p class="price-amount">399 €</p>
+                    </div>
+                    <div class="price-footer" style="text-align: center;">
+                        <span class="price-unit">/ mois</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INFORMATIONS DE PAIEMENT -->
+        <div class="payment-info">
+            <div class="payment-block">
+                <p class="payment-block-title">Conditions de paiement</p>
+                <p><strong>Délai :</strong> Fin du mois</p>
+                <p><strong>Moyens :</strong> Virement, Espèces, Stripe</p>
+            </div>
+            <div class="payment-block">
+                <p class="payment-block-title">Relevé d'identité bancaire</p>
+                <p><strong>Banque :</strong> Crédit Agricole</p>
+                <p><span class="payment-label">IBAN</span> <strong>FR76 1350 6100 0085 1237 9770 706</strong></p>
+                <p><span class="payment-label">BIC</span> <strong>AGRIFRPP835</strong></p>
+            </div>
+        </div>
+
+        <!-- MENTIONS LÉGALES -->
+        <div class="legal-mentions">
+            <strong>CONDITIONS LÉGALES :</strong> Ce devis est valable 30 jours. Conformément à l'art. L221-18 du Code
+            de la consommation, vous disposez d'un délai de rétractation de 14 jours. Toutefois, <strong>par votre
+                signature "Bon pour accord" ci-dessous, vous demandez expressément à démarrer la prestation avant la fin
+                de ce délai légal</strong> et acceptez que les honoraires correspondant aux séances réalisées soient
+            dus. En cas de retard de paiement, des pénalités (3x taux légal) et 40€ de frais de recouvrement
+            s'appliquent. La signature vaut acceptation de nos CGV. TVA non applicable, art. 293 B du CGI.
+        </div>
+
+        <!-- SIGNATURE -->
+        <footer class="footer">
+            <div class="signature-block">
+                <div class="signature-meta" style="margin-bottom: 6px;">
+                    <div style="display: flex; flex-direction: column;">
+                        <span class="text-white font-black"
+                            style="font-family: var(--font-display); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px;">Bon
+                            pour accord</span>
+                        <span class="text-muted"
+                            style="margin-top: 4px; font-size: 0.7rem; text-transform: none; letter-spacing: normal;">Signature
+                            de l'athlète</span>
+                    </div>
+                </div>
+                <div class="signature-box">
+                    <span class="signature-date">DATE : ___ / ___ / ___</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+
+</html>

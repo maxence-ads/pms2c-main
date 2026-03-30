@@ -23,7 +23,7 @@
   <meta property="og:description"
     content="Arrêtez de perdre vos moyens en compétition. Méthode concrète pour sportifs ambitieux." />
   <meta name="theme-color" content="#0b0d12" />
-  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -305,19 +305,23 @@
       color: var(--text-main);
     }
 
-    /* Header mobile : logo gauche + burger */
+    /* Micro-header mobile : logo seul, centré, compact */
     @media (max-width: 900px) {
       .header {
-        position: sticky;
-        height: 58px;
+        position: relative;
+        height: 50px;
+        justify-content: center;
+        background: transparent;
+        backdrop-filter: none;
+        border-bottom: none;
       }
 
       .header .header-inner {
-        justify-content: space-between;
+        justify-content: center;
       }
 
       .header .header-inner nav,
-      .header .header-inner .header-cta-desktop {
+      .header .header-inner .btn {
         display: none;
       }
 
@@ -325,71 +329,6 @@
         height: 34px;
         margin: 0;
       }
-    }
-
-    /* Burger button */
-    .burger-btn {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      width: 40px;
-      height: 40px;
-      padding: 8px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 8px;
-      cursor: pointer;
-      z-index: 200;
-    }
-    .burger-btn span {
-      display: block;
-      height: 2px;
-      background: var(--text-main);
-      border-radius: 2px;
-      transition: transform 0.3s, opacity 0.3s;
-    }
-    .burger-btn.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .burger-btn.is-open span:nth-child(2) { opacity: 0; }
-    .burger-btn.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    @media (max-width: 900px) {
-      .burger-btn { display: flex; }
-    }
-
-    /* Mobile nav overlay */
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(11,13,18,0.97);
-      z-index: 150;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .mobile-nav.is-open {
-      display: flex;
-      opacity: 1;
-    }
-    .mobile-nav a.mobile-nav-link {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--text-main);
-      padding: 16px 32px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      width: 100%;
-      text-align: center;
-      transition: color 0.2s;
-    }
-    .mobile-nav a.mobile-nav-link:hover { color: var(--brand); }
-    .mobile-nav .mobile-nav-cta {
-      margin-top: 30px;
-      padding: 16px 40px;
-      font-size: 1.05rem;
     }
 
     /* --- HERO --- */
@@ -402,16 +341,10 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 40px;
       align-items: center;
-      max-width: 760px;
-      margin: 0 auto;
-      text-align: center;
     }
-
-    /* Hide hero inline form (moved to dedicated bottom section) */
-    .hero-form-card { display: none !important; }
 
     /* Hero Left */
     .tagline {
@@ -723,7 +656,83 @@
       transform: rotate(180deg);
     }
 
+    /* --- STICKY MOBILE BAR (Redesign Clean & Balanced) --- */
+    .sticky-bar {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 32px);
+      /* Marges latérales */
+      max-width: 420px;
+      background: rgba(19, 22, 31, 0.95);
+      /* Fond sombre profond */
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      /* Bordure subtile */
+      padding: 6px 6px 6px 20px;
+      /* Padding asymétrique pour équilibrer */
+      border-radius: 99px;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.7);
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+        opacity 0.4s ease;
+    }
 
+    .sticky-bar.hidden {
+      transform: translate(-50%, 150%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .sticky-info {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+      gap: 3px;
+    }
+
+    .sticky-info b {
+      font-size: 0.9rem;
+      color: white;
+      font-weight: 700;
+    }
+
+    .sticky-info span {
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+
+    /* Nouveau style bouton sticky pour équilibrer */
+    .sticky-btn {
+      background: var(--brand);
+      color: white;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 10px 24px;
+      /* Plus de padding horizontal = bouton plus large */
+      border-radius: 99px;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(255, 77, 90, 0.4);
+      transition: transform 0.2s;
+    }
+
+    .sticky-btn:active {
+      transform: scale(0.95);
+    }
+
+
+
+    @media (min-width: 769px) {
+      .sticky-bar {
+        display: none;
+      }
+
+      /* Hide on desktop, sticky header is enough */
+    }
 
     /* --- FOOTER --- */
     footer {
@@ -881,13 +890,14 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8B9CN6M" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-
-  <!-- HEADER -->
+  <!-- HEADER (Avec Logo Image) -->
   <header class="header">
     <div class="wrap flex header-inner">
 
+      <!-- LOGO IMAGE (Remplacer le src par votre fichier) -->
       <a href="#" style="display: block; text-decoration: none;">
-        <img src="assets/images/logo-pms2c-bg.png" alt="Logo Préparation Mentale"
+        <!-- Logo -->
+        <img src="../assets/images/logo-pms2c-bg.png" alt="Logo Préparation Mentale"
           style="height: 42px; width: auto; display: block; margin-left: -8px; margin-top: 8px; margin-bottom: 8px;">
       </a>
 
@@ -896,61 +906,16 @@
         <a href="#preuves" class="nav-link">Résultats</a>
         <a href="#temoignages" class="nav-link">Avis</a>
         <a href="#about" class="nav-link">Coach</a>
-        <a href="#contact" class="nav-link">Contact</a>
-        <!-- <a href="/Jeunes/" class="nav-link" style="color: var(--accent); font-weight: 600;">Pour les jeunes</a> -->
       </nav>
 
-      <a href="#contact" class="btn btn-primary header-cta-desktop" style="padding: 8px 16px; font-size: 0.9rem;">
-        Bilan Offert
+      <a href="#contact" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;">
+        Bilan Mental Offert
       </a>
-
-      <!-- Burger mobile -->
-      <button class="burger-btn" id="burgerBtn" aria-label="Menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </header>
 
-  <!-- Mobile Nav Overlay -->
-  <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Navigation mobile">
-    <a href="#methode" class="mobile-nav-link">Méthode</a>
-    <a href="#preuves" class="mobile-nav-link">Résultats</a>
-    <a href="#temoignages" class="mobile-nav-link">Avis</a>
-    <a href="#about" class="mobile-nav-link">Coach</a>
-    <!-- <a href="/Jeunes/" class="mobile-nav-link" style="color: var(--accent);">Pour les jeunes</a> -->
-    <a href="#contact" class="btn btn-primary mobile-nav-cta">Bilan Mental Offert</a>
-  </div>
-
   <!-- HERO SECTION (Multi-Step Form - 5 Avatars & Images Ready) -->
-  <section class="hero hero-background-image" style="padding: 60px 0 80px; position: relative; overflow: hidden;">
-    
-    <!-- CSS spécifique pour intégrer l'image en fond (Mobile et Desktop) -->
-    <style>
-      .hero-background-image {
-        /* Mobile: L'image verticale s'ajuste bien */
-        background-image: 
-          /* 1. L'overlay sombre en fondu vers le bas */
-          linear-gradient(to bottom, rgba(11, 13, 18, 0.45) 0%, rgba(11, 13, 18, 0.85) 75%, rgba(11, 13, 18, 1) 100%),
-          /* 2. Ton image actuelle (nommée hero-athlete-mobile.jpeg) */
-          url('assets/images/hero-athlete-mobile.jpeg');
-        background-size: cover;
-        background-position: center top; /* On cale sur le haut pour la neige/ciel/lumières */
-        background-repeat: no-repeat;
-      }
-
-      /* Desktop: Avec la nouvelle image panoramique générée par IA ! */
-      @media (min-width: 960px) {
-        .hero-background-image {
-          background-image: 
-            /* Overlay identique */
-            linear-gradient(to bottom, rgba(11, 13, 18, 0.5) 0%, rgba(11, 13, 18, 0.9) 80%, rgba(11, 13, 18, 1) 100%),
-            /* Image Desktop élargie */
-            url('assets/images/hero-athlete-desktop.jpeg'); 
-          background-position: center top; /* On garde l'alignement en haut pour voir les lumières et le ciel */
-        }
-      }
-    </style>
-
+  <section class="hero" style="padding: 60px 0 80px; position: relative; overflow: hidden">
     <!-- Background FX -->
     <div style="
           position: absolute;
@@ -1205,57 +1170,60 @@
         }
       }
 
-      /* Hero CTA group */
-      .hero-cta-group {
-        display: flex;
-        gap: 14px;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-top: 10px;
-        margin-bottom: 20px;
+      /* Mobile CTA button in hero */
+      .hero-mobile-cta {
+        display: none;
       }
 
-      .hero-cta-group .btn {
-        padding: 14px 28px;
-        font-size: 1rem;
-      }
+      @media (max-width: 960px) {
+        .hero-mobile-cta {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 14px;
+          margin-top: 10px;
+        }
 
-      .hero-social-proof {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        font-size: 0.85rem;
-        color: #cbd5e1;
-        margin-top: 4px;
-      }
+        .hero-mobile-cta .btn {
+          width: 100%;
+          max-width: 380px;
+          justify-content: center;
+          padding: 16px 24px;
+          font-size: 1.05rem;
+        }
 
-      .hero-social-proof .avatars-mini {
-        display: flex;
-        align-items: center;
-      }
+        .hero-mobile-cta .social-proof-inline {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 0.82rem;
+          color: #cbd5e1;
+        }
 
-      .hero-social-proof .avatars-mini div {
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        border: 2px solid rgba(19, 22, 31, 0.9);
-        background: #475569;
-        overflow: hidden;
-        margin-left: -8px;
-      }
+        .hero-mobile-cta .avatars-mini {
+          display: flex;
+          align-items: center;
+        }
 
-      .hero-social-proof .avatars-mini div:first-child { margin-left: 0; }
+        .hero-mobile-cta .avatars-mini div {
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          border: 2px solid rgba(19, 22, 31, 0.9);
+          background: #475569;
+          overflow: hidden;
+          margin-left: -8px;
+        }
 
-      .hero-social-proof .avatars-mini img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+        .hero-mobile-cta .avatars-mini div:first-child {
+          margin-left: 0;
+        }
 
-      @media (max-width: 480px) {
-        .hero-cta-group { flex-direction: column; align-items: center; }
-        .hero-cta-group .btn { width: 100%; max-width: 340px; justify-content: center; }
+        .hero-mobile-cta .avatars-mini img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
       }
 
       /* Modal overlay */
@@ -1343,41 +1311,33 @@
     </style>
 
     <div class="wrap hero-grid" style="position: relative; z-index: 1">
-      <!-- Copy -->
+      <!-- Copy (Gauche) -->
       <div class="hero-text-mobile-center" style="padding-top: 10px">
-        <div class="tagline">Dédié aux <b>compétiteurs</b></div>
+        <div class="tagline">Pour <b>Athlètes & Compétiteurs</b></div>
         <h1>
-          Dominez la pression et atteignez le niveau que vous
-          <span class="text-brand" style="text-shadow: 0 0 40px rgba(255, 77, 90, 0.4)">méritez</span>
+          Exprimez votre
+          <span class="text-brand" style="text-shadow: 0 0 40px rgba(255, 77, 90, 0.4)">plein potentiel</span>, même
+          quand la pression monte.
         </h1>
-        <style>
-          .hero-p-desktop { display: block; }
-          .hero-p-mobile { display: none; }
-          @media (max-width: 768px) {
-            .hero-p-desktop { display: none !important; }
-            .hero-p-mobile { display: block !important; }
-          }
-        </style>
-        <p class="hero-p-desktop" style="
+        <p style="
               font-size: 1.15rem;
               color: #cbd5e1;
-              max-width: 600px;
-              margin: 0 auto 35px;
+              max-width: 540px;
+              margin-bottom: 35px;
               line-height: 1.6;
             ">
-          Le stress et les doutes ne doivent plus dicter vos résultats. Reprenez le contrôle de votre mental pour libérer 100% de votre potentiel le jour J.
-        </p>
-        <p class="hero-p-mobile" style="
-              font-size: 1.15rem;
-              color: #cbd5e1;
-              max-width: 600px;
-              margin: 0 auto 35px;
-              line-height: 1.6;
-            ">
-          Le mental décide de vos résultats. Éliminez vos blocages, reprenez le contrôle et performez à 100% le jour J.
+          <span class="hidden-mobile" style="display: block;">
+            Entre l'entraînement et la compétition, il y a un monde.<br />
+            Développez les ressources mentales qui vous permettent de rester clair, engagé et décisif lorsque cela
+            compte
+            vraiment.
+          </span>
+          <span class="visible-mobile">
+            Vos capacités mentales décident de vos résultats. Développez-les.
+          </span>
         </p>
 
-        <ul class="check-list" style="margin: 0 auto 35px; display: grid; gap: 14px; max-width: 420px; text-align: left">
+        <ul class="check-list" style="margin-bottom: 35px; display: grid; gap: 14px">
           <li>
             <div class="icon-box" style="
                   background: rgba(85, 211, 155, 0.1);
@@ -1388,7 +1348,7 @@
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg>
             </div>
-            <span style="color: #e2e8f0"><b>Éliminer l'auto-sabotage</b> (doutes, crispation).</span>
+            <span style="color: #e2e8f0"><b>Éliminez l'auto-sabotage</b> (doutes, crispation).</span>
           </li>
           <li>
             <div class="icon-box" style="
@@ -1400,7 +1360,7 @@
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg>
             </div>
-            <span style="color: #e2e8f0"><b>Garder sa lucidité</b> dans les moments décisifs.</span>
+            <span style="color: #e2e8f0"><b>Gardez votre lucidité</b> dans les moments décisifs.</span>
           </li>
           <li>
             <div class="icon-box" style="
@@ -1412,44 +1372,128 @@
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg>
             </div>
-            <span style="color: #e2e8f0"><b>Développer une confiance</b> qui tient sous pression.</span>
+            <span style="color: #e2e8f0"><b>Développez une confiance</b> qui tient sous pression.</span>
           </li>
         </ul>
 
-        <!-- CTAs hero — visibles sur tous les viewports -->
-        <div class="hero-cta-group">
-          <a href="#contact" class="btn btn-primary hero-cta-primary">
-            Bilan Mental Offert
+        <!-- CTA mobile (uniquement sur mobile, ouvre le formulaire en pop-up) -->
+        <div class="hero-mobile-cta">
+          <button onclick="openFormModal()" class="btn btn-primary">
+            Obtenir mon Bilan Mental Offert
             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
               style="margin-left:6px">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
-          </a>
-          <a href="https://calendly.com/contact-pms2c-zmbl/30min" target="_blank" rel="noopener" class="btn btn-secondary hero-cta-secondary">
-            Prendre rendez-vous
-          </a>
-        </div>
-        <div class="hero-social-proof">
-          <div class="avatars-mini">
-            <div><img src="assets/images/athlete1.png" alt=""></div>
-            <div><img src="assets/images/athlete2.png" alt=""></div>
-            <div><img src="assets/images/athlete3.png" alt=""></div>
-            <div><img src="assets/images/athlete4.png" alt=""></div>
-            <div><img src="assets/images/athlete5.png" alt=""></div>
+          </button>
+          <div class="social-proof-inline">
+            <div class="avatars-mini">
+              <div><img src="../assets/images/athlete1.png" alt=""></div>
+              <div><img src="../assets/images/athlete2.png" alt=""></div>
+              <div><img src="../assets/images/athlete3.png" alt=""></div>
+              <div><img src="../assets/images/athlete4.png" alt=""></div>
+              <div><img src="../assets/images/athlete5.png" alt=""></div>
+            </div>
+            <span><b style="color:white">+120 athlètes</b> accompagnés</span>
           </div>
-          <span><b style="color:white">+120 athlètes</b> accompagnés</span>
         </div>
 
-        <!-- OPTION 1: Lien discret -->
-        <!-- <div style="margin-top: 24px;">
-          <a href="/Jeunes/" style="color: #94a3b8; font-size: 0.95rem; text-decoration: underline; text-decoration-color: rgba(148, 163, 184, 0.4); text-underline-offset: 4px; transition: color 0.2s;" onmouseover="this.style.color='#cbd5e1'" onmouseout="this.style.color='#94a3b8'">
-            Parent d'un jeune sportif ? Découvrez l'accompagnement dédié ➔
-          </a>
-        </div> -->
-
+        <!-- Social Proof Hero (5 Avatars) -->
+        <div class="social-proof-mobile hidden-mobile" style="
+              margin-top: 10px;
+              display: flex;
+              align-items: center;
+              gap: 16px;
+            ">
+          <div style="display: flex; align-items: center">
+            <!-- Avatar 1 -->
+            <div class="social-avatar" style="
+                  width: 42px;
+                  height: 42px;
+                  border-radius: 50%;
+                  border: 3px solid rgba(19, 22, 31, 0.9);
+                  background: #334155;
+                  overflow: hidden;
+                  position: relative;
+                  z-index: 5;
+                ">
+              <img src="../assets/images/athlete1.png" alt="Athlète 1"
+                style="width: 100%; height: 100%; object-fit: cover" />
+            </div>
+            <!-- Avatar 2 -->
+            <div class="social-avatar" style="
+                  width: 42px;
+                  height: 42px;
+                  border-radius: 50%;
+                  border: 3px solid rgba(19, 22, 31, 0.9);
+                  background: #475569;
+                  overflow: hidden;
+                  margin-left: -14px;
+                  position: relative;
+                  z-index: 4;
+                ">
+              <img src="../assets/images/athlete2.png" alt="Athlète 2"
+                style="width: 100%; height: 100%; object-fit: cover" />
+            </div>
+            <!-- Avatar 3 -->
+            <div class="social-avatar" style="
+                  width: 42px;
+                  height: 42px;
+                  border-radius: 50%;
+                  border: 3px solid rgba(19, 22, 31, 0.9);
+                  background: #64748b;
+                  overflow: hidden;
+                  margin-left: -14px;
+                  position: relative;
+                  z-index: 3;
+                ">
+              <img src="../assets/images/athlete3.png" alt="Athlète 3"
+                style="width: 100%; height: 100%; object-fit: cover" />
+            </div>
+            <!-- Avatar 4 -->
+            <div class="social-avatar" style="
+                  width: 42px;
+                  height: 42px;
+                  border-radius: 50%;
+                  border: 3px solid rgba(19, 22, 31, 0.9);
+                  background: #64748b;
+                  overflow: hidden;
+                  margin-left: -14px;
+                  position: relative;
+                  z-index: 2;
+                ">
+              <img src="../assets/images/athlete4.png" alt="Athlète 4"
+                style="width: 100%; height: 100%; object-fit: cover" />
+            </div>
+            <!-- Avatar 5 -->
+            <div class="social-avatar" style="
+                  width: 42px;
+                  height: 42px;
+                  border-radius: 50%;
+                  border: 3px solid rgba(19, 22, 31, 0.9);
+                  background: #64748b;
+                  overflow: hidden;
+                  margin-left: -14px;
+                  position: relative;
+                  z-index: 1;
+                ">
+              <img src="../assets/images/athlete5.png" alt="Athlète 5"
+                style="width: 100%; height: 100%; object-fit: cover" />
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column">
+            <div style="display: flex; align-items: center; gap: 6px">
+              <div style="display: flex; color: #fbbf24">★★★★★</div>
+              <span style="font-weight: 700; color: white; font-size: 0.95rem">5/5</span>
+            </div>
+            <p style="margin: 2px 0 0; font-size: 0.85rem; color: #cbd5e1">
+              Plus de <b>120 athlètes</b> accompagnés.
+            </p>
+          </div>
+        </div>
       </div>
 
-      <!-- FORMULAIRE HERO (caché — déplacé vers section dédiée en bas de page) -->
+      <!-- FORMULAIRE MULTI-ETAPES (Droite) -->
+      <span id="contact" style="position:absolute; top:0; visibility:hidden;"></span>
       <div class="hero-form-card" style="border-top: 4px solid var(--brand)">
         <div class="form-header" style="
               background: linear-gradient(
@@ -1690,7 +1734,7 @@
         console.log("Données envoyées au webhook:", formData);
 
         // Envoi au webhook Make.com
-        fetch("https://hook.eu1.make.com/yrpob3fg16buw8kmb4kc52xa4gjzl3ly", {
+        fetch("https://hook.eu1.make.com/owc5mpa415lrv6733rsr0ykqp2z9ha55", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -1700,7 +1744,7 @@
           .then(response => {
             if (response.ok) {
               // Redirection vers la Thank You Page
-              window.location.href = "/remerciement";
+              window.location.href = "/merci";
             } else {
               alert("❌ Une erreur est survenue. Veuillez réessayer.");
             }
@@ -1712,8 +1756,6 @@
       });
     </script>
   </section>
-
-
 
   <div class="trust-strip">
     <div class="wrap trust-grid">
@@ -2900,7 +2942,7 @@
         <!-- CARD 2 : LORIS (VTT Downhill) -->
         <div class="elite-card mobile-reveal">
           <div class="card-photo">
-            <img src="assets/images/photo_loris.jpg" alt="Loris — VTT Downhill" loading="lazy">
+            <img src="../assets/images/photo_loris.jpg" alt="Loris — VTT Downhill" loading="lazy">
           </div>
           <div class="card-top">
             <div class="meta-badge">VTT DOWNHILL</div>
@@ -2929,7 +2971,7 @@
         <!-- CARD 1 : CLARENCE (Tennis) -->
         <div class="elite-card mobile-reveal">
           <div class="card-photo">
-            <img src="assets/images/photo-clarence-tennis.png" alt="Clarence — Tennis" loading="lazy">
+            <img src="../assets/images/photo-clarence-tennis.png" alt="Clarence — Tennis" loading="lazy">
           </div>
           <div class="card-top">
             <div class="meta-badge">TENNIS</div>
@@ -2957,7 +2999,7 @@
         <!-- CARD 3 : VINCENT (Ski Freestyle) -->
         <div class="elite-card mobile-reveal">
           <div class="card-photo">
-            <img src="assets/images/photo vincent ski.jpg" alt="Vincent — Ski Freestyle" loading="lazy">
+            <img src="../assets/images/photo vincent ski.jpg" alt="Vincent — Ski Freestyle" loading="lazy">
           </div>
           <div class="card-top">
             <div class="meta-badge">SKI FREESTYLE</div>
@@ -3257,7 +3299,7 @@
 
         <div class="review-card">
           <div class="reviewer-head">
-            <div class="reviewer-avatar" style="padding:0; overflow:hidden;"><img src="assets/images/athlete1.png"
+            <div class="reviewer-avatar" style="padding:0; overflow:hidden;"><img src="../assets/images/athlete1.png"
                 alt="Léo Grisel" style="width:100%;height:100%;object-fit:cover;"></div>
             <div>
               <div style="font-weight: 700; font-size: 0.95rem; color: white">
@@ -3278,7 +3320,7 @@
 
         <div class="review-card">
           <div class="reviewer-head">
-            <div class="reviewer-avatar" style="padding:0; overflow:hidden;"><img src="assets/images/athlete2.png"
+            <div class="reviewer-avatar" style="padding:0; overflow:hidden;"><img src="../assets/images/athlete2.png"
                 alt="Jack Piercy" style="width:100%;height:100%;object-fit:cover;"></div>
             <div>
               <div style="font-weight: 700; font-size: 0.95rem; color: white">
@@ -3302,7 +3344,7 @@
 
         <div class="review-card">
           <div class="reviewer-head">
-            <div class="reviewer-avatar" style="padding:0; overflow:hidden;"><img src="assets/images/athlete4.png"
+            <div class="reviewer-avatar" style="padding:0; overflow:hidden;"><img src="../assets/images/athlete4.png"
                 alt="Selya Rakki" style="width:100%;height:100%;object-fit:cover;"></div>
             <div>
               <div style="font-weight: 700; font-size: 0.95rem; color: white">
@@ -3323,7 +3365,7 @@
 
         <div class="review-card">
           <div class="reviewer-head">
-            <div class="reviewer-avatar" style="padding:0; overflow:hidden;"><img src="assets/images/athlete3.png"
+            <div class="reviewer-avatar" style="padding:0; overflow:hidden;"><img src="../assets/images/athlete3.png"
                 alt="Gauthier Laurens" style="width:100%;height:100%;object-fit:cover;"></div>
             <div>
               <div style="font-weight: 700; font-size: 0.95rem; color: white">
@@ -3342,7 +3384,7 @@
 
         <div class="review-card">
           <div class="reviewer-head">
-            <div class="reviewer-avatar" style="padding:0; overflow:hidden;"><img src="assets/images/photo_nicolas.png"
+            <div class="reviewer-avatar" style="padding:0; overflow:hidden;"><img src="../assets/images/photo_nicolas.png"
                 alt="Nicolas Catalano" style="width:100%;height:100%;object-fit:cover;"></div>
             <div>
               <div style="font-weight: 700; font-size: 0.95rem; color: white">
@@ -3361,7 +3403,7 @@
 
         <div class="review-card">
           <div class="reviewer-head">
-            <div class="reviewer-avatar" style="padding:0; overflow:hidden;"><img src="assets/images/athlete5.png"
+            <div class="reviewer-avatar" style="padding:0; overflow:hidden;"><img src="../assets/images/athlete5.png"
                 alt="Chloé Gascuel" style="width:100%;height:100%;object-fit:cover;"></div>
             <div>
               <div style="font-weight: 700; font-size: 0.95rem; color: white">
@@ -3396,8 +3438,6 @@
     </script>
   </section>
 
-
-
   <!-- A PROPOS / BIO (Optimisé Mobile Semi-Hover) -->
   <section id="about"
     style="padding: 100px 0; background: linear-gradient(180deg, var(--bg) 0%, #13161f 100%); position: relative; overflow: hidden;">
@@ -3413,8 +3453,7 @@
         grid-template-areas:
           "title photo"
           "text photo"
-          "piliers photo"
-          "cta cta";
+          "piliers photo";
         align-items: start;
       }
 
@@ -3435,14 +3474,6 @@
 
       .area-piliers {
         grid-area: piliers;
-      }
-
-      .area-cta {
-        grid-area: cta;
-        margin-top: 50px;
-        padding-top: 40px;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        text-align: center;
       }
 
       /* --- STYLE DES CARTES VALEURS --- */
@@ -3497,12 +3528,6 @@
 
         .area-piliers {
           order: 4;
-        }
-
-        .area-cta {
-          order: 5;
-          margin-top: 20px;
-          padding-top: 30px;
         }
 
         /* Semi-Hover Permanent sur Mobile */
@@ -3567,12 +3592,6 @@
         .area-piliers {
           order: 4;
         }
-
-        .area-cta {
-          order: 5;
-          margin-top: 20px;
-          padding-top: 30px;
-        }
       }
     </style>
 
@@ -3597,7 +3616,7 @@
 
         <!-- BLOC 2 : LE TEXTE -->
         <div class="area-text mobile-reveal">
-          <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin: 0 0 25px;">
+          <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin: 0;">
             Sportif de formation et préparateur mental depuis plus de 5 ans, j’accompagne des athlètes qui veulent
             aligner leurs performances en compétition avec leur véritable niveau.
             <br><br>
@@ -3614,7 +3633,7 @@
           <div
             style="position: relative; border-radius: 24px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
             <!-- Photo Coach -->
-            <img src="assets/images/Cedric-coach-pms2c.jpeg" alt="Cédric Boutavin - Préparateur Mental"
+            <img src="../assets/images/Cedric-coach-pms2c.jpeg" alt="Cédric Boutavin - Préparateur Mental"
               style="width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 35%;">
             <div
               style="position: absolute; bottom: 0; left: 0; right: 0; height: 100px; background: linear-gradient(to top, rgba(19, 22, 31, 0.9), transparent);">
@@ -3624,13 +3643,13 @@
           <!-- Logos Certification -->
           <div
             style="margin-top: 25px; display: flex; justify-content: space-between; align-items: center; gap: 15px; transition: 0.3s;">
-            <img src="assets/images/logos/Logo-Academie-Haute-Performance.png" alt="Académie Haute Performance"
+            <img src="../assets/images/logos/Logo-Academie-Haute-Performance.png" alt="Académie Haute Performance"
               style="height: 45px; width: auto; object-fit: contain;">
-            <img src="assets/images/logos/Logo-JO-2024.png" alt="JO Paris 2024"
+            <img src="../assets/images/logos/Logo-JO-2024.png" alt="JO Paris 2024"
               style="height: 45px; width: auto; object-fit: contain;">
-            <img src="assets/images/logos/logo-pfsp.png" alt="PFSP"
+            <img src="../assets/images/logos/logo-pfsp.png" alt="PFSP"
               style="height: 45px; width: auto; object-fit: contain;">
-            <img src="assets/images/logos/logo-universite-Montpellier.png" alt="Université de Montpellier"
+            <img src="../assets/images/logos/logo-universite-Montpellier.png" alt="Université de Montpellier"
               style="height: 45px; width: auto; object-fit: contain;">
           </div>
 
@@ -3692,17 +3711,6 @@
             </div>
 
           </div>
-        </div>
-
-        <!-- BLOC 5 : LE CTA PLEINE LARGEUR -->
-        <div class="area-cta mobile-reveal">
-          <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 20px;">
-            Le feeling est essentiel en préparation mentale. Faisons connaissance.
-          </p>
-          <a href="https://calendly.com/contact-pms2c-zmbl/30min" target="_blank" rel="noopener" class="btn btn-secondary" style="display:inline-flex; align-items:center; gap:10px; padding: 14px 32px; font-size: 1rem; border-color: rgba(255,255,255,0.15); transition: all 0.3s;">
-            <svg class="hidden-mobile" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            <span style="color: white; font-weight: 500;">Planifier un premier échange offert</span>
-          </a>
         </div>
 
       </div>
@@ -3995,7 +4003,7 @@
 
     <div class="wrap" style="max-width: 800px;">
       <div class="section-title text-center" style="margin-bottom: 50px;">
-        <h2 style="margin-bottom: 20px;">Questions Fréquentes</h2>
+        <h2 style="margin-bottom: 10px;">Questions Fréquentes</h2>
         <!-- Centrage forcé avec margin: auto -->
         <p style="color: var(--text-muted); margin: 0 auto; max-width: 600px;">Tout ce que vous devez savoir avant de
           vous lancer.</p>
@@ -4090,332 +4098,30 @@
     </div>
   </section>
 
-  <!-- SECTION FORMULAIRE DÉDIÉE -->
-  <section style="padding: 100px 0; background: linear-gradient(180deg, var(--bg) 0%, rgba(255,77,90,0.04) 100%); border-top: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden;">
-    <span id="contact" style="position:absolute; top:-80px; visibility:hidden;"></span>
-
-    <!-- Glow -->
-    <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:600px; height:400px; background:radial-gradient(circle, rgba(255,77,90,0.1), transparent 70%); pointer-events:none;"></div>
-
-    <div class="wrap" style="position:relative; z-index:1;">
-      <div class="section-title text-center" style="margin-bottom: 50px;">
-        <span class="tagline" style="margin-bottom: 16px;">Bilan Personnalisé</span>
-        <h2 style="margin-bottom: 20px;">Prêt à libérer votre potentiel ?</h2>
-        <p style="max-width: 500px; margin: 0 auto;">Ne laissez plus les doutes dicter vos performances. Remplissez ce court bilan, je vous explique de vive voix comment reprendre le contrôle dès votre prochaine compétition.</p>
-      </div>
-
-      <div class="section-form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 900px; margin: 0 auto;">
-
-        <!-- Left: social proof + garanties -->
-        <div class="hidden-mobile">
-          <div style="display:flex; flex-direction:column; gap:24px;">
-            <div style="display:flex; gap:14px; align-items:flex-start;">
-              <div style="width:40px; height:40px; background:rgba(85,211,155,0.12); border:1px solid rgba(85,211,155,0.25); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                <svg width="18" height="18" fill="none" stroke="#55d39b" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <div><p style="font-weight:600; color:white; margin:0 0 4px;">100% gratuit</p><p style="font-size:0.875rem; color:#94a3b8; margin:0;">Aucune carte bancaire requise.</p></div>
-            </div>
-            <div style="display:flex; gap:14px; align-items:flex-start;">
-              <div style="width:40px; height:40px; background:rgba(85,211,155,0.12); border:1px solid rgba(85,211,155,0.25); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                <svg width="18" height="18" fill="none" stroke="#55d39b" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              </div>
-              <div><p style="font-weight:600; color:white; margin:0 0 4px;">Réponse dans la journée</p><p style="font-size:0.875rem; color:#94a3b8; margin:0;">Je vous recontacte personnellement.</p></div>
-            </div>
-            <div style="display:flex; gap:14px; align-items:flex-start;">
-              <div style="width:40px; height:40px; background:rgba(85,211,155,0.12); border:1px solid rgba(85,211,155,0.25); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                <svg width="18" height="18" fill="none" stroke="#55d39b" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              </div>
-              <div><p style="font-weight:600; color:white; margin:0 0 4px;">En présentiel ou en visio</p><p style="font-size:0.875rem; color:#94a3b8; margin:0;">Nîmes ou partout en France.</p></div>
-            </div>
-            <div style="display:flex; gap:14px; align-items:flex-start;">
-              <div style="width:40px; height:40px; background:rgba(85,211,155,0.12); border:1px solid rgba(85,211,155,0.25); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                <svg width="18" height="18" fill="none" stroke="#55d39b" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              </div>
-              <div><p style="font-weight:600; color:white; margin:0 0 4px;">Noté 5.0/5 sur Google</p><p style="font-size:0.875rem; color:#94a3b8; margin:0;">Plus de 50 avis d'athlètes confirmés.</p></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: formulaire multi-step -->
-        <div style="background:var(--panel); border:1px solid var(--panel-border); border-top:4px solid var(--brand); border-radius:16px; overflow:hidden;">
-          <div style="background:linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(255,255,255,0.01)); padding:20px; border-bottom:1px solid var(--panel-border);">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-              <span style="font-weight:700; color:white; font-size:1.1rem;">Bilan Mental Offert</span>
-              <span style="background:var(--brand); color:white; font-size:0.7rem; font-weight:700; padding:2px 8px; border-radius:4px;">GRATUIT</span>
-            </div>
-            <div class="progress-track">
-              <div class="progress-bar active" id="spb-1"></div>
-              <div class="progress-bar" id="spb-2"></div>
-              <div class="progress-bar" id="spb-3"></div>
-            </div>
-          </div>
-          <div style="padding:24px; min-height:320px; display:flex; flex-direction:column; justify-content:center;">
-            <form id="sectionForm">
-              <!-- Étape 1 -->
-              <div class="form-step active" id="sstep-1">
-                <h3 style="font-size:1.1rem; color:white; margin:0 0 15px;">Votre Profil Sportif</h3>
-                <div class="input-group">
-                  <label for="s-sport">Discipline</label>
-                  <input type="text" id="s-sport" name="sport" placeholder="Ex: Tennis..." required />
-                </div>
-                <div class="input-group">
-                  <label for="s-niveau">Votre Statut</label>
-                  <select id="s-niveau" name="niveau">
-                    <option value="" disabled selected>Choisir...</option>
-                    <option value="loisir">Loisir / Développement</option>
-                    <option value="amateur">Compétiteur Amateur</option>
-                    <option value="national">Compétiteur Confirmé (National)</option>
-                    <option value="pro">Athlète Haut Niveau / Pro</option>
-                    <option value="espoir">Espoir (Centre de formation)</option>
-                  </select>
-                </div>
-                <button type="button" class="btn btn-primary btn-full" onclick="nextSectionStep(2)" style="margin-top:10px;">
-                  Suivant
-                  <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-left:6px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </button>
-              </div>
-              <!-- Étape 2 -->
-              <div class="form-step" id="sstep-2">
-                <h3 style="font-size:1.1rem; color:white; margin:0 0 15px;">Vos Besoins Mentaux</h3>
-                <div class="input-group">
-                  <label for="s-objectif">Quel est votre objectif principal ?</label>
-                  <select id="s-objectif" name="objectif">
-                    <option value="" disabled selected>Ce qui compte le plus...</option>
-                    <option value="pression">Mieux gérer la pression</option>
-                    <option value="confiance">Gagner en confiance</option>
-                    <option value="blessure">Revenir après une blessure</option>
-                    <option value="motivation">Rester motivé sur la durée</option>
-                    <option value="performance">Améliorer mes performances</option>
-                  </select>
-                </div>
-                <div class="input-group">
-                  <label for="s-experience">Expérience en préparation mentale ?</label>
-                  <select id="s-experience" name="experience">
-                    <option value="" disabled selected>Votre niveau...</option>
-                    <option value="aucune">Aucune expérience</option>
-                    <option value="debutant">J'ai exploré quelques techniques</option>
-                    <option value="intermediaire">Déjà suivi un accompagnement</option>
-                    <option value="avance">Pratique régulière autonome</option>
-                  </select>
-                </div>
-                <div class="nav-buttons">
-                  <button type="button" class="btn-back" onclick="prevSectionStep(1)">← Retour</button>
-                  <button type="button" class="btn btn-primary" onclick="nextSectionStep(3)" style="flex:1;">
-                    Suivant
-                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-left:6px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                  </button>
-                </div>
-              </div>
-              <!-- Étape 3 -->
-              <div class="form-step" id="sstep-3">
-                <h3 style="font-size:1.1rem; color:white; margin:0 0 15px;">Vos coordonnées</h3>
-                <div class="input-group">
-                  <label for="s-firstname">Prénom</label>
-                  <input type="text" id="s-firstname" name="firstname" placeholder="Ex: Thomas" required />
-                </div>
-                <div class="input-group">
-                  <label for="s-email">Email</label>
-                  <input type="email" id="s-email" name="email" placeholder="votre@email.com" required />
-                </div>
-                <div class="input-group">
-                  <label for="s-phone">Téléphone</label>
-                  <input type="tel" id="s-phone" name="phone" placeholder="06..." required />
-                </div>
-                <div class="nav-buttons">
-                  <button type="button" class="btn-back" onclick="prevSectionStep(2)">← Retour</button>
-                  <button type="submit" class="btn btn-primary" style="flex:1;">
-                    Envoyer ma demande
-                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-left:6px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-  <style>
-    @media (max-width: 768px) {
-      .section-form-grid { grid-template-columns: 1fr !important; }
-    }
-  </style>
-
-  <script>
-    function nextSectionStep(step) {
-      if (step === 2) {
-        var sport = document.getElementById('s-sport').value;
-        var niveau = document.getElementById('s-niveau').value;
-        if (!sport || !niveau) { alert('Merci de compléter votre profil sportif.'); return; }
-      }
-      if (step === 3) {
-        var obj = document.getElementById('s-objectif').value;
-        var exp = document.getElementById('s-experience').value;
-        if (!obj || !exp) { alert('Merci de préciser vos objectifs et expérience.'); return; }
-      }
-      document.querySelectorAll('#sectionForm .form-step').forEach(function(el){ el.classList.remove('active'); });
-      document.getElementById('sstep-' + step).classList.add('active');
-      document.querySelectorAll('[id^="spb-"]').forEach(function(el){ el.classList.remove('active', 'filled'); });
-      document.getElementById('spb-' + step).classList.add('active');
-      if (step > 1) document.getElementById('spb-1').classList.add('filled');
-      if (step > 2) document.getElementById('spb-2').classList.add('filled');
-    }
-    function prevSectionStep(step) {
-      document.querySelectorAll('#sectionForm .form-step').forEach(function(el){ el.classList.remove('active'); });
-      document.getElementById('sstep-' + step).classList.add('active');
-      document.querySelectorAll('[id^="spb-"]').forEach(function(el){ el.classList.remove('active', 'filled'); });
-      document.getElementById('spb-' + step).classList.add('active');
-      if (step > 1) document.getElementById('spb-1').classList.add('filled');
-    }
-    document.getElementById('sectionForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      var formData = {
-        discipline_sportive: document.getElementById('s-sport').value,
-        statut_niveau: document.getElementById('s-niveau').value,
-        objectif_principal: document.getElementById('s-objectif').value,
-        experience_mentale: document.getElementById('s-experience').value,
-        prenom: document.getElementById('s-firstname').value,
-        email: document.getElementById('s-email').value,
-        telephone: document.getElementById('s-phone').value
-      };
-      fetch('https://hook.eu1.make.com/yrpob3fg16buw8kmb4kc52xa4gjzl3ly', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      }).then(function(r) {
-        if (r.ok) { window.location.href = '/remerciement'; }
-        else { alert('❌ Une erreur est survenue. Veuillez réessayer.'); }
-      }).catch(function() { alert('❌ Une erreur est survenue. Veuillez réessayer.'); });
-    });
-  </script>
-
-  <!-- FOOTER MULTI-COLONNES -->
-  <footer style="background: #0a0c11; border-top: 1px solid rgba(255,255,255,0.06); padding: 60px 0 0;">
+  <footer>
     <div class="wrap">
-      <div style="display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap:40px; margin-bottom:50px;">
-
-        <!-- Col 1: Logo + description + réseaux -->
-        <div>
-          <img src="assets/images/logo-pms2c-bg.png" alt="PMS2C" style="height:38px; width:auto; margin-bottom:16px; display:block;">
-          <p style="font-size:0.9rem; color:#64748b; line-height:1.7; max-width:260px; margin:0 0 20px;">
-            Préparation mentale pour sportifs ambitieux. Libérez votre potentiel quand ça compte vraiment.
-          </p>
-          <div style="display:flex; gap:12px;">
-            <a href="https://www.instagram.com/pms2c" target="_blank" rel="noopener" style="width:36px; height:36px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:8px; display:flex; align-items:center; justify-content:center; color:#94a3b8; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#94a3b8'">
-              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            </a>
-            <a href="https://www.facebook.com/pms2c" target="_blank" rel="noopener" style="width:36px; height:36px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:8px; display:flex; align-items:center; justify-content:center; color:#94a3b8; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#94a3b8'">
-              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Col 2: Navigation -->
-        <div>
-          <p style="font-weight:600; color:white; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em; margin:0 0 16px;">Navigation</p>
-          <ul style="display:flex; flex-direction:column; gap:10px;">
-            <li><a href="#methode" style="color:#64748b; font-size:0.9rem; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#64748b'">Méthode</a></li>
-            <li><a href="#preuves" style="color:#64748b; font-size:0.9rem; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#64748b'">Résultats</a></li>
-            <li><a href="#temoignages" style="color:#64748b; font-size:0.9rem; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#64748b'">Avis</a></li>
-            <li><a href="#about" style="color:#64748b; font-size:0.9rem; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#64748b'">Coach</a></li>
-            <li><a href="#faq" style="color:#64748b; font-size:0.9rem; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#64748b'">FAQ</a></li>
-          </ul>
-        </div>
-
-        <!-- Col 3: Offres -->
-        <div>
-          <p style="font-weight:600; color:white; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em; margin:0 0 16px;">Offres</p>
-          <ul style="display:flex; flex-direction:column; gap:10px;">
-            <li><a href="#contact" style="color:#64748b; font-size:0.9rem; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#64748b'">Bilan Mental Offert</a></li>
-            <li><a href="/Jeunes/" style="color:#64748b; font-size:0.9rem; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#64748b'">Pour les Jeunes</a></li>
-            <li><a href="https://calendly.com/contact-pms2c-zmbl/30min" target="_blank" rel="noopener" style="color:#64748b; font-size:0.9rem; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#64748b'">Prendre RDV</a></li>
-          </ul>
-        </div>
-
-        <!-- Col 4: Contact -->
-        <div>
-          <p style="font-weight:600; color:white; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em; margin:0 0 16px;">Contact</p>
-          <ul style="display:flex; flex-direction:column; gap:12px;">
-            <li style="display:flex; align-items:flex-start; gap:10px; color:#64748b; font-size:0.9rem;">
-              <svg width="15" height="15" fill="none" stroke="#55d39b" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0; margin-top:2px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <a href="mailto:contact@pms2c.com" style="color:#64748b; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#64748b'">contact@pms2c.com</a>
-            </li>
-            <li style="display:flex; align-items:flex-start; gap:10px; color:#64748b; font-size:0.9rem;">
-              <svg width="15" height="15" fill="none" stroke="#55d39b" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0; margin-top:2px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Nîmes, France
-            </li>
-          </ul>
-          <a href="#contact" class="btn btn-primary" style="margin-top:20px; padding:10px 20px; font-size:0.85rem; display:inline-flex;">
-            Bilan Offert
-          </a>
-        </div>
+      <div style="margin-bottom: 20px; font-weight: 700; color: white">
+        Préparation Mentale Sportive
       </div>
-
-      <!-- Footer bottom -->
-      <div class="footer-bottom" style="border-top:1px solid rgba(255,255,255,0.05); padding:24px 0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
-        <p class="footer-copyright" style="font-size:0.8rem; color:#334155; margin:0;">&copy; <span id="year"></span> PMS2C — Cédric Boutavin. Tous droits réservés.</p>
-        <div class="footer-legals" style="display:flex; gap:16px;">
-          <a href="https://www.pms2c.com/mentions-legales" target="_blank" rel="noopener" style="font-size:0.8rem; color:#334155; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#334155'">Mentions Légales</a>
-          <a href="https://www.pms2c.com/mentions-legales" target="_blank" rel="noopener" style="font-size:0.8rem; color:#334155; transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#334155'">Confidentialité</a>
-        </div>
+      <p style="max-width: 600px; margin: 0 auto 20px">
+        Le mental n'est pas inné, ça se travaille.
+      </p>
+      <div style="font-size: 0.8rem; opacity: 0.6">
+        &copy; <span id="year"></span> Tous droits réservés. <br />
+        <a href="https://www.pms2c.com/mentions-legales" target="_blank" rel="noopener">Mentions Légales</a> · <a
+          href="https://www.pms2c.com/mentions-legales" target="_blank" rel="noopener">Confidentialité</a>
       </div>
     </div>
-
-    <!-- Footer responsive -->
-    <style>
-      @media (max-width: 900px) {
-        footer > .wrap > div:first-child {
-          grid-template-columns: 1fr 1fr !important;
-          gap: 40px !important;
-        }
-        footer > .wrap > div:first-child > div:first-child {
-          grid-column: 1 / -1;
-        }
-      }
-      @media (max-width: 600px) {
-        footer { padding: 40px 0 0 !important; }
-        footer > .wrap > div:first-child {
-          grid-template-columns: 1fr !important;
-          gap: 40px !important;
-          margin-bottom: 30px !important;
-        }
-        /* Centrer tout le footer sur mobile */
-        footer > .wrap > div:first-child > div {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-        }
-        /* Réduire la largeur max pour forcer le centrage des paragraphes */
-        footer p { margin-left: auto !important; margin-right: auto !important; text-align: center !important; }
-        
-        /* Centrer les listes et conteneurs Flex inline */
-        footer ul { align-items: center !important; }
-        footer [style*="display:flex"] { justify-content: center !important; }
-        
-        /* Rendre les icônes de contact et réseaux centrés */
-        footer ul li { justify-content: center !important; }
-        
-        /* Clics plus faciles sur les liens mobile */
-        footer ul li a { display: inline-block; padding: 6px 0; }
-        
-        /* Zone légale tout en bas */
-        .footer-bottom {
-          flex-direction: column !important;
-          gap: 20px !important;
-        }
-        .footer-copyright {
-          order: 2;
-          margin-top: 5px !important;
-        }
-        .footer-legals {
-          order: 1;
-        }
-      }
-    </style>
   </footer>
 
+  <!-- STICKY BAR MOBILE (New Structure) -->
+  <div class="sticky-bar" id="stickyCta">
+    <div class="sticky-info">
+      <b>Bilan Mental de Performance</b>
+      <span>Évaluez votre potentiel</span>
+    </div>
+    <a href="#contact" class="sticky-btn js-open-modal"> Démarrer </a>
+  </div>
 
   <!-- MODAL FORMULAIRE MOBILE -->
   <div class="form-modal-overlay" id="formModal" role="dialog" aria-modal="true" aria-label="Bilan Mental Offert">
@@ -4653,14 +4359,14 @@
           email: document.getElementById("m-email").value,
           telephone: document.getElementById("m-phone").value
         };
-        fetch("https://hook.eu1.make.com/yrpob3fg16buw8kmb4kc52xa4gjzl3ly", {
+        fetch("https://hook.eu1.make.com/owc5mpa415lrv6733rsr0ykqp2z9ha55", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData)
         })
           .then(function (response) {
             if (response.ok) {
-              window.location.href = "/remerciement";
+              window.location.href = "/merci";
             } else {
               alert("❌ Une erreur est survenue. Veuillez réessayer.");
             }
@@ -4669,26 +4375,6 @@
             console.error("Erreur:", error);
             alert("❌ Une erreur est survenue. Veuillez réessayer.");
           });
-      });
-    }
-
-    // ─── BURGER MENU ─────────────────────────────────────────────────────────
-    const burgerBtn = document.getElementById('burgerBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    if (burgerBtn && mobileNav) {
-      burgerBtn.addEventListener('click', function () {
-        const isOpen = mobileNav.classList.toggle('is-open');
-        burgerBtn.classList.toggle('is-open', isOpen);
-        burgerBtn.setAttribute('aria-expanded', isOpen);
-        document.body.style.overflow = isOpen ? 'hidden' : '';
-      });
-      mobileNav.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', function () {
-          mobileNav.classList.remove('is-open');
-          burgerBtn.classList.remove('is-open');
-          burgerBtn.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
-        });
       });
     }
 
@@ -4712,6 +4398,26 @@
       });
     });
 
+    // ─── STICKY BAR ───────────────────────────────────────────────────────────
+    const stickyBar = document.getElementById("stickyCta");
+    const heroSection = document.querySelector(".hero");
+
+    if (heroSection && stickyBar) {
+      stickyBar.classList.add("hidden");
+      const heroObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              stickyBar.classList.add("hidden");
+            } else {
+              stickyBar.classList.remove("hidden");
+            }
+          });
+        },
+        { threshold: 0.05 }
+      );
+      heroObserver.observe(heroSection);
+    }
   </script>
 
   <!-- Scroll Reveal Observer -->
