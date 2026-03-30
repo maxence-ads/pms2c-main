@@ -161,11 +161,6 @@
         display: none !important;
       }
 
-      .section-form-grid {
-        grid-template-columns: 1fr !important;
-        gap: 30px !important;
-      }
-
       .visible-mobile {
         display: block !important;
       }
@@ -1424,11 +1419,14 @@
         <!-- CTAs hero — visibles sur tous les viewports -->
         <div class="hero-cta-group">
           <a href="#contact" class="btn btn-primary hero-cta-primary">
-            Réserver mon Bilan
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-left:6px"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+            Bilan Mental Offert
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+              style="margin-left:6px">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
           </a>
-          <a href="https://wa.me/33695620999" target="_blank" rel="noopener" class="btn btn-secondary hero-cta-secondary" style="background: rgba(37, 211, 102, 0.1); border-color: rgba(37, 211, 102, 0.2); color: #25D366; font-weight: 500;">
-            Échanger sur WhatsApp
+          <a href="https://calendly.com/contact-pms2c-zmbl/30min" target="_blank" rel="noopener" class="btn btn-secondary hero-cta-secondary">
+            Prendre rendez-vous
           </a>
         </div>
         <div class="hero-social-proof">
@@ -1451,6 +1449,268 @@
 
       </div>
 
+      <!-- FORMULAIRE HERO (caché — déplacé vers section dédiée en bas de page) -->
+      <div class="hero-form-card" style="border-top: 4px solid var(--brand)">
+        <div class="form-header" style="
+              background: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0.05),
+                rgba(255, 255, 255, 0.01)
+              );
+              padding: 20px;
+              border-bottom: 1px solid var(--panel-border);
+            ">
+          <div style="width: 100%">
+            <div style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-bottom: 4px;
+                ">
+              <span style="font-weight: 700; color: white; font-size: 1.1rem">Bilan Mental Offert</span>
+              <span style="
+                    background: var(--brand);
+                    color: white;
+                    font-size: 0.7rem;
+                    font-weight: 700;
+                    padding: 2px 8px;
+                    border-radius: 4px;
+                  ">GRATUIT</span>
+            </div>
+            <!-- Barre de progression -->
+            <div class="progress-track">
+              <div class="progress-bar active" id="pb-1"></div>
+              <div class="progress-bar" id="pb-2"></div>
+              <div class="progress-bar" id="pb-3"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-body" style="
+              padding: 24px;
+              min-height: 360px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+            ">
+          <form id="multiStepForm" action="#" method="POST">
+            <!-- ETAPE 1 : PROFIL ATHLÉTIQUE (Vertical Stack pour plus de clarté) -->
+            <div class="form-step active" id="step-1">
+              <h3 style="font-size: 1.1rem; color: white; margin: 0 0 15px">
+                Votre Profil Sportif
+              </h3>
+
+              <div class="input-group">
+                <label for="sport">Discipline</label>
+                <input type="text" id="sport" name="sport" placeholder="Ex: Tennis..." required />
+              </div>
+
+              <div class="input-group">
+                <label for="niveau">Votre Statut</label>
+                <select id="niveau" name="niveau">
+                  <option value="" disabled selected>Choisir...</option>
+                  <option value="loisir">Loisir / Développement</option>
+                  <option value="amateur">Compétiteur Amateur</option>
+                  <option value="national">
+                    Compétiteur Confirmé (National)
+                  </option>
+                  <option value="pro">Athlète Haut Niveau / Pro</option>
+                  <option value="espoir">Espoir (Centre de formation)</option>
+                </select>
+              </div>
+
+              <button type="button" class="btn btn-primary btn-full" onclick="nextStep(2)" style="margin-top: 10px">
+                Suivant
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                  style="margin-left: 6px">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- ETAPE 2 : PROFIL MENTAL -->
+            <div class="form-step" id="step-2">
+              <h3 style="font-size: 1.1rem; color: white; margin: 0 0 15px">
+                Vos Besoins Mentaux
+              </h3>
+
+              <div class="input-group">
+                <label for="objectif">Quel est votre objectif principal ?</label>
+                <select id="objectif" name="objectif">
+                  <option value="" disabled selected>
+                    Ce qui compte le plus...
+                  </option>
+                  <option value="pression">Mieux gérer la pression</option>
+                  <option value="confiance">Gagner en confiance</option>
+                  <option value="blessure">Revenir après une blessure</option>
+                  <option value="motivation">
+                    Rester motivé sur la durée
+                  </option>
+                  <option value="performance">
+                    Améliorer mes performances
+                  </option>
+                </select>
+              </div>
+
+              <div class="input-group">
+                <label for="experience">Avez-vous déjà travaillé votre mental ?</label>
+                <select id="experience" name="experience">
+                  <option value="" disabled selected>
+                    Votre historique...
+                  </option>
+                  <option value="non">Non, jamais</option>
+                  <option value="decu">
+                    Oui, mais sans résultats durables
+                  </option>
+                  <option value="initie">
+                    Oui, et je veux aller plus loin
+                  </option>
+                </select>
+              </div>
+
+              <div class="nav-buttons">
+                <button type="button" class="btn-back" onclick="nextStep(1)">
+                  Retour
+                </button>
+                <button type="button" class="btn btn-primary" onclick="nextStep(3)" style="flex: 1">
+                  Continuer
+                </button>
+              </div>
+            </div>
+
+            <!-- ETAPE 3 : CONTACT -->
+            <div class="form-step" id="step-3">
+              <h3 style="font-size: 1.1rem; color: white; margin: 0 0 15px">
+                Où envoyer votre bilan ?
+              </h3>
+              <p style="
+                    font-size: 0.9rem;
+                    color: var(--text-muted);
+                    margin-bottom: 15px;
+                  ">
+                Indiquez vos informations pour que je puisse revenir vers
+                vous.
+              </p>
+
+              <div class="input-group">
+                <label for="firstname">Votre Prénom</label>
+                <input type="text" id="firstname" name="firstname" placeholder="Ex: Thomas" required />
+              </div>
+
+              <div class="input-row">
+                <div class="input-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" placeholder="votre@email.com" required />
+                </div>
+                <div class="input-group">
+                  <label for="phone">Téléphone</label>
+                  <input type="tel" id="phone" name="phone" placeholder="06..." required
+                    style="background: rgba(255, 255, 255, 0.03)" />
+                </div>
+              </div>
+
+              <div class="nav-buttons">
+                <button type="button" class="btn-back" onclick="nextStep(2)">
+                  Retour
+                </button>
+                <button type="submit" class="btn btn-primary" style="flex: 1">
+                  Valider ma demande
+                </button>
+              </div>
+              <div style="
+                    text-align: center;
+                    margin-top: 12px;
+                    font-size: 0.7rem;
+                    color: #64748b;
+                  ">
+                100% Confidentiel. Réponse sous 24h.
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script Simple pour le Multi-Step -->
+    <script>
+      function nextStep(stepNumber) {
+        // Validation simple
+        if (stepNumber === 2) {
+          const sport = document.getElementById("sport").value;
+          const niveau = document.getElementById("niveau").value;
+          if (!sport || !niveau) {
+            alert("Merci de compléter votre profil sportif.");
+            return;
+          }
+        }
+        if (stepNumber === 3) {
+          const obj = document.getElementById("objectif").value;
+          const exp = document.getElementById("experience").value;
+          if (!obj || !exp) {
+            alert("Merci de préciser vos objectifs et expérience.");
+            return;
+          }
+        }
+
+        // Changement d'étape
+        document
+          .querySelectorAll(".form-step")
+          .forEach((el) => el.classList.remove("active"));
+        document.getElementById("step-" + stepNumber).classList.add("active");
+
+        // Barre de progression
+        document
+          .querySelectorAll(".progress-bar")
+          .forEach((el) => el.classList.remove("active"));
+        document.getElementById("pb-" + stepNumber).classList.add("active");
+
+        // Remplir les barres précédentes
+        if (stepNumber > 1)
+          document.getElementById("pb-1").classList.add("filled");
+        if (stepNumber > 2)
+          document.getElementById("pb-2").classList.add("filled");
+      }
+
+      // Gestion de la soumission du formulaire
+      document.getElementById("multiStepForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Récupération des données du formulaire avec noms explicites
+        const formData = {
+          discipline_sportive: document.getElementById("sport").value,
+          statut_niveau: document.getElementById("niveau").value,
+          objectif_principal: document.getElementById("objectif").value,
+          experience_mentale: document.getElementById("experience").value,
+          prenom: document.getElementById("firstname").value,
+          email: document.getElementById("email").value,
+          telephone: document.getElementById("phone").value
+        };
+
+        // Log pour débogage
+        console.log("Données envoyées au webhook:", formData);
+
+        // Envoi au webhook Make.com
+        fetch("https://hook.eu1.make.com/yrpob3fg16buw8kmb4kc52xa4gjzl3ly", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(formData)
+        })
+          .then(response => {
+            if (response.ok) {
+              // Redirection vers la Thank You Page
+              window.location.href = "/remerciement";
+            } else {
+              alert("❌ Une erreur est survenue. Veuillez réessayer.");
+            }
+          })
+          .catch(error => {
+            console.error("Erreur:", error);
+            alert("❌ Une erreur est survenue. Veuillez réessayer.");
+          });
+      });
+    </script>
   </section>
 
 
@@ -3830,72 +4090,205 @@
     </div>
   </section>
 
-  <!-- SECTION CALENDLY -->
-  <section id="contact" style="padding: 100px 0; background: linear-gradient(180deg, var(--bg) 0%, rgba(255,77,90,0.04) 100%); border-top: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden;">
+  <!-- SECTION FORMULAIRE DÉDIÉE -->
+  <section style="padding: 100px 0; background: linear-gradient(180deg, var(--bg) 0%, rgba(255,77,90,0.04) 100%); border-top: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden;">
+    <span id="contact" style="position:absolute; top:-80px; visibility:hidden;"></span>
+
+    <!-- Glow -->
     <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:600px; height:400px; background:radial-gradient(circle, rgba(255,77,90,0.1), transparent 70%); pointer-events:none;"></div>
+
     <div class="wrap" style="position:relative; z-index:1;">
-      <div class="section-title text-center" style="margin-bottom: 80px;">
-        <span class="tagline" style="margin-bottom: 8px;">Bilan de Performance</span>
-        
-        <!-- Titre Desktop (en 2 lignes) -->
-        <div class="hidden-mobile" style="justify-content: center;">
-          <h2 style="margin-bottom: 0;">Vous bloquez en compétition ?<br>On débriefe ensemble.</h2>
-        </div>
-
-        <!-- Titre Mobile (1 seule phrase) -->
-        <h2 class="visible-mobile" style="margin-bottom: 0;">Un premier bilan offert pour enfin comprendre ce qui coince.</h2>
-        
-        <p class="visible-mobile" style="color:var(--text-muted); font-size:1.05rem; margin:20px auto 0; max-width:500px; line-height:1.5;">
-          Réservez un appel gratuit de 30 minutes pour isoler ce qui vous freine et relancer votre progression.
-        </p>
+      <div class="section-title text-center" style="margin-bottom: 50px;">
+        <span class="tagline" style="margin-bottom: 16px;">Bilan Personnalisé</span>
+        <h2 style="margin-bottom: 20px;">Prêt à libérer votre potentiel ?</h2>
+        <p style="max-width: 500px; margin: 0 auto;">Ne laissez plus les doutes dicter vos performances. Remplissez ce court bilan, je vous explique de vive voix comment reprendre le contrôle dès votre prochaine compétition.</p>
       </div>
-      <div class="section-form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1040px; margin: 0 auto; align-items: stretch;">
-        
-        <!-- Left: Rassurance & Context -->
-        <div class="hidden-mobile" style="display:flex; flex-direction:column; justify-content:center; padding-right:20px;">
-          <p style="color:var(--text-muted); font-size:1.05rem; margin:0 0 40px; line-height:1.6;">
-            Choisissez votre créneau ci-dessous. On prend 30 minutes pour analyser factuellement ce qui limite vos résultats aujourd'hui.
-          </p>
 
-          <div style="display:flex; flex-direction:column; gap:20px;">
+      <div class="section-form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 900px; margin: 0 auto;">
+
+        <!-- Left: social proof + garanties -->
+        <div class="hidden-mobile">
+          <div style="display:flex; flex-direction:column; gap:24px;">
             <div style="display:flex; gap:14px; align-items:flex-start;">
               <div style="width:40px; height:40px; background:rgba(85,211,155,0.12); border:1px solid rgba(85,211,155,0.25); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
                 <svg width="18" height="18" fill="none" stroke="#55d39b" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
               </div>
-              <div><p style="font-weight:600; color:white; margin:0 0 4px;">Bilan offert & sans engagement</p><p style="font-size:0.875rem; color:#94a3b8; margin:0;">Aucun frais caché, on valide simplement si cette approche est faite pour vous.</p></div>
+              <div><p style="font-weight:600; color:white; margin:0 0 4px;">100% gratuit</p><p style="font-size:0.875rem; color:#94a3b8; margin:0;">Aucune carte bancaire requise.</p></div>
             </div>
-            
-            <div style="display:flex; gap:14px; align-items:flex-start;">
-              <div style="width:40px; height:40px; background:rgba(85,211,155,0.12); border:1px solid rgba(85,211,155,0.25); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                <svg width="18" height="18" fill="none" stroke="#55d39b" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-              </div>
-              <div><p style="font-weight:600; color:white; margin:0 0 4px;">Analyse concrète</p><p style="font-size:0.875rem; color:#94a3b8; margin:0;">On isole l'élément précis (stress, perte de focus...) qui sabote vos résultats.</p></div>
-            </div>
-            
             <div style="display:flex; gap:14px; align-items:flex-start;">
               <div style="width:40px; height:40px; background:rgba(85,211,155,0.12); border:1px solid rgba(85,211,155,0.25); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
                 <svg width="18" height="18" fill="none" stroke="#55d39b" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               </div>
-              <div><p style="font-weight:600; color:white; margin:0 0 4px;">Le déclic en 30 minutes</p><p style="font-size:0.875rem; color:#94a3b8; margin:0;">Ce temps passé ensemble peut suffire à débloquer plusieurs mois (ou années) de stagnation sur le terrain.</p></div>
+              <div><p style="font-weight:600; color:white; margin:0 0 4px;">Réponse dans la journée</p><p style="font-size:0.875rem; color:#94a3b8; margin:0;">Je vous recontacte personnellement.</p></div>
             </div>
-
             <div style="display:flex; gap:14px; align-items:flex-start;">
               <div style="width:40px; height:40px; background:rgba(85,211,155,0.12); border:1px solid rgba(85,211,155,0.25); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                <svg width="18" height="18" fill="none" stroke="#55d39b" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+                <svg width="18" height="18" fill="none" stroke="#55d39b" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
-              <div><p style="font-weight:600; color:white; margin:0 0 4px;">Discrétion absolue</p><p style="font-size:0.875rem; color:#94a3b8; margin:0;">Le monde du sport est petit. Nos échanges sont 100% confidentiels, vos adversaires ou staff n'en sauront rien.</p></div>
+              <div><p style="font-weight:600; color:white; margin:0 0 4px;">En présentiel ou en visio</p><p style="font-size:0.875rem; color:#94a3b8; margin:0;">Nîmes ou partout en France.</p></div>
+            </div>
+            <div style="display:flex; gap:14px; align-items:flex-start;">
+              <div style="width:40px; height:40px; background:rgba(85,211,155,0.12); border:1px solid rgba(85,211,155,0.25); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg width="18" height="18" fill="none" stroke="#55d39b" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <div><p style="font-weight:600; color:white; margin:0 0 4px;">Noté 5.0/5 sur Google</p><p style="font-size:0.875rem; color:#94a3b8; margin:0;">Plus de 50 avis d'athlètes confirmés.</p></div>
             </div>
           </div>
         </div>
 
-        <!-- Right: Calendly Embed (Premium Look sans scroll inutile) -->
-        <div style="background:var(--panel); border:1px solid var(--panel-border); border-top:4px solid var(--brand); border-radius:16px; box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4); overflow: hidden; display: flex; justify-content: center; width: 100%; box-sizing: border-box;">
-           <div class="calendly-inline-widget" data-url="https://calendly.com/contact-pms2c-zmbl/30min?hide_landing_page_details=1&hide_event_type_details=1&background_color=13161f&text_color=edf2f7&primary_color=ff4d5a" style="width:100%; height:680px;"></div>
-           <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        <!-- Right: formulaire multi-step -->
+        <div style="background:var(--panel); border:1px solid var(--panel-border); border-top:4px solid var(--brand); border-radius:16px; overflow:hidden;">
+          <div style="background:linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(255,255,255,0.01)); padding:20px; border-bottom:1px solid var(--panel-border);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <span style="font-weight:700; color:white; font-size:1.1rem;">Bilan Mental Offert</span>
+              <span style="background:var(--brand); color:white; font-size:0.7rem; font-weight:700; padding:2px 8px; border-radius:4px;">GRATUIT</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-bar active" id="spb-1"></div>
+              <div class="progress-bar" id="spb-2"></div>
+              <div class="progress-bar" id="spb-3"></div>
+            </div>
+          </div>
+          <div style="padding:24px; min-height:320px; display:flex; flex-direction:column; justify-content:center;">
+            <form id="sectionForm">
+              <!-- Étape 1 -->
+              <div class="form-step active" id="sstep-1">
+                <h3 style="font-size:1.1rem; color:white; margin:0 0 15px;">Votre Profil Sportif</h3>
+                <div class="input-group">
+                  <label for="s-sport">Discipline</label>
+                  <input type="text" id="s-sport" name="sport" placeholder="Ex: Tennis..." required />
+                </div>
+                <div class="input-group">
+                  <label for="s-niveau">Votre Statut</label>
+                  <select id="s-niveau" name="niveau">
+                    <option value="" disabled selected>Choisir...</option>
+                    <option value="loisir">Loisir / Développement</option>
+                    <option value="amateur">Compétiteur Amateur</option>
+                    <option value="national">Compétiteur Confirmé (National)</option>
+                    <option value="pro">Athlète Haut Niveau / Pro</option>
+                    <option value="espoir">Espoir (Centre de formation)</option>
+                  </select>
+                </div>
+                <button type="button" class="btn btn-primary btn-full" onclick="nextSectionStep(2)" style="margin-top:10px;">
+                  Suivant
+                  <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-left:6px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+              </div>
+              <!-- Étape 2 -->
+              <div class="form-step" id="sstep-2">
+                <h3 style="font-size:1.1rem; color:white; margin:0 0 15px;">Vos Besoins Mentaux</h3>
+                <div class="input-group">
+                  <label for="s-objectif">Quel est votre objectif principal ?</label>
+                  <select id="s-objectif" name="objectif">
+                    <option value="" disabled selected>Ce qui compte le plus...</option>
+                    <option value="pression">Mieux gérer la pression</option>
+                    <option value="confiance">Gagner en confiance</option>
+                    <option value="blessure">Revenir après une blessure</option>
+                    <option value="motivation">Rester motivé sur la durée</option>
+                    <option value="performance">Améliorer mes performances</option>
+                  </select>
+                </div>
+                <div class="input-group">
+                  <label for="s-experience">Expérience en préparation mentale ?</label>
+                  <select id="s-experience" name="experience">
+                    <option value="" disabled selected>Votre niveau...</option>
+                    <option value="aucune">Aucune expérience</option>
+                    <option value="debutant">J'ai exploré quelques techniques</option>
+                    <option value="intermediaire">Déjà suivi un accompagnement</option>
+                    <option value="avance">Pratique régulière autonome</option>
+                  </select>
+                </div>
+                <div class="nav-buttons">
+                  <button type="button" class="btn-back" onclick="prevSectionStep(1)">← Retour</button>
+                  <button type="button" class="btn btn-primary" onclick="nextSectionStep(3)" style="flex:1;">
+                    Suivant
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-left:6px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </button>
+                </div>
+              </div>
+              <!-- Étape 3 -->
+              <div class="form-step" id="sstep-3">
+                <h3 style="font-size:1.1rem; color:white; margin:0 0 15px;">Vos coordonnées</h3>
+                <div class="input-group">
+                  <label for="s-firstname">Prénom</label>
+                  <input type="text" id="s-firstname" name="firstname" placeholder="Ex: Thomas" required />
+                </div>
+                <div class="input-group">
+                  <label for="s-email">Email</label>
+                  <input type="email" id="s-email" name="email" placeholder="votre@email.com" required />
+                </div>
+                <div class="input-group">
+                  <label for="s-phone">Téléphone</label>
+                  <input type="tel" id="s-phone" name="phone" placeholder="06..." required />
+                </div>
+                <div class="nav-buttons">
+                  <button type="button" class="btn-back" onclick="prevSectionStep(2)">← Retour</button>
+                  <button type="submit" class="btn btn-primary" style="flex:1;">
+                    Envoyer ma demande
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-left:6px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
+
     </div>
   </section>
+  <style>
+    @media (max-width: 768px) {
+      .section-form-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+
+  <script>
+    function nextSectionStep(step) {
+      if (step === 2) {
+        var sport = document.getElementById('s-sport').value;
+        var niveau = document.getElementById('s-niveau').value;
+        if (!sport || !niveau) { alert('Merci de compléter votre profil sportif.'); return; }
+      }
+      if (step === 3) {
+        var obj = document.getElementById('s-objectif').value;
+        var exp = document.getElementById('s-experience').value;
+        if (!obj || !exp) { alert('Merci de préciser vos objectifs et expérience.'); return; }
+      }
+      document.querySelectorAll('#sectionForm .form-step').forEach(function(el){ el.classList.remove('active'); });
+      document.getElementById('sstep-' + step).classList.add('active');
+      document.querySelectorAll('[id^="spb-"]').forEach(function(el){ el.classList.remove('active', 'filled'); });
+      document.getElementById('spb-' + step).classList.add('active');
+      if (step > 1) document.getElementById('spb-1').classList.add('filled');
+      if (step > 2) document.getElementById('spb-2').classList.add('filled');
+    }
+    function prevSectionStep(step) {
+      document.querySelectorAll('#sectionForm .form-step').forEach(function(el){ el.classList.remove('active'); });
+      document.getElementById('sstep-' + step).classList.add('active');
+      document.querySelectorAll('[id^="spb-"]').forEach(function(el){ el.classList.remove('active', 'filled'); });
+      document.getElementById('spb-' + step).classList.add('active');
+      if (step > 1) document.getElementById('spb-1').classList.add('filled');
+    }
+    document.getElementById('sectionForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var formData = {
+        discipline_sportive: document.getElementById('s-sport').value,
+        statut_niveau: document.getElementById('s-niveau').value,
+        objectif_principal: document.getElementById('s-objectif').value,
+        experience_mentale: document.getElementById('s-experience').value,
+        prenom: document.getElementById('s-firstname').value,
+        email: document.getElementById('s-email').value,
+        telephone: document.getElementById('s-phone').value
+      };
+      fetch('https://hook.eu1.make.com/yrpob3fg16buw8kmb4kc52xa4gjzl3ly', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      }).then(function(r) {
+        if (r.ok) { window.location.href = '/remerciement'; }
+        else { alert('❌ Une erreur est survenue. Veuillez réessayer.'); }
+      }).catch(function() { alert('❌ Une erreur est survenue. Veuillez réessayer.'); });
+    });
+  </script>
 
   <!-- FOOTER MULTI-COLONNES -->
   <footer style="background: #0a0c11; border-top: 1px solid rgba(255,255,255,0.06); padding: 60px 0 0;">
@@ -3989,10 +4382,260 @@
     </style>
   </footer>
 
+
+  <!-- MODAL FORMULAIRE MOBILE -->
+  <div class="form-modal-overlay" id="formModal" role="dialog" aria-modal="true" aria-label="Bilan Mental Offert">
+    <div class="form-modal-inner" id="formModalInner">
+      <div class="form-modal-handle"></div>
+      <button class="form-modal-close" onclick="closeFormModal()" aria-label="Fermer">✕</button>
+      <div class="form-header" style="
+            background: linear-gradient(
+              to bottom,
+              rgba(255, 255, 255, 0.05),
+              rgba(255, 255, 255, 0.01)
+            );
+            padding: 20px 20px 16px;
+            border-bottom: 1px solid var(--panel-border);
+          ">
+        <div style="width: 100%">
+          <div style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 4px;
+                padding-right: 36px;
+              ">
+            <span style="font-weight: 700; color: white; font-size: 1.1rem">Bilan Mental Offert</span>
+            <span style="
+                  background: var(--brand);
+                  color: white;
+                  font-size: 0.7rem;
+                  font-weight: 700;
+                  padding: 2px 8px;
+                  border-radius: 4px;
+                ">GRATUIT</span>
+          </div>
+          <!-- Barre de progression -->
+          <div class="progress-track">
+            <div class="progress-bar active" id="mpb-1"></div>
+            <div class="progress-bar" id="mpb-2"></div>
+            <div class="progress-bar" id="mpb-3"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-body"
+        style="padding: 24px; min-height: 320px; display: flex; flex-direction: column; justify-content: center;">
+        <form id="modalForm" action="#" method="POST">
+          <!-- ETAPE 1 : PROFIL ATHLÉTIQUE -->
+          <div class="form-step active" id="mstep-1">
+            <h3 style="font-size: 1.1rem; color: white; margin: 0 0 15px">Votre Profil Sportif</h3>
+            <div class="input-group">
+              <label for="m-sport">Discipline</label>
+              <input type="text" id="m-sport" name="sport" placeholder="Ex: Tennis..." required />
+            </div>
+            <div class="input-group">
+              <label for="m-niveau">Votre Statut</label>
+              <select id="m-niveau" name="niveau">
+                <option value="" disabled selected>Choisir...</option>
+                <option value="loisir">Loisir / Développement</option>
+                <option value="amateur">Compétiteur Amateur</option>
+                <option value="national">Compétiteur Confirmé (National)</option>
+                <option value="pro">Athlète Haut Niveau / Pro</option>
+                <option value="espoir">Espoir (Centre de formation)</option>
+              </select>
+            </div>
+            <button type="button" class="btn btn-primary btn-full" onclick="nextModalStep(2)" style="margin-top: 10px">
+              Suivant
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                style="margin-left: 6px">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- ETAPE 2 : PROFIL MENTAL -->
+          <div class="form-step" id="mstep-2">
+            <h3 style="font-size: 1.1rem; color: white; margin: 0 0 15px">Vos Besoins Mentaux</h3>
+            <div class="input-group">
+              <label for="m-objectif">Quel est votre objectif principal ?</label>
+              <select id="m-objectif" name="objectif">
+                <option value="" disabled selected>Ce qui compte le plus...</option>
+                <option value="pression">Mieux gérer la pression</option>
+                <option value="confiance">Gagner en confiance</option>
+                <option value="blessure">Revenir après une blessure</option>
+                <option value="motivation">Rester motivé sur la durée</option>
+                <option value="performance">Améliorer mes performances</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label for="m-experience">Avez-vous déjà travaillé votre mental ?</label>
+              <select id="m-experience" name="experience">
+                <option value="" disabled selected>Votre historique...</option>
+                <option value="non">Non, jamais</option>
+                <option value="decu">Oui, mais sans résultats durables</option>
+                <option value="initie">Oui, et je veux aller plus loin</option>
+              </select>
+            </div>
+            <div class="nav-buttons">
+              <button type="button" class="btn-back" onclick="nextModalStep(1)">Retour</button>
+              <button type="button" class="btn btn-primary" onclick="nextModalStep(3)"
+                style="flex: 1">Continuer</button>
+            </div>
+          </div>
+
+          <!-- ETAPE 3 : CONTACT -->
+          <div class="form-step" id="mstep-3">
+            <h3 style="font-size: 1.1rem; color: white; margin: 0 0 15px">Où envoyer votre bilan ?</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">
+              Indiquez vos informations pour que je puisse revenir vers vous.
+            </p>
+            <div class="input-group">
+              <label for="m-firstname">Votre Prénom</label>
+              <input type="text" id="m-firstname" name="firstname" placeholder="Ex: Thomas" required />
+            </div>
+            <div class="input-group">
+              <label for="m-email">Email</label>
+              <input type="email" id="m-email" name="email" placeholder="votre@email.com" required />
+            </div>
+            <div class="input-group">
+              <label for="m-phone">Téléphone</label>
+              <input type="tel" id="m-phone" name="phone" placeholder="06..." required
+                style="background: rgba(255, 255, 255, 0.03)" />
+            </div>
+            <div class="nav-buttons">
+              <button type="button" class="btn-back" onclick="nextModalStep(2)">Retour</button>
+              <button type="submit" class="btn btn-primary" style="flex: 1">Valider ma demande</button>
+            </div>
+            <div style="text-align: center; margin-top: 12px; font-size: 0.7rem; color: #64748b;">
+              100% Confidentiel. Réponse sous 24h.
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Année auto
-    if (document.getElementById("year")) {
-      document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ─── MODAL FORMULAIRE MOBILE ──────────────────────────────────────────────
+    const formModal = document.getElementById("formModal");
+    const formModalInner = document.getElementById("formModalInner");
+
+    function isMobile() {
+      return window.innerWidth <= 960;
+    }
+
+    function openFormModal() {
+      formModal.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+      // Reset to step 1
+      resetModalForm();
+    }
+
+    function closeFormModal() {
+      formModal.classList.add("is-animating");
+      setTimeout(function () {
+        formModal.classList.remove("is-open", "is-animating");
+        document.body.style.overflow = "";
+      }, 350);
+    }
+
+    function resetModalForm() {
+      document.querySelectorAll("#formModal .form-step").forEach(function (el) {
+        el.classList.remove("active");
+      });
+      const step1 = document.getElementById("mstep-1");
+      if (step1) step1.classList.add("active");
+      // Reset progress bars
+      document.querySelectorAll("#formModal .progress-bar").forEach(function (el) {
+        el.classList.remove("active", "filled");
+      });
+      const pb1 = document.getElementById("mpb-1");
+      if (pb1) pb1.classList.add("active");
+    }
+
+    // Backdrop click closes modal
+    if (formModal) {
+      formModal.addEventListener("click", function (e) {
+        if (e.target === formModal) closeFormModal();
+      });
+    }
+
+    // Escape key closes modal
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && formModal && formModal.classList.contains("is-open")) {
+        closeFormModal();
+      }
+    });
+
+    // ─── MODAL STEP NAVIGATION ────────────────────────────────────────────────
+    function nextModalStep(stepNumber) {
+      if (stepNumber === 2) {
+        const sport = document.getElementById("m-sport").value;
+        const niveau = document.getElementById("m-niveau").value;
+        if (!sport || !niveau) {
+          alert("Merci de compléter votre profil sportif.");
+          return;
+        }
+      }
+      if (stepNumber === 3) {
+        const obj = document.getElementById("m-objectif").value;
+        const exp = document.getElementById("m-experience").value;
+        if (!obj || !exp) {
+          alert("Merci de préciser vos objectifs et expérience.");
+          return;
+        }
+      }
+      // Switch step
+      document.querySelectorAll("#formModal .form-step").forEach(function (el) {
+        el.classList.remove("active");
+      });
+      document.getElementById("mstep-" + stepNumber).classList.add("active");
+      // Progress bars
+      document.querySelectorAll("#formModal .progress-bar").forEach(function (el) {
+        el.classList.remove("active");
+      });
+      document.getElementById("mpb-" + stepNumber).classList.add("active");
+      if (stepNumber > 1) document.getElementById("mpb-1").classList.add("filled");
+      if (stepNumber > 2) document.getElementById("mpb-2").classList.add("filled");
+      // Scroll modal to top
+      if (formModalInner) formModalInner.scrollTop = 0;
+    }
+
+    // ─── MODAL FORM SUBMISSION ────────────────────────────────────────────────
+    const modalForm = document.getElementById("modalForm");
+    if (modalForm) {
+      modalForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const formData = {
+          discipline_sportive: document.getElementById("m-sport").value,
+          statut_niveau: document.getElementById("m-niveau").value,
+          objectif_principal: document.getElementById("m-objectif").value,
+          experience_mentale: document.getElementById("m-experience").value,
+          prenom: document.getElementById("m-firstname").value,
+          email: document.getElementById("m-email").value,
+          telephone: document.getElementById("m-phone").value
+        };
+        fetch("https://hook.eu1.make.com/yrpob3fg16buw8kmb4kc52xa4gjzl3ly", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData)
+        })
+          .then(function (response) {
+            if (response.ok) {
+              window.location.href = "/remerciement";
+            } else {
+              alert("❌ Une erreur est survenue. Veuillez réessayer.");
+            }
+          })
+          .catch(function (error) {
+            console.error("Erreur:", error);
+            alert("❌ Une erreur est survenue. Veuillez réessayer.");
+          });
+      });
     }
 
     // ─── BURGER MENU ─────────────────────────────────────────────────────────
@@ -4015,13 +4658,18 @@
       });
     }
 
-    // ─── SMOOTH SCROLL POUR ANCRES (#contact, etc) ───────────────────────────
+    // ─── INTERCEPT #contact LINKS → OPEN MODAL ON MOBILE ─────────────────────
     // Smooth Scroll avec offset pour le header fixe (desktop)
     const headerHeight = document.querySelector('.header') ? document.querySelector('.header').offsetHeight : 0;
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
       anchor.addEventListener("click", function (e) {
         e.preventDefault();
         var href = this.getAttribute("href");
+        // If mobile and link targets the form, open modal instead
+        if (isMobile() && (href === "#contact" || this.classList.contains("js-open-modal"))) {
+          openFormModal();
+          return;
+        }
         var target = document.querySelector(href);
         if (target) {
           var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
