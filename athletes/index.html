@@ -1378,13 +1378,13 @@
 
         <!-- CTA mobile (uniquement sur mobile, ouvre le formulaire en pop-up) -->
         <div class="hero-mobile-cta">
-          <button onclick="openFormModal()" class="btn btn-primary">
-            Obtenir mon Bilan Mental Offert
+          <a href="#contact" class="btn btn-primary" style="display:inline-flex; width: 100%;">
+            Réserver mon Bilan Mental Offert
             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
               style="margin-left:6px">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
-          </button>
+          </a>
           <div class="social-proof-inline">
             <div class="avatars-mini">
               <div><img src="../assets/images/athlete1.png" alt=""></div>
@@ -3835,13 +3835,13 @@
       }
     </style>
 
-    <div class="wrap" style="position: relative; z-index: 2; text-align: center;">
+    <div id="cta-target" class="wrap" style="position: relative; z-index: 2; text-align: center;">
 
       <h2 style="font-size: var(--h2); line-height: 1.1; margin-bottom: 20px;">
         Identifiez ce qui vous <span class="text-brand">freine vraiment</span>.
       </h2>
       <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto 50px; padding: 0 10px;">
-        Quelques questions pour que je cerne précisément ce qui bloque votre progression.
+        Répondez à quelques questions ciblées, puis je vous livre mon analyse en direct.
       </p>
 
       <!-- La Boîte de Valeur -->
@@ -3852,21 +3852,21 @@
                 stroke="currentColor" stroke-width="3">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></div>
-            <span>Identifiez les <b>blocages invisibles</b> qui sabotent vos matchs aujourd'hui.</span>
+            <span>Identifiez vos <b>blocages mentaux</b> actuels en quelques minutes.</span>
           </div>
           <div class="cta-check-item">
             <div class="cta-check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="3">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></div>
-            <span>Clarifiez vos objectifs et ce que vous souhaitez <b>vraiment</b> changer.</span>
+            <span>Obtenez une analyse <b>sur mesure</b>, pas un résultat générique.</span>
           </div>
           <div class="cta-check-item">
             <div class="cta-check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="3">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></div>
-            <span>Définissons ensemble les prochaines étapes pour progresser.</span>
+            <span>Repartez avec un diagnostic clair et des <b>leviers concrets</b>.</span>
           </div>
         </div>
       </div>
@@ -3884,7 +3884,7 @@
       </a>
 
       <p style="margin-top: 20px; font-size: 0.9rem; color: #64748b; font-style: italic;">
-        100% gratuit. Je reviens vers vous personnellement.
+        Quelques questions rapides · je vous livre mon analyse personnellement
       </p>
 
     </div>
@@ -4385,11 +4385,21 @@
       anchor.addEventListener("click", function (e) {
         e.preventDefault();
         var href = this.getAttribute("href");
+        
         // If mobile and link targets the form, open modal instead
         if (isMobile() && (href === "#contact" || this.classList.contains("js-open-modal"))) {
+          if (!this.closest('#cta-final')) {
+              var target = document.querySelector("#cta-target");
+              if (target) {
+                  var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+                  window.scrollTo({ top: targetPosition, behavior: "smooth" });
+                  return;
+              }
+          }
           openFormModal();
           return;
         }
+        
         var target = document.querySelector(href);
         if (target) {
           var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
@@ -4401,22 +4411,35 @@
     // ─── STICKY BAR ───────────────────────────────────────────────────────────
     const stickyBar = document.getElementById("stickyCta");
     const heroSection = document.querySelector(".hero");
+    const ctaFinalSection = document.querySelector("#cta-final");
 
-    if (heroSection && stickyBar) {
+    if (stickyBar) {
       stickyBar.classList.add("hidden");
-      const heroObserver = new IntersectionObserver(
+      
+      const stickyObserver = new IntersectionObserver(
         function (entries) {
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
-              stickyBar.classList.add("hidden");
+              entry.target.dataset.isIntersecting = "true";
             } else {
-              stickyBar.classList.remove("hidden");
+              entry.target.dataset.isIntersecting = "false";
             }
           });
+          
+          let heroVisible = heroSection && heroSection.dataset.isIntersecting === "true";
+          let ctaFinalVisible = ctaFinalSection && ctaFinalSection.dataset.isIntersecting === "true";
+          
+          if (heroVisible || ctaFinalVisible) {
+            stickyBar.classList.add("hidden");
+          } else {
+            stickyBar.classList.remove("hidden");
+          }
         },
         { threshold: 0.05 }
       );
-      heroObserver.observe(heroSection);
+      
+      if (heroSection) stickyObserver.observe(heroSection);
+      if (ctaFinalSection) stickyObserver.observe(ctaFinalSection);
     }
   </script>
 
