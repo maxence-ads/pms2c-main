@@ -2212,8 +2212,143 @@
 
 
 
-  <!-- POUR QUI / PROFIL (Background Transition Hero -> Timeline) -->
-  <section id="pour-qui" style="position: relative; overflow: hidden; padding: 100px 0; background: var(--bg);">
+
+  <!-- ACCOMPAGNEMENT -->
+<section id="accompagnement" style="position: relative; overflow: hidden; padding: 100px 0; background: linear-gradient(180deg, var(--bg) 0%, rgba(19, 22, 31, 0.4) 100%);">
+    
+    <!-- Light Glow -->
+    <div style="position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(255, 77, 90, 0.05) 0%, transparent 60%); pointer-events: none; z-index: 0;"></div>
+
+    <style>
+      .acc-item {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 18px 24px;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 1;
+      }
+      .acc-item:hover {
+        background: rgba(255, 255, 255, 0.04);
+        border-color: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+      }
+      .acc-icon {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        background: rgba(85, 211, 155, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent);
+      }
+      .acc-text {
+        font-size: 1rem;
+        color: #e2e8f0;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+      @media (max-width: 768px) {
+        .acc-item {
+          padding: 16px;
+          gap: 12px;
+        }
+        .acc-text {
+          font-size: 0.95rem;
+        }
+      }
+    </style>
+
+    <div class="wrap" style="position: relative; z-index: 2; max-width: 800px;">
+      
+      <div class="section-title text-center mobile-reveal">
+        <h2 style="font-size: var(--h2); line-height: 1.1; margin-bottom: 15px;">
+          Un accompagnement pour travailler <span class="text-brand">ce qui freine vraiment vos performances</span>
+        </h2>
+        <p style="color: var(--text-muted); font-size: 1.05rem; margin: 0 auto; max-width: 600px;">
+          Faire le point est une première étape. L’accompagnement permet ensuite de travailler les priorités avec méthode, dans la durée.
+        </p>
+      </div>
+
+      <div style="margin-top: 40px;">
+        <!-- Item 1 -->
+        <div class="acc-item mobile-reveal">
+          <div class="acc-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <div class="acc-text" style="display: flex; flex-direction: column; gap: 2px;">
+            <b style="color: white; font-weight: 600;">Des séances ciblées</b>
+            <span style="font-size: 0.9rem; color: #94a3b8; font-weight: 400;">Pour mettre de l’ordre dans ce qui vous freine et dégager des axes clairs.</span>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="acc-item mobile-reveal">
+          <div class="acc-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <div class="acc-text" style="display: flex; flex-direction: column; gap: 2px;">
+            <b style="color: white; font-weight: 600;">Des repères pour les moments clés</b>
+            <span style="font-size: 0.9rem; color: #94a3b8; font-weight: 400;">Pour mieux réagir dans les moments où le mental prend trop de place.</span>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="acc-item mobile-reveal">
+          <div class="acc-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <div class="acc-text" style="display: flex; flex-direction: column; gap: 2px;">
+            <b style="color: white; font-weight: 600;">Des outils simples à utiliser</b>
+            <span style="font-size: 0.9rem; color: #94a3b8; font-weight: 400;">Pour garder le cap plus facilement dans votre quotidien de sportif.</span>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="acc-item mobile-reveal">
+          <div class="acc-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <div class="acc-text" style="display: flex; flex-direction: column; gap: 2px;">
+            <b style="color: white; font-weight: 600;">Un accompagnement qui s’ajuste</b>
+            <span style="font-size: 0.9rem; color: #94a3b8; font-weight: 400;">Selon votre niveau, votre contexte et vos besoins du moment.</span>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="acc-item mobile-reveal">
+          <div class="acc-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <div class="acc-text" style="display: flex; flex-direction: column; gap: 2px;">
+            <b style="color: white; font-weight: 600;">Un suivi réactif 7j/7</b>
+            <span style="font-size: 0.9rem; color: #94a3b8; font-weight: 400;">Pour avancer sans rester seul entre les séances.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+<!-- POUR QUI / PROFIL -->
+<section id="pour-qui" style="position: relative; overflow: hidden; padding: 100px 0; background: var(--bg);">
 
     <!-- Background FX (Conservé) -->
     <div
@@ -2328,16 +2463,10 @@
     <div class="wrap">
       <div class="section-title text-center mobile-reveal" style="margin-bottom: 50px;">
         <h2 style="margin-bottom: 15px;">
-          Le niveau est là. <span class="text-brand">Encore faut-il pouvoir l'exprimer.</span>
+          Pour les sportifs qui <span class="text-brand">veulent aller plus loin</span>
         </h2>
         <p style="margin: 0 auto; max-width: 650px; font-size: 1.05rem; color: var(--text-muted);">
-          <span class="hidden-mobile" style="display: block;">
-            Quand la pression monte, votre niveau ne sort pas toujours. Apprendre à gérer le mental, c'est permettre à
-            votre jeu de s'exprimer.
-          </span>
-          <span class="visible-mobile">
-            L'entraînement construit le niveau. Le mental décide si vous l'exprimez vraiment le jour J.
-          </span>
+          Si votre niveau ne s’exprime pas toujours dans les moments importants, cet accompagnement peut vous aider à retrouver plus de maîtrise et de confiance.
         </p>
       </div>
 
@@ -2352,9 +2481,6 @@
                 <path d="M20 6L9 17l-5-5" />
               </svg>
             </div>
-            <span
-              style="background:rgba(85, 211, 155, 0.1); color:var(--accent); font-size:0.75rem; font-weight:700; padding:4px 10px; border-radius:99px; text-transform:uppercase; letter-spacing:0.5px;">Athlètes
-              concernés</span>
           </div>
 
           <h3 style="font-size: 1.35rem; margin-bottom: 15px; color: white;">Pour ceux qui refusent de sous-performer
@@ -2400,9 +2526,6 @@
                 <path d="M18 6L6 18M6 6l12 12" />
               </svg>
             </div>
-            <span
-              style="color: #64748b; font-size:0.75rem; font-weight:700; padding:4px 10px; border:1px solid rgba(255,255,255,0.1); border-radius:99px; text-transform:uppercase; letter-spacing:0.5px;">Moins
-              pertinent si</span>
           </div>
 
           <h3 style="font-size: 1.35rem; margin-bottom: 15px; color: #94a3b8;">Si vous pensez que le mental, c'est du
@@ -2446,7 +2569,6 @@
 
     </div>
   </section>
-
 
   <!-- ETUDES DE CAS (Design Épuré - Sans Guillemets + Mobile Semi-Hover) -->
   <section id="preuves" style="padding: 100px 0; background: var(--bg); position: relative; overflow: hidden;">
@@ -3459,178 +3581,74 @@
     </div>
   </section>
 
-  <!-- CTA FINAL (Inspiré Image + Design Premium + Responsive Fix + Desktop Hover) -->
-  <section id="cta-final"
-    style="padding: 100px 0; background: linear-gradient(180deg, #0b0d12 0%, #151923 100%); position: relative; overflow: hidden;">
+  <!-- SECTION CALENDLY -->
+  <section id="contact" style="padding: 100px 0; background: linear-gradient(180deg, var(--bg) 0%, rgba(255,77,90,0.04) 100%); border-top: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden;">
+    <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:600px; height:400px; background:radial-gradient(circle, rgba(255,77,90,0.1), transparent 70%); pointer-events:none;"></div>
+    <div class="wrap" style="position:relative; z-index:1;">
+      <div class="section-title text-center" style="margin-bottom: 80px;">
+        <span class="tagline" style="margin-bottom: 8px;">Bilan de Performance</span>
+        
+        <!-- Titre Desktop (en 2 lignes) -->
+        <div class="hidden-mobile" style="justify-content: center;">
+          <h2 style="margin-bottom: 0;">Vous bloquez en compétition ?<br>On débriefe ensemble.</h2>
+        </div>
 
-    <!-- Glow Effect Central -->
-    <div
-      style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(255, 77, 90, 0.08) 0%, transparent 70%); pointer-events: none;">
-    </div>
+        <!-- Titre Mobile (1 seule phrase) -->
+        <h2 class="visible-mobile" style="margin-bottom: 0;">Un premier bilan offert pour enfin comprendre ce qui coince.</h2>
+        
+        <p class="visible-mobile" style="color:var(--text-muted); font-size:1.05rem; margin:20px auto 0; max-width:500px; line-height:1.5;">
+          Réservez un appel gratuit de 30 minutes pour isoler ce qui vous freine et relancer votre progression.
+        </p>
+      </div>
+      <div class="section-form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1040px; margin: 0 auto; align-items: stretch;">
+        
+        <!-- Left: Rassurance & Context -->
+        <div class="hidden-mobile" style="display:flex; flex-direction:column; justify-content:center; padding-right:20px;">
+          <p style="color:var(--text-muted); font-size:1.05rem; margin:0 0 40px; line-height:1.6;">
+            Choisissez votre créneau ci-dessous. On prend 30 minutes pour analyser factuellement ce qui limite vos résultats aujourd'hui.
+          </p>
 
-    <style>
-      .cta-card {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 24px;
-        padding: 40px;
-        max-width: 700px;
-        margin: 0 auto 40px;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.5);
-        /* Transition pour l'effet hover */
-        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      }
+          <div style="display:flex; flex-direction:column; gap:20px;">
+            <div style="display:flex; gap:14px; align-items:flex-start;">
+              <div style="width:40px; height:40px; background:rgba(85,211,155,0.12); border:1px solid rgba(85,211,155,0.25); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg width="18" height="18" fill="none" stroke="#55d39b" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div><p style="font-weight:600; color:white; margin:0 0 4px;">Bilan offert & sans engagement</p><p style="font-size:0.875rem; color:#94a3b8; margin:0;">Aucun frais caché, on valide simplement si cette approche est faite pour vous.</p></div>
+            </div>
+            
+            <div style="display:flex; gap:14px; align-items:flex-start;">
+              <div style="width:40px; height:40px; background:rgba(85,211,155,0.12); border:1px solid rgba(85,211,155,0.25); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg width="18" height="18" fill="none" stroke="#55d39b" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              </div>
+              <div><p style="font-weight:600; color:white; margin:0 0 4px;">Analyse concrète</p><p style="font-size:0.875rem; color:#94a3b8; margin:0;">On isole l'élément précis (stress, perte de focus...) qui sabote vos résultats.</p></div>
+            </div>
+            
+            <div style="display:flex; gap:14px; align-items:flex-start;">
+              <div style="width:40px; height:40px; background:rgba(85,211,155,0.12); border:1px solid rgba(85,211,155,0.25); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg width="18" height="18" fill="none" stroke="#55d39b" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div><p style="font-weight:600; color:white; margin:0 0 4px;">Le déclic en 30 minutes</p><p style="font-size:0.875rem; color:#94a3b8; margin:0;">Ce temps passé ensemble peut suffire à débloquer plusieurs mois (ou années) de stagnation sur le terrain.</p></div>
+            </div>
 
-      /* --- GLOBAL HOVER EFFECT --- */
-      .cta-card:hover {
-        background: rgba(255, 255, 255, 0.05);
-        border-color: rgba(255, 77, 90, 0.4);
-        box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 77, 90, 0.1);
-      }
-
-      /* --- HOVER TRANSFORM (DESKTOP ONLY) --- */
-      @media (min-width: 769px) {
-        .cta-card:hover {
-          transform: translateY(-8px);
-        }
-      }
-
-      .cta-check-list {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        text-align: left;
-      }
-
-      .cta-check-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 15px;
-        font-size: 1.05rem;
-        color: #e2e8f0;
-      }
-
-      .cta-check-icon {
-        flex-shrink: 0;
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        background: rgba(85, 211, 155, 0.15);
-        color: var(--accent);
-        display: grid;
-        place-items: center;
-        margin-top: 2px;
-      }
-
-      .arrow-down {
-        display: block;
-        margin: 0 auto 30px;
-        color: var(--brand);
-        animation: bounce 2s infinite;
-      }
-
-      @keyframes bounce {
-
-        0%,
-        20%,
-        50%,
-        80%,
-        100% {
-          transform: translateY(0);
-        }
-
-        40% {
-          transform: translateY(-10px);
-        }
-
-        60% {
-          transform: translateY(-5px);
-        }
-      }
-
-      /* --- RESPONSIVE FIXES --- */
-      @media (max-width: 768px) {
-        section#cta-final {
-          padding: 60px 0 !important;
-        }
-
-        .cta-card {
-          padding: 24px;
-          border-radius: 16px;
-          margin-bottom: 30px;
-        }
-
-        .cta-check-item {
-          font-size: 0.95rem;
-          gap: 12px;
-        }
-
-        .btn-primary {
-          width: 100%;
-          padding: 16px 20px !important;
-          font-size: 1rem !important;
-          white-space: normal;
-          height: auto;
-          line-height: 1.3;
-        }
-      }
-    </style>
-
-    <div class="wrap" style="position: relative; z-index: 2; text-align: center;">
-
-      <h2 style="font-size: var(--h2); line-height: 1.1; margin-bottom: 20px;">
-        Identifiez ce qui vous <span class="text-brand">freine vraiment</span>.
-      </h2>
-      <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto 50px; padding: 0 10px;">
-        Quelques questions pour que je cerne précisément ce qui bloque votre progression.
-      </p>
-
-      <!-- La Boîte de Valeur -->
-      <div class="cta-card mobile-reveal">
-        <div class="cta-check-list">
-          <div class="cta-check-item">
-            <div class="cta-check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="3">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg></div>
-            <span>Identifiez les <b>blocages invisibles</b> qui sabotent vos matchs aujourd'hui.</span>
-          </div>
-          <div class="cta-check-item">
-            <div class="cta-check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="3">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg></div>
-            <span>Clarifiez vos objectifs et ce que vous souhaitez <b>vraiment</b> changer.</span>
-          </div>
-          <div class="cta-check-item">
-            <div class="cta-check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="3">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg></div>
-            <span>Définissons ensemble les prochaines étapes pour progresser.</span>
+            <div style="display:flex; gap:14px; align-items:flex-start;">
+              <div style="width:40px; height:40px; background:rgba(85,211,155,0.12); border:1px solid rgba(85,211,155,0.25); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg width="18" height="18" fill="none" stroke="#55d39b" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+              </div>
+              <div><p style="font-weight:600; color:white; margin:0 0 4px;">Discrétion absolue</p><p style="font-size:0.875rem; color:#94a3b8; margin:0;">Le monde du sport est petit. Nos échanges sont 100% confidentiels, vos adversaires ou staff n'en sauront rien.</p></div>
+            </div>
           </div>
         </div>
+
+        <!-- Right: Calendly Embed (Premium Look sans scroll inutile) -->
+        <div style="background:var(--panel); border:1px solid var(--panel-border); border-top:4px solid var(--brand); border-radius:16px; box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4); overflow: hidden; display: flex; justify-content: center; width: 100%; box-sizing: border-box;">
+           <div class="calendly-inline-widget" data-url="https://calendly.com/contact-pms2c-zmbl/30min?hide_landing_page_details=1&hide_event_type_details=1&background_color=13161f&text_color=edf2f7&primary_color=ff4d5a" style="width:100%; height:680px;"></div>
+           <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
       </div>
-
-      <!-- Flèche qui pointe -->
-      <svg class="arrow-down" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-        stroke-width="2">
-        <path d="M12 5v14M19 12l-7 7-7-7" />
-      </svg>
-
-      <!-- Bouton Principal -->
-      <a href="#contact" class="btn btn-primary"
-        style="padding: 18px 40px; font-size: 1.1rem; box-shadow: 0 10px 40px -10px var(--brand-glow);">
-        Démarrer mon Bilan Mental Offert
-      </a>
-
-      <p style="margin-top: 20px; font-size: 0.9rem; color: #64748b; font-style: italic;">
-        100% gratuit. Je reviens vers vous personnellement.
-      </p>
-
     </div>
   </section>
+
+
 
   <!-- FAQ (Contenu Stratégique Cible 20-30 ans + Smooth Animation) -->
   <section id="faq"
@@ -3840,72 +3858,7 @@
     </div>
   </section>
 
-  <!-- SECTION CALENDLY -->
-  <section id="contact" style="padding: 100px 0; background: linear-gradient(180deg, var(--bg) 0%, rgba(255,77,90,0.04) 100%); border-top: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden;">
-    <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:600px; height:400px; background:radial-gradient(circle, rgba(255,77,90,0.1), transparent 70%); pointer-events:none;"></div>
-    <div class="wrap" style="position:relative; z-index:1;">
-      <div class="section-title text-center" style="margin-bottom: 80px;">
-        <span class="tagline" style="margin-bottom: 8px;">Bilan de Performance</span>
-        
-        <!-- Titre Desktop (en 2 lignes) -->
-        <div class="hidden-mobile" style="justify-content: center;">
-          <h2 style="margin-bottom: 0;">Vous bloquez en compétition ?<br>On débriefe ensemble.</h2>
-        </div>
-
-        <!-- Titre Mobile (1 seule phrase) -->
-        <h2 class="visible-mobile" style="margin-bottom: 0;">Un premier bilan offert pour enfin comprendre ce qui coince.</h2>
-        
-        <p class="visible-mobile" style="color:var(--text-muted); font-size:1.05rem; margin:20px auto 0; max-width:500px; line-height:1.5;">
-          Réservez un appel gratuit de 30 minutes pour isoler ce qui vous freine et relancer votre progression.
-        </p>
-      </div>
-      <div class="section-form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1040px; margin: 0 auto; align-items: stretch;">
-        
-        <!-- Left: Rassurance & Context -->
-        <div class="hidden-mobile" style="display:flex; flex-direction:column; justify-content:center; padding-right:20px;">
-          <p style="color:var(--text-muted); font-size:1.05rem; margin:0 0 40px; line-height:1.6;">
-            Choisissez votre créneau ci-dessous. On prend 30 minutes pour analyser factuellement ce qui limite vos résultats aujourd'hui.
-          </p>
-
-          <div style="display:flex; flex-direction:column; gap:20px;">
-            <div style="display:flex; gap:14px; align-items:flex-start;">
-              <div style="width:40px; height:40px; background:rgba(85,211,155,0.12); border:1px solid rgba(85,211,155,0.25); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                <svg width="18" height="18" fill="none" stroke="#55d39b" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <div><p style="font-weight:600; color:white; margin:0 0 4px;">Bilan offert & sans engagement</p><p style="font-size:0.875rem; color:#94a3b8; margin:0;">Aucun frais caché, on valide simplement si cette approche est faite pour vous.</p></div>
-            </div>
-            
-            <div style="display:flex; gap:14px; align-items:flex-start;">
-              <div style="width:40px; height:40px; background:rgba(85,211,155,0.12); border:1px solid rgba(85,211,155,0.25); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                <svg width="18" height="18" fill="none" stroke="#55d39b" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-              </div>
-              <div><p style="font-weight:600; color:white; margin:0 0 4px;">Analyse concrète</p><p style="font-size:0.875rem; color:#94a3b8; margin:0;">On isole l'élément précis (stress, perte de focus...) qui sabote vos résultats.</p></div>
-            </div>
-            
-            <div style="display:flex; gap:14px; align-items:flex-start;">
-              <div style="width:40px; height:40px; background:rgba(85,211,155,0.12); border:1px solid rgba(85,211,155,0.25); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                <svg width="18" height="18" fill="none" stroke="#55d39b" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              </div>
-              <div><p style="font-weight:600; color:white; margin:0 0 4px;">Le déclic en 30 minutes</p><p style="font-size:0.875rem; color:#94a3b8; margin:0;">Ce temps passé ensemble peut suffire à débloquer plusieurs mois (ou années) de stagnation sur le terrain.</p></div>
-            </div>
-
-            <div style="display:flex; gap:14px; align-items:flex-start;">
-              <div style="width:40px; height:40px; background:rgba(85,211,155,0.12); border:1px solid rgba(85,211,155,0.25); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                <svg width="18" height="18" fill="none" stroke="#55d39b" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
-              </div>
-              <div><p style="font-weight:600; color:white; margin:0 0 4px;">Discrétion absolue</p><p style="font-size:0.875rem; color:#94a3b8; margin:0;">Le monde du sport est petit. Nos échanges sont 100% confidentiels, vos adversaires ou staff n'en sauront rien.</p></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Calendly Embed (Premium Look sans scroll inutile) -->
-        <div style="background:var(--panel); border:1px solid var(--panel-border); border-top:4px solid var(--brand); border-radius:16px; box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4); overflow: hidden; display: flex; justify-content: center; width: 100%; box-sizing: border-box;">
-           <div class="calendly-inline-widget" data-url="https://calendly.com/contact-pms2c-zmbl/30min?hide_landing_page_details=1&hide_event_type_details=1&background_color=13161f&text_color=edf2f7&primary_color=ff4d5a" style="width:100%; height:680px;"></div>
-           <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- FOOTER MULTI-COLONNES -->
   <footer style="background: #0a0c11; border-top: 1px solid rgba(255,255,255,0.06); padding: 60px 0 0;">
